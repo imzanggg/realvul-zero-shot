@@ -1,116 +1,69 @@
-# RealVul: PHP Vulnerability Detection based on LLMs
+# RealVul Zero-Shot Evaluation
 
-## Overview
-This repository contains the code for our prototype implementation of RealVul, accepted by EMNLP 2024. RealVul is a LLM-based framework signed for PHP vulnerability detection on CWE-79 (XSS) and CWE-89 (SQL Injection). 
+Đồ án môn học: **Lập trình An toàn và Khai thác Lỗ hổng Phần mềm**
 
+Tái hiện và mở rộng pipeline RealVul (EMNLP 2024) theo hướng 
+zero-shot prompting với 5 model local chạy qua Ollama.
 
-## Getting Started
+## Mô tả
 
-### Directory Structure
+- **Bài báo gốc:** RealVul (EMNLP 2024) — Di Cao, Yong Liao, Xiuwei Shang
+- **Hướng mở rộng:** Zero-shot prompting, không fine-tune
+- **Quy mô:** 4 prompt strategies × 5 models × 2 CWE = 40 thí nghiệm
+- **CWE:** CWE-79 (XSS) và CWE-89 (SQL Injection)
 
- - `./configs`: Parameter settings for processing and fine-tuning.
- - `./core`
-   - `/sampling`: Python scripts for the section of Candidate Vulnerability Detection.
-   - `/processing`: Python scripts for the section of Preprocessing. 
-   - `/LLM`: Python scripts for fine-tuning and evaluation.
- - `./data`: Datasets used in our experiments.
- - `./rule`
-   - `/php`: Vulnerability detection rules of XSS and SQLI. 
- - `./utils`: Customized functions.
+## Models sử dụng (qua Ollama)
 
+- qwen2.5-coder:7b
+- codellama:7b
+- deepseek-coder:6.7b
+- llama3.2:3b
+- phi3.5:3.8b
 
-### Environment Setup
-install the python dependencies via the following command:
+## Prompt Strategies
 
-```
+1. Standard (Zero-shot)
+2. CoT (Chain-of-Thought)
+3. Sliced Standard
+4. Sliced CoT
+
+## Cài đặt
+
+```bash
 pip install -r requirements.txt
 ```
 
-### Pre-trained LLM Download
-
-#### Code LLM Models
-We use 7 different Code LLMs as base model for fine-tuning. In this repository, we use CodeLlama-7B model as an example to reproduce the main results from the paper. This is how to obtain this pre-trained model:
-
-   - Make sure you have git-lfs installed. If not, run the command: 
-   ```
-git lfs install
-```
-   - Execute the command to download the model:
-   ```
-git clone https://huggingface.co/meta-llama/CodeLlama-7b-hf
-``` 
-
-
-#### Datasets
-To download the training and evaluation dataset used for evaluation in our experiments, run the following commands:
-
-```
-cd data 
-gdown https://drive.google.com/file/d/1-PKETn0EvTkTrJCF4ZkcOHkviIUi6aLo/
+Cài Ollama: https://ollama.com
+Pull model:
+```bash
+ollama pull codellama:7b
 ```
 
-## Pipeline
+## Chạy thực nghiệm
 
-### Sampling to generate code snippets as samples:
-```
-main.py 
-    --task Sampling
-    --cwe 79
-    --sampling_target_dir data/crossvul/xss/
-    --sampling_output_dir result/snippet/
-```
+```bash
+# Chạy 1 thí nghiệm đơn lẻ
+python ollama_eval.py --cwe 79 --model codellama:7b --mode standard
 
-### Preprocessing with labeled samples:
-```
-main.py 
-    --task Preprocessing
-    --cwe 79
-    --prep_target_file result/CVI_10001_dataset.json
-    --prep_output_file result/dataset_unique_79.json
+# Chạy toàn bộ 40 thí nghiệm
+run_all.bat
 ```
 
+## Chạy với Groq API (tùy chọn)
 
-### Data Synthesis:
-```
-main.py 
-    --task Synthesis
-    --cwe 79
-    --sard_samples_file data/SARD_php_vulnerability_79.json
-    --crossvul_samples_file data/dataset_unique_79.json
-    --synthesis_target_dir data/crossvul/xss/
-```
+Tạo file `.env`:
+GROQ_API_KEY=your_api_key_here
+Lấy API key tại: https://console.groq.com
 
-## Start Fine-tuning
-
-### Train:
-For train mode, we support:
- - random: Fine-tune RealVul on random Samples.
- - unseen: Fine-tune RealVul on unseen projects.
- - random_without_slice: Fine-tune Baseline on random Samples.
- - unseen_without_slice: Fine-tune Baseline on unseen projects.
- - random_without_preprocess: Ablation Study on Normalization.
- - unseen_without_preprocess: Ablation Study on Normalization.
-```
-main.py 
-    --task Training
-    --cwe 79
-    --crossvul_dataset data/dataset_unique_79.json
-    --synthesis_dataset data/dataset_synthesis_79.json
-    --train_mode random
-    --base_model codellama-7b
-    --base_model_dir models/base_model/codellama-7b/
+```bash
+python groq_eval.py --cwe 79 --mode standard
 ```
 
-### Eval:
+## Kết quả
 
-```
-main.py 
-    --task Evaluation
-    --cwe 79
-    --crossvul_dataset data/dataset_unique_79.json
-    --synthesis_dataset data/dataset_synthesis_79.json
-    --train_mode random
-    --base_model codellama-7b
-    --base_model_dir models/base_model/codellama-7b/
-```
-```
+Kết quả được lưu trong thư mục `results/` (40 file JSON) 
+và `results_groq_*.json` (8 file JSON từ Groq API).
+
+Model tốt nhất: **codellama:7b**
+- CWE-79: F1 = 0.6757 (Sliced strategy)
+- CWE-89: F1 = 0.6711 (Standard strategy)
