@@ -1,0 +1,930 @@
+{
+  "config": {
+    "model": "qwen2.5-coder:7b",
+    "cwe": "89",
+    "prompt_mode": "standard",
+    "use_slice": false,
+    "num_samples": 100,
+    "elapsed_seconds": 450.6,
+    "avg_compression_ratio": 1.0
+  },
+  "metrics": {
+    "accuracy": 0.6,
+    "f1_score": 0.5455,
+    "precision": 0.6316,
+    "recall": 0.48,
+    "confusion_matrix": [
+      [
+        36,
+        14
+      ],
+      [
+        26,
+        24
+      ]
+    ],
+    "errors": 0
+  },
+  "detailed_results": [
+    {
+      "index": 0,
+      "filename": "bad_684_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2016\t\tJamal Elbaz\t\t\t<jamelbaz@gmail.pro>\n * Copyright (C) 2017\t\tAlexandre Spangaro\t<aspangaro@zendsi.com>\n *\n * This program is",
+      "sliced_preview": ""
+    },
+    {
+      "index": 1,
+      "filename": "bad_4363_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * Copyright since 2007 PrestaShop SA and Contributors\n * PrestaShop is an International Registered Trademark & Property of PrestaShop SA\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 2,
+      "filename": "bad_3551_5",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * Represents a signed 32 bit integer field.\n * \n * @package sapphire\n * @subpackage model\n */\nclass Int extends DBField {\n\n\tfunction __cons",
+      "sliced_preview": ""
+    },
+    {
+      "index": 3,
+      "filename": "bad_2385_2",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\"><?php echo Yii::t('AdminModule.views_logging_index', '<strong>Error</strong> logging'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 4,
+      "filename": "good_2817_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-alpha-41470';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 5,
+      "filename": "good_5394_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n##################################################\n#\n# Copyright (c) 2004-2016 OIC Group, Inc.\n#\n# This file is part of Exponent\n#\n# Exponent is",
+      "sliced_preview": ""
+    },
+    {
+      "index": 6,
+      "filename": "bad_3816_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 7,
+      "filename": "good_2067_7",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 8,
+      "filename": "bad_2318_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*Copyright (c) 2013, Stéphane Petitcolas\nThis file is part of CookieViz\n\nCookieViz is free software: you can redistribute it and/or modify\nit u",
+      "sliced_preview": ""
+    },
+    {
+      "index": 9,
+      "filename": "bad_4024_5",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n#**************************************************************************\n#  openSIS is a free student information system for public and non-p",
+      "sliced_preview": ""
+    },
+    {
+      "index": 10,
+      "filename": "bad_3544_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2002-2005 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2011 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 11,
+      "filename": "bad_2990_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2001-2004 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2012 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 12,
+      "filename": "good_2990_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2001-2004 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2012 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 13,
+      "filename": "good_2178_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/**\n * @file          otv.php\n * @author        Nils Laumaill�\n * @version       2.1.20\n * @copyright     (c) 2009-2014 Nils Laumaill�\n * @licen",
+      "sliced_preview": ""
+    },
+    {
+      "index": 14,
+      "filename": "bad_3816_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 15,
+      "filename": "good_2791_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2003-2007 Rodolphe Quiedeville  <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2016 Laurent Destailleur   <eldy@users.sourcef",
+      "sliced_preview": ""
+    },
+    {
+      "index": 16,
+      "filename": "bad_2555_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n// +-----------------------------------------------------------------------+\n// | Piwigo - a PHP based photo gallery                            ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 17,
+      "filename": "bad_4066_5",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2016\tMarcos García\t<marcosgdf@gmail.com>\n *\n * This program is free software; you can redistribute it and/or modify\n * it under",
+      "sliced_preview": ""
+    },
+    {
+      "index": 18,
+      "filename": "good_2791_5",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2004      Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2008 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 19,
+      "filename": "good_1344_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 20,
+      "filename": "bad_2979_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n// +-----------------------------------------------------------------------+\n// | Piwigo - a PHP based photo gallery                            ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 21,
+      "filename": "good_5706_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n//simpilotgroup addon module for phpVMS virtual airline system\n//\n//simpilotgroup addon modules are licenced under the following license:\n//Crea",
+      "sliced_preview": ""
+    },
+    {
+      "index": 22,
+      "filename": "good_3705_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n\n/**\n* Model for Locations\n *\n * PHP version 5\n * LICENSE: This source file is subject to",
+      "sliced_preview": ""
+    },
+    {
+      "index": 23,
+      "filename": "good_2385_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\"><?php echo Yii::t('AdminModule.views_logging_index', '<strong>Error</strong> logging'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 24,
+      "filename": "bad_3138_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-alpha-39951';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 25,
+      "filename": "bad_2904_3",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-RC1-42050';\n\n/**\n * Holds the WordPress DB revision,",
+      "sliced_preview": ""
+    },
+    {
+      "index": 26,
+      "filename": "good_4363_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * Copyright since 2007 PrestaShop SA and Contributors\n * PrestaShop is an International Registered Trademark & Property of PrestaShop SA\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 27,
+      "filename": "good_957_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * EverestForms Entry Functions\n *\n * @package EverestForms\\Functions\n * @since   1.1.0\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Get entry",
+      "sliced_preview": ""
+    },
+    {
+      "index": 28,
+      "filename": "good_3138_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-alpha-39952';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 29,
+      "filename": "good_2179_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 30,
+      "filename": "bad_958_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * EverestForms Entry Functions\n *\n * @package EverestForms\\Functions\n * @since   1.1.0\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Get entry",
+      "sliced_preview": ""
+    },
+    {
+      "index": 31,
+      "filename": "bad_3700_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n\n/**\n* Model for Settings\n *\n * PHP version 5\n * LICENSE: This source file is subject to ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 32,
+      "filename": "good_56_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/***************************************************************************\n *   copyright\t\t\t\t: (C) 2008 - 2017 WeBid\n *   site\t\t\t\t\t: http://ww",
+      "sliced_preview": ""
+    },
+    {
+      "index": 33,
+      "filename": "good_5326_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n\n##################################################\n#\n# Copyright (c) 2004-2016 OIC Group, Inc.\n#\n# This file is part of Exponent\n#\n# Exponent i",
+      "sliced_preview": ""
+    },
+    {
+      "index": 34,
+      "filename": "bad_1348_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 35,
+      "filename": "good_3706_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * Reporters Controller\n * Add/Edit Ushahidi Reporters\n *\n * PHP version 5\n * LICENSE",
+      "sliced_preview": ""
+    },
+    {
+      "index": 36,
+      "filename": "bad_2179_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 37,
+      "filename": "good_2904_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-RC1-42056';\n\n/**\n * Holds the WordPress DB revision,",
+      "sliced_preview": ""
+    },
+    {
+      "index": 38,
+      "filename": "bad_4133_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * ---------------------------------------------------------------------\n * GLPI - Gestionnaire Libre de Parc Informatique\n * Copyright (C) ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 39,
+      "filename": "good_56_17",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/***************************************************************************\n *   copyright\t\t\t\t: (C) 2008 - 2017 WeBid\n *   site\t\t\t\t\t: http://ww",
+      "sliced_preview": ""
+    },
+    {
+      "index": 40,
+      "filename": "bad_3551_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/**\n * More advanced search form\n * @package sapphire\n * @subpackage search\n */\nclass AdvancedSearchForm extends SearchForm {\n\t\n\t/**\n\t * the con",
+      "sliced_preview": ""
+    },
+    {
+      "index": 41,
+      "filename": "bad_5326_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "#!/usr/bin/env php\n<?php\n    ##################################################\n    #\n    # Copyright (c) 2004-2016 OIC Group, Inc.\n    #\n    # This f",
+      "sliced_preview": ""
+    },
+    {
+      "index": 42,
+      "filename": "good_3816_6",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 43,
+      "filename": "good_3707_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * This class handles countries activities via the API.\n *\n * @version 24 - Emmanuel ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 44,
+      "filename": "good_3816_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 45,
+      "filename": "bad_3544_6",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2004-2007 Laurent Destailleur  <eldy@users.sourceforge.net>\n *\n * This program is free software; you can redistribute it and/or",
+      "sliced_preview": ""
+    },
+    {
+      "index": 46,
+      "filename": "bad_2179_12",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 47,
+      "filename": "good_1348_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 48,
+      "filename": "good_4066_4",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2004      Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2009 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 49,
+      "filename": "good_2178_4",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n *\n * @file          indexapi.php\n * @author        Nils Laumaill�\n * @version       2.1.20\n * @copyright     (c) 2009-2014 Nils Laumaill�\n ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 50,
+      "filename": "bad_3705_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n\n/**\n* Model for Locations\n *\n * PHP version 5\n * LICENSE: This source file is subject to",
+      "sliced_preview": ""
+    },
+    {
+      "index": 51,
+      "filename": "good_4363_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * Copyright since 2007 PrestaShop SA and Contributors\n * PrestaShop is an International Registered Trademark & Property of PrestaShop SA\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 52,
+      "filename": "bad_2067_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 53,
+      "filename": "good_3551_5",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * Represents a signed 32 bit integer field.\n * \n * @package sapphire\n * @subpackage model\n */\nclass Int extends DBField {\n\n\tfunction __cons",
+      "sliced_preview": ""
+    },
+    {
+      "index": 54,
+      "filename": "bad_1147_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 55,
+      "filename": "good_4133_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * ---------------------------------------------------------------------\n * GLPI - Gestionnaire Libre de Parc Informatique\n * Copyright (C) ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 56,
+      "filename": "bad_56_14",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/***************************************************************************\n *   copyright\t\t\t\t: (C) 2008 - 2017 WeBid\n *   site\t\t\t\t\t: http://ww",
+      "sliced_preview": ""
+    },
+    {
+      "index": 57,
+      "filename": "good_684_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2016\t\tJamal Elbaz\t\t\t<jamelbaz@gmail.pro>\n * Copyright (C) 2017\t\tAlexandre Spangaro\t<aspangaro@zendsi.com>\n *\n * This program is",
+      "sliced_preview": ""
+    },
+    {
+      "index": 58,
+      "filename": "bad_2067_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 59,
+      "filename": "bad_2860_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n  +-------------------------------------------------------------------------+\n  | Copyright 2010-2017, Davide Franco                         ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 60,
+      "filename": "good_2818_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-alpha-41496';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 61,
+      "filename": "good_3816_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 62,
+      "filename": "bad_2179_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 63,
+      "filename": "good_2179_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 64,
+      "filename": "bad_2818_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-alpha-41483';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 65,
+      "filename": "good_4066_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2013-2014 Olivier Geffroy\t\t<jeff@jeffinfo.com>\n * Copyright (C) 2013-2014 Florian Henry\t\t<florian.henry@open-concept.pro>\n * Co",
+      "sliced_preview": ""
+    },
+    {
+      "index": 66,
+      "filename": "good_2179_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 67,
+      "filename": "bad_2121_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\nrequire_once 'base.php';\nrequire_once W2P_BASE_DIR . '/includes/config.php';\nrequire_once W2P_BASE_DIR . '/includes/main_functions.php';\nrequire",
+      "sliced_preview": ""
+    },
+    {
+      "index": 68,
+      "filename": "bad_3705_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * This class handles locations activities via the API.\n *\n * @version 25- Emmanuel K",
+      "sliced_preview": ""
+    },
+    {
+      "index": 69,
+      "filename": "good_57_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n\n/**\n *\tremove item from nat\n ************************************************/\n\n/* functions */\nrequire_once( dirname(__FILE__) . '/../../../fu",
+      "sliced_preview": ""
+    },
+    {
+      "index": 70,
+      "filename": "good_224_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2006      Andre Cianfarani     <acianfa@free.fr>\n * Copyright (C) 2005-2012 Regis Houssin        <regis.houssin@capnetworks.com",
+      "sliced_preview": ""
+    },
+    {
+      "index": 71,
+      "filename": "good_791_6",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n\nuse Symfony\\Component\\DependencyInjection\\Argument\\RewindableGenerator;\nuse Symfony\\Component\\DependencyInjection\\ContainerInterface;\nuse Symfo",
+      "sliced_preview": ""
+    },
+    {
+      "index": 72,
+      "filename": "good_1345_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/ \n * @version $Id: newest_tcversions.php,v 1.15 2010/05/06 20:30:26 franc",
+      "sliced_preview": ""
+    },
+    {
+      "index": 73,
+      "filename": "bad_3545_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2002-2003 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2011 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 74,
+      "filename": "good_2791_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2015-2016\tAlexandre Spangaro\t\t<aspangaro@zendsi.com>\n *\n * This program is free software; you can redistribute it and/or modify",
+      "sliced_preview": ""
+    },
+    {
+      "index": 75,
+      "filename": "bad_3816_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 76,
+      "filename": "good_2979_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n// +-----------------------------------------------------------------------+\n// | Piwigo - a PHP based photo gallery                            ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 77,
+      "filename": "bad_3707_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * This class handles countries activities via the API.\n *\n * @version 24 - Emmanuel ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 78,
+      "filename": "bad_2791_5",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2004      Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2008 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 79,
+      "filename": "good_958_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * EverestForms Entry Functions\n *\n * @package EverestForms\\Functions\n * @since   1.1.0\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Get entry",
+      "sliced_preview": ""
+    },
+    {
+      "index": 80,
+      "filename": "good_3583_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php if ( ! defined('ABS_PATH')) exit('ABS_PATH is not loaded. Direct access is not allowed.');\n\n    /**\n     * OSClass – software for creating and p",
+      "sliced_preview": ""
+    },
+    {
+      "index": 81,
+      "filename": "bad_2178_2",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n\n// Set Teampass path\n$teampass_path = \"E:/xampp/htdocs/Teampass\";\n// Set Teampass config file\n$teampass_config_file = $teampass_path.\"/includes",
+      "sliced_preview": ""
+    },
+    {
+      "index": 82,
+      "filename": "bad_791_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n\n/*\n * This file is part of the Symfony package.\n *\n * (c) Fabien Potencier <fabien@symfony.com>\n *\n * For the full copyright and license inform",
+      "sliced_preview": ""
+    },
+    {
+      "index": 83,
+      "filename": "good_3545_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2002-2003 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2011 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 84,
+      "filename": "good_2179_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 85,
+      "filename": "bad_4066_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2013-2014 Olivier Geffroy\t\t<jeff@jeffinfo.com>\n * Copyright (C) 2013-2014 Florian Henry\t\t<florian.henry@open-concept.pro>\n * Co",
+      "sliced_preview": ""
+    },
+    {
+      "index": 86,
+      "filename": "good_2990_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2005-2011 Laurent Destailleur  <eldy@users.sourceforge.net>\n * Copyright (C) 2005-2006 Regis Houssin        <regis.houssin@capn",
+      "sliced_preview": ""
+    },
+    {
+      "index": 87,
+      "filename": "bad_4482_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * This file is part of the Cockpit project.\n *\n * (c) Artur Heinze - 🅰🅶🅴🅽🆃🅴🅹🅾, http://agentejo.com\n *\n * For the full copyright and license",
+      "sliced_preview": ""
+    },
+    {
+      "index": 88,
+      "filename": "bad_3816_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 89,
+      "filename": "good_4066_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/* Copyright (C) 2004       Rodolphe Quiedeville  <rodolphe@quiedeville.org>\n * Copyright (C) 2005       Simon TOSSER          <simon@kornog-com",
+      "sliced_preview": ""
+    },
+    {
+      "index": 90,
+      "filename": "good_2178_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n\n// Set Teampass path\n$teampass_path = \"E:/xampp/htdocs/Teampass\";\n// Set Teampass config file\n$teampass_config_file = $teampass_path.\"/includes",
+      "sliced_preview": ""
+    },
+    {
+      "index": 91,
+      "filename": "bad_5326_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n\n##################################################\n#\n# Copyright (c) 2004-2016 OIC Group, Inc.\n#\n# This file is part of Exponent\n#\n# Exponent i",
+      "sliced_preview": ""
+    },
+    {
+      "index": 92,
+      "filename": "good_1347_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or l",
+      "sliced_preview": ""
+    },
+    {
+      "index": 93,
+      "filename": "good_2318_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "﻿<?php\n/*Copyright (c) 2013, Stéphane Petitcolas\nThis file is part of CookieViz\n\nCookieViz is free software: you can redistribute it and/or modify\nit ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 94,
+      "filename": "bad_2178_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/**\n * @file          otv.php\n * @author        Nils Laumaill�\n * @version       2.1.20\n * @copyright     (c) 2009-2014 Nils Laumaill�\n * @licen",
+      "sliced_preview": ""
+    },
+    {
+      "index": 95,
+      "filename": "bad_2791_3",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2015-2016\tAlexandre Spangaro\t\t<aspangaro@zendsi.com>\n *\n * This program is free software; you can redistribute it and/or modify",
+      "sliced_preview": ""
+    },
+    {
+      "index": 96,
+      "filename": "bad_4066_3",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2009 Laurent Destailleur  <eldy@users.sourceforge.net>\n * Copyright (C) 2010 Regis Houssin        <regis.houssin@inodbox.com>\n ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 97,
+      "filename": "bad_2480_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/**\n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or l",
+      "sliced_preview": ""
+    },
+    {
+      "index": 98,
+      "filename": "bad_2990_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE",
+      "code_preview": "<?php\n/* Copyright (C) 2005-2011 Laurent Destailleur  <eldy@users.sourceforge.net>\n * Copyright (C) 2005-2006 Regis Houssin        <regis.houssin@capn",
+      "sliced_preview": ""
+    },
+    {
+      "index": 99,
+      "filename": "bad_3816_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    }
+  ]
+}

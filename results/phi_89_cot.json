@@ -1,0 +1,930 @@
+{
+  "config": {
+    "model": "phi3.5:3.8b",
+    "cwe": "89",
+    "prompt_mode": "cot",
+    "use_slice": false,
+    "num_samples": 100,
+    "elapsed_seconds": 1019.9,
+    "avg_compression_ratio": 1.0
+  },
+  "metrics": {
+    "accuracy": 0.54,
+    "f1_score": 0.6515,
+    "precision": 0.5244,
+    "recall": 0.86,
+    "confusion_matrix": [
+      [
+        11,
+        39
+      ],
+      [
+        7,
+        43
+      ]
+    ],
+    "errors": 0
+  },
+  "detailed_results": [
+    {
+      "index": 0,
+      "filename": "bad_684_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided does not utilize prepared statements or any form of input validation/sanitization when handling user inputs for SQL queries, which makes it susceptible to SQL Injection attacks. Specifically, the `$accountingcategory->updateAccAcc($cat_id, $cpts)` and other similar ",
+      "code_preview": "<?php\n/* Copyright (C) 2016\t\tJamal Elbaz\t\t\t<jamelbaz@gmail.pro>\n * Copyright (C) 2017\t\tAlexandre Spangaro\t<aspangaro@zendsi.com>\n *\n * This program is",
+      "sliced_preview": ""
+    },
+    {
+      "index": 1,
+      "filename": "bad_4363_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the code where user input is being used in a database query context.\n- The `display()` method retrieves `$idProducts` using `Tools::getValue('id_products')`. This value is then directly passed to methods of `$productCommentRepository`, which likely interacts with the database (`getC",
+      "code_preview": "<?php\n/**\n * Copyright since 2007 PrestaShop SA and Contributors\n * PrestaShop is an International Registered Trademark & Property of PrestaShop SA\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 2,
+      "filename": "bad_3551_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The `prepValueForDB()` function is used to prepare values for insertion into a SQL statement, but it does not properly sanitize user input that could lead to an SQL injection vulnerability (CWE-89). Specifically, the method uses addslashes() which only adds bac",
+      "code_preview": "<?php\n/**\n * Represents a signed 32 bit integer field.\n * \n * @package sapphire\n * @subpackage model\n */\nclass Int extends DBField {\n\n\tfunction __cons",
+      "sliced_preview": ""
+    },
+    {
+      "index": 3,
+      "filename": "bad_2385_2",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nThe provided PHP code appears to be a part of an application that displays logged errors, possibly within the Yii framework based on usage of `Yii::t()` for internationalization and some specific widgets. The critical aspect here is how user input (if any) interacts with SQL queries or databas",
+      "code_preview": "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\"><?php echo Yii::t('AdminModule.views_logging_index', '<strong>Error</strong> logging'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 4,
+      "filename": "good_2817_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nExplanation: The provided PHP code snippet is simply a configuration block with hardcoded variables for WordPress version, database revision, TinyMCE version, required PHP and MySQL versions. There are no direct SQL queries being executed using user input that could potentially be manipulated ",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-alpha-41470';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 5,
+      "filename": "good_5394_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be vulnerable to SQL Injection attacks due to the direct use of user input (`$this->params['editor']`) in constructing an SQL query without proper sanitization. Here's a step-by-step analysis:\n\n1. The `update()` method uses `$this->params['editor']` direc",
+      "code_preview": "<?php\n##################################################\n#\n# Copyright (c) 2004-2016 OIC Group, Inc.\n#\n# This file is part of Exponent\n#\n# Exponent is",
+      "sliced_preview": ""
+    },
+    {
+      "index": 6,
+      "filename": "bad_3816_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically under CWE-89 (Cross-Site Scripting). The main issue lies in the following line of code where user input from `$_GET['session']` directly concatenates into an SQL query without proper sanitization or use of prepare",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 7,
+      "filename": "good_2067_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep 1: Identify the database interaction points in the code where user input could potentially be incorporated into SQL queries without proper sanitization, which is a common vector for SQL Injection attacks.\n\nIn this PHP script, there's an obvious risk of SQL Injection at these lines:\n",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 8,
+      "filename": "bad_2318_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses user input (`$_GET[\"domain\"]`) in constructing an SQL query without any form of sanitization, escaping, or prepared statements/parameterized queries. This is a classic example of how SQL Injection can occur when unsanitized inputs are con",
+      "code_preview": "<?php\n/*Copyright (c) 2013, Stéphane Petitcolas\nThis file is part of CookieViz\n\nCookieViz is free software: you can redistribute it and/or modify\nit u",
+      "sliced_preview": ""
+    },
+    {
+      "index": 9,
+      "filename": "bad_4024_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nThe provided PHP code does not directly execute any SQL queries, and there are no visible instances of user input being interpolated into a database query string without proper sanitization (such as using prepared statements). However, the presence of `session_start()` followed by immedi",
+      "code_preview": "<?php\n#**************************************************************************\n#  openSIS is a free student information system for public and non-p",
+      "sliced_preview": ""
+    },
+    {
+      "index": 10,
+      "filename": "bad_3544_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks due to the direct use of user input (`$_POST[\"search_user\"]`, `$sall`) in constructing an SQL query without proper sanitization. Here's a step-by-step analysis:\n\n1. The script directly concatenates variables into the SQL statem",
+      "code_preview": "<?php\n/* Copyright (C) 2002-2005 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2011 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 11,
+      "filename": "bad_2990_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks due to the direct use of user-supplied input (`$_GET[\"id\"]`) in constructing an SQL query without proper sanitization. Here's a step by step analysis:\n\n1. The `$_POST` variable contains data from form inputs, which could potent",
+      "code_preview": "<?php\n/* Copyright (C) 2001-2004 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2012 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 12,
+      "filename": "good_2990_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks due to the direct use of user input (`$_POST[\"price_level\"]`) in constructing an SQL query without proper sanitization. Here's a step-by-step analysis:\n\n1. The `$sql` variable builds and executes an SQL statement using data fro",
+      "code_preview": "<?php\n/* Copyright (C) 2001-2004 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2012 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 13,
+      "filename": "good_2178_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the following reasons:\n\n1. The script directly uses `$_GET['item_id']` and other GET parameters in raw SQL queries without proper sanitization, which can be exploited by an attacker constructing a malicious input that manipulate",
+      "code_preview": "<?php\n/**\n * @file          otv.php\n * @author        Nils Laumaill�\n * @version       2.1.20\n * @copyright     (c) 2009-2014 Nils Laumaill�\n * @licen",
+      "sliced_preview": ""
+    },
+    {
+      "index": 14,
+      "filename": "bad_3816_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep 1: Identify the code where user input is being used in a SQL query without proper sanitization/escaping, which can lead to SQL Injection (SQLi). The problematic line of code is:\n\n```php\n$DBRESULT = $pearDBO->query(\"SELECT * FROM `log_archive_service` WHERE host_id = '\".$_GET[\"host_i",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 15,
+      "filename": "good_2791_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to construct a web page for managing donations, specifically focusing on linked files associated with each donation record in the database. The vulnerability assessment is based on several observations related to SQL Injection (SQLi):\n\n1. There are direct us",
+      "code_preview": "<?php\n/* Copyright (C) 2003-2007 Rodolphe Quiedeville  <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2016 Laurent Destailleur   <eldy@users.sourcef",
+      "sliced_preview": ""
+    },
+    {
+      "index": 16,
+      "filename": "bad_2555_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code begins with a check for the defined constant `PHPWG_ROOT_PATH`. If it's not set, an error message is displayed and execution stops immediately (`die(\"Hacking attempt!\");`). This suggests that there might be some form of access control in place to preve",
+      "code_preview": "<?php\n// +-----------------------------------------------------------------------+\n// | Piwigo - a PHP based photo gallery                            ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 17,
+      "filename": "bad_4066_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses the `$_GET['id']` variable without any validation, sanitization, or parameterized queries to fetch data from a database based on user input. This is a classic example of how SQL Injection can occur if an attacker manipulates the 'id' valu",
+      "code_preview": "<?php\n/* Copyright (C) 2016\tMarcos García\t<marcosgdf@gmail.com>\n *\n * This program is free software; you can redistribute it and/or modify\n * it under",
+      "sliced_preview": ""
+    },
+    {
+      "index": 18,
+      "filename": "good_2791_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, as indicated in the following reasons and analysis steps below:\n\n1. The use of `GETPOST()` function without proper sanitization/validation for input parameters (`id`, `ref`, `action`) that are used directly within database que",
+      "code_preview": "<?php\n/* Copyright (C) 2004      Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2008 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 19,
+      "filename": "good_1344_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the following reasons:\n\n1. The `require_once(\"../../config.inc.php\")` and similar lines suggest that sensitive configuration data, such as database connection details (e.g., `$db`), are being included from external files without",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 20,
+      "filename": "bad_2979_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the direct use of user input (`$_REQUEST`) in constructing SQL queries without proper sanitization or parameterized queries (also known as prepared statements). Here are some specific issues:\n\n1. The `$sWhere` variable dynamical",
+      "code_preview": "<?php\n// +-----------------------------------------------------------------------+\n// | Piwigo - a PHP based photo gallery                            ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 21,
+      "filename": "good_5706_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code does not use prepared statements or parameterized queries when interacting with the database, which is a common method to prevent SQL injection attacks. Instead, it directly uses user input (`$id` and `$howmany`) in constructing SQL queries without pro",
+      "code_preview": "<?php\n//simpilotgroup addon module for phpVMS virtual airline system\n//\n//simpilotgroup addon modules are licenced under the following license:\n//Crea",
+      "sliced_preview": ""
+    },
+    {
+      "index": 22,
+      "filename": "good_3705_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code uses `intval()` to convert the `$location_id` parameter into an integer before using it in a database query with ORM::factory('location', intval($location_id)). This is not sufficient protection against SQL Injection, as unsanitized input can still be ",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n\n/**\n* Model for Locations\n *\n * PHP version 5\n * LICENSE: This source file is subject to",
+      "sliced_preview": ""
+    },
+    {
+      "index": 23,
+      "filename": "good_2385_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nThe code provided is part of a web application that seems to display logged errors, possibly from an error logging system like Loggly or custom log entries in PHP using Yii framework's `CHtml::encode` method for output encoding. However, there are no direct SQL queries visible within the",
+      "code_preview": "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\"><?php echo Yii::t('AdminModule.views_logging_index', '<strong>Error</strong> logging'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 24,
+      "filename": "bad_3138_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nExplanation: The provided PHP code snippet is simply a configuration block with global variables for WordPress version, database revision, TinyMCE version, required PHP and MySQL versions. There are no direct SQL queries being executed using user input that could potentially be manipulated to ",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-alpha-39951';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 25,
+      "filename": "bad_2904_3",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nExplanation: The provided PHP code snippet is simply a configuration block with global variables for WordPress version, database revision, TinyMCE version, required PHP and MySQL versions. There are no direct SQL queries being executed using user input that could potentially lead to an SQL inj",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-RC1-42050';\n\n/**\n * Holds the WordPress DB revision,",
+      "sliced_preview": ""
+    },
+    {
+      "index": 26,
+      "filename": "good_4363_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nThe PHP code provided is vulnerable to SQL Injection due to the way it handles user input without proper sanitization before using it in an SQL query (or, more specifically here, a repository method that likely interacts with the database). The `paginate` and other methods used within th",
+      "code_preview": "<?php\n/**\n * Copyright since 2007 PrestaShop SA and Contributors\n * PrestaShop is an International Registered Trademark & Property of PrestaShop SA\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 27,
+      "filename": "good_957_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Verdict: SAFE\n\nStep 1: Analyze the code for prepared statements usage - The PHP code provided uses `$wpdb->prepare` to prepare SQL queries, which is a good practice as it helps prevent SQL Injection by using placeholders (%d) instead of concatenating or interpolating variables directly into the quer",
+      "code_preview": "<?php\n/**\n * EverestForms Entry Functions\n *\n * @package EverestForms\\Functions\n * @since   1.1.0\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Get entry",
+      "sliced_preview": ""
+    },
+    {
+      "index": 28,
+      "filename": "good_3138_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nExplanation: The provided PHP code snippet is simply a configuration block with hardcoded variables for WordPress version, database revision, TinyMCE version, required PHP and MySQL versions. There are no direct SQL queries being executed using user input that could potentially be manipulated ",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-alpha-39952';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 29,
+      "filename": "good_2179_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep 1: Identify the code where user input is being used in a database operation without proper sanitization/validation - `$nextRowId = htmlentities($_GET['id'], ENT_QUOTES, \"UTF-8\") + 1;` and similar lines.\n\nStep 2: Recognize that adding `+1` to the user input (`$_GET['id']`) could lead",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 30,
+      "filename": "bad_958_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep 1: Identify the database interaction points in the code where user input is used without proper sanitization/validation, which could lead to SQL Injection (SQLI). The main suspects are functions that use `$wpdb->prepare()` with variables directly passed from external inputs (`$id`, ",
+      "code_preview": "<?php\n/**\n * EverestForms Entry Functions\n *\n * @package EverestForms\\Functions\n * @since   1.1.0\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Get entry",
+      "sliced_preview": ""
+    },
+    {
+      "index": 31,
+      "filename": "bad_3700_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the direct use of user-provided input (`$key`) in constructing an SQL query without proper sanitization or prepared statements. Here's a step-bydict analysis:\n\n1. The `get_setting` and related methods directly interpolate `$key`",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n\n/**\n* Model for Settings\n *\n * PHP version 5\n * LICENSE: This source file is subject to ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 32,
+      "filename": "good_56_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically under CWE-89 (Cross-Site Scripting). Here's the analysis step by step:\n\n1. The script directly uses `$_GET['user_id']` without any form of sanitization or validation when constructing an SQL query string (`$query`",
+      "code_preview": "<?php\n/***************************************************************************\n *   copyright\t\t\t\t: (C) 2008 - 2017 WeBid\n *   site\t\t\t\t\t: http://ww",
+      "sliced_preview": ""
+    },
+    {
+      "index": 33,
+      "filename": "good_5326_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code uses string concatenation to build the SQL query for fetching purchase orders based on a vendor ID (`'vendor_id=' . $this->params['vendor']`). This approach does not use prepared statements or parameterized queries, which are essential in preventing SQ",
+      "code_preview": "<?php\n\n##################################################\n#\n# Copyright (c) 2004-2016 OIC Group, Inc.\n#\n# This file is part of Exponent\n#\n# Exponent i",
+      "sliced_preview": ""
+    },
+    {
+      "index": 34,
+      "filename": "bad_1348_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code does not appear to use prepared statements, which is a common method for preventing SQL Injection attacks in PHP when interacting with databases. Instead, it directly uses user input (`$_REQUEST` and `$_SESSION`) without proper sanitization or paramete",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 35,
+      "filename": "good_3706_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided for the Reporters Controller in a Ushahidi application appears to be vulnerable to SQL Injection attacks due to improper handling of user input before it is used in database queries. Here are some reasons why:\n\n1. The `add_rules` method calls within validation do no",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * Reporters Controller\n * Add/Edit Ushahidi Reporters\n *\n * PHP version 5\n * LICENSE",
+      "sliced_preview": ""
+    },
+    {
+      "index": 36,
+      "filename": "bad_2179_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep 1: Identify the code where user input is being used in a database query without proper sanitization/validation. In this case, it's when `$_POST[\"mnftr_id\"]` is directly concatenated into an SQL statement using string operations (`.`).\n\nStep 2: Recognize that direct usage of unsaniti",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 37,
+      "filename": "good_2904_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nExplanation: The provided PHP code snippet is simply a configuration block with global variables for WordPress version, database revision number, TinyMCE version, required PHP and MySQL versions. There are no direct SQL queries being executed using user input that could potentially lead to an ",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-RC1-42056';\n\n/**\n * Holds the WordPress DB revision,",
+      "sliced_preview": ""
+    },
+    {
+      "index": 38,
+      "filename": "bad_4133_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the direct use of user input (`$_POST[\"item\"]`, `$_POST['instantiation_type']`, and other POST variables) in constructing an SQL query without proper sanitization or prepared statements. Here's a step-by0 breakdown:\n\n1. The code",
+      "code_preview": "<?php\n/**\n * ---------------------------------------------------------------------\n * GLPI - Gestionnaire Libre de Parc Informatique\n * Copyright (C) ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 39,
+      "filename": "good_56_17",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically at the following points where user input (`$_POST['O_delete']`, `$_POST['startnow']`, and other variables) directly interact with SQL queries without proper sanitization or use of prepared statements. Attackers co",
+      "code_preview": "<?php\n/***************************************************************************\n *   copyright\t\t\t\t: (C) 2008 - 2017 WeBid\n *   site\t\t\t\t\t: http://ww",
+      "sliced_preview": ""
+    },
+    {
+      "index": 40,
+      "filename": "bad_3551_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the following reasons:\n\n1. The `getResults` method constructs a search query using user input directly without proper sanitization, concatenation with \" +\", and escaping of special characters like quotes or minus signs that coul",
+      "code_preview": "<?php\n/**\n * More advanced search form\n * @package sapphire\n * @subpackage search\n */\nclass AdvancedSearchForm extends SearchForm {\n\t\n\t/**\n\t * the con",
+      "sliced_preview": ""
+    },
+    {
+      "index": 41,
+      "filename": "bad_5326_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be vulnerable to SQL Injection attacks, specifically under CWE-89 (Improper Neutralization of Input During Web Page Generation). The issue arises in the following parts:\n\n1. `$version = $db->selectValue('help_version', 'id', \"version='\" . $_SERVER['argv']",
+      "code_preview": "#!/usr/bin/env php\n<?php\n    ##################################################\n    #\n    # Copyright (c) 2004-2016 OIC Group, Inc.\n    #\n    # This f",
+      "sliced_preview": ""
+    },
+    {
+      "index": 42,
+      "filename": "good_3816_6",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code starts a session and retrieves user ID from the GET request without proper validation, which could be exploited if an attacker manipulates this input (e.g., using SQL Injection techniques).\n2. It uses `htmlentities()` on both `$_GET['div']` and `$_GET[",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 43,
+      "filename": "good_3707_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nThe PHP code provided appears to be vulnerable to SQL Injection due to the way it handles user input before using them in database queries within methods like `_get_country_by_id`, `_get_country_by_name`, and `_get_country_by_iso`. Here's a step-by-step analysis:\n\n1. The code uses `$this",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * This class handles countries activities via the API.\n *\n * @version 24 - Emmanuel ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 44,
+      "filename": "good_3816_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses user input (`$_POST[\"index\"]`) in an SQL query without proper sanitization, which is a classic sign of potential SQL injection vulnerability (CWE-89).\n2. Although there's no direct `SQL` statement visible and the use of `$pearDB->escape()",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 45,
+      "filename": "bad_3544_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Step 1: Identify where user input is being used in the code - `$_GET[\"id\"]`.\nStep 2: Check if this input is directly passed to a database query without proper sanitization/validation.\nStep 3: Observe that there's no visible data validation or use of prepared statements before using `$_GET[\"id\"]` wit",
+      "code_preview": "<?php\n/* Copyright (C) 2004-2007 Laurent Destailleur  <eldy@users.sourceforge.net>\n *\n * This program is free software; you can redistribute it and/or",
+      "sliced_preview": ""
+    },
+    {
+      "index": 46,
+      "filename": "bad_2179_12",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly uses user input (`$_GET[\"session_id\"]`) in a SQL query without proper sanitization, which is susceptible to SQL Injection (CWE-89). An attacker could manipulate the `session_id` parameter and execute arbitrary SQL commands on the database.\n2. ",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 47,
+      "filename": "good_1348_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code does not appear to use prepared statements, stored procedures, or any form of input validation/sanitization when interacting with the database (SQL Injection risk).\n2. User inputs (`$_REQUEST` and `$_SESSION`) are directly used in constructing SQL quer",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 48,
+      "filename": "good_4066_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses `$_GET` superglobal variables (`$id`, `$ref`, `$action`, and `$confirm`) without any form of sanitization, validation, or parameterized queries to interact with the database. This is a common practice that can lead to SQL Injection if the",
+      "code_preview": "<?php\n/* Copyright (C) 2004      Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2009 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 49,
+      "filename": "good_2178_4",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the code that interacts with user input and a database/external resource. In this case, it's where `$_SERVER['QUERY_STRING']` is parsed into `parse_str()`, which could potentially be used to construct SQL queries if not properly sanitized.\n\nStep 2: Check for the use of prepared stat",
+      "code_preview": "<?php\n/**\n *\n * @file          indexapi.php\n * @author        Nils Laumaill�\n * @version       2.1.20\n * @copyright     (c) 2009-2014 Nils Laumaill�\n ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 50,
+      "filename": "bad_3705_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly concatenates user input (`$value`) into the SQL query without any form of sanitization, escaping, or validation (e.g., `AND '.$column.' = '.$value.'`). This is a classic example of how an attacker could exploit this to perform SQL Injection by",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n\n/**\n* Model for Locations\n *\n * PHP version 5\n * LICENSE: This source file is subject to",
+      "sliced_preview": ""
+    },
+    {
+      "index": 51,
+      "filename": "good_4363_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify where user input is being used in the code.\n- The `$idProducts` variable gets its value from `Tools::getValue('id_products')`, which suggests that it's obtained directly from an external source, likely a web request parameter or form submission.\n\nStep 2: Check if there are any direc",
+      "code_preview": "<?php\n/**\n * Copyright since 2007 PrestaShop SA and Contributors\n * PrestaShop is an International Registered Trademark & Property of PrestaShop SA\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 52,
+      "filename": "bad_2067_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly concatenates table names into SQL queries without using prepared statements or any form of input sanitization/validation (`$query = \"SELECT COUNT(*) FROM $t_table\";`). This is a classic example of how an attacker could exploit this vulnerabili",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 53,
+      "filename": "good_3551_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The `prepValueForDB()` function is used to prepare the value for insertion into a SQL statement, but it does not properly sanitize user input that could be potentially malicious. It uses an external conversion method (`Convert::raw2sql($value)`) without checkin",
+      "code_preview": "<?php\n/**\n * Represents a signed 32 bit integer field.\n * \n * @package sapphire\n * @subpackage model\n */\nclass Int extends DBField {\n\n\tfunction __cons",
+      "sliced_preview": ""
+    },
+    {
+      "index": 54,
+      "filename": "bad_1147_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses `$_GET[\"id\"]` to fetch the ID parameter without any validation, sanitization, or prepared statements (which are necessary for preventing SQL Injection). This means that an attacker could potentially manipulate this input and inject malici",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 55,
+      "filename": "good_4133_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the direct use of user input (`$_POST[\"item\"]`, `$_POST['instantiation_type']`, etc.) in constructing an SQL query without proper sanitization or prepared statements. Here's a step-bydictating analysis:\n\n1. The code directly use",
+      "code_preview": "<?php\n/**\n * ---------------------------------------------------------------------\n * GLPI - Gestionnaire Libre de Parc Informatique\n * Copyright (C) ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 56,
+      "filename": "bad_56_14",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically due to the way user input (`$_POST['username']` and `$_POST['password']`) is being used in constructing dynamic SQL queries without proper sanitization or prepared statements. Here's a step-bystep analysis:\n\n1. Th",
+      "code_preview": "<?php\n/***************************************************************************\n *   copyright\t\t\t\t: (C) 2008 - 2017 WeBid\n *   site\t\t\t\t\t: http://ww",
+      "sliced_preview": ""
+    },
+    {
+      "index": 57,
+      "filename": "good_684_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided does not employ prepared statements or any form of input validation and output encoding, which are critical for preventing SQL Injection attacks. The direct use of user-supplied data (`$cat_id`, `$cpt_id`, etc.) in constructing SQL queries without proper sanitizatio",
+      "code_preview": "<?php\n/* Copyright (C) 2016\t\tJamal Elbaz\t\t\t<jamelbaz@gmail.pro>\n * Copyright (C) 2017\t\tAlexandre Spangaro\t<aspangaro@zendsi.com>\n *\n * This program is",
+      "sliced_preview": ""
+    },
+    {
+      "index": 58,
+      "filename": "bad_2067_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep 1: Identify the code that interacts with user input and databases, which are potential SQL injection points. In this PHP script, database queries (`db_query` calls) directly incorporate variables without proper sanitization/escaping of inputs from `$t_project_id`, `auth_get_current_",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 59,
+      "filename": "bad_2860_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically at the following points where user input (`$client_id` and `$period`) directly influences an SQL query without proper sanitization or use of prepared statements:\n\n```php\n// Inside foreach loop for backup jobs retr",
+      "code_preview": "<?php\n/*\n  +-------------------------------------------------------------------------+\n  | Copyright 2010-2017, Davide Franco                         ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 60,
+      "filename": "good_2818_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nExplanation: The provided PHP code snippet is simply a configuration block with hardcoded variables for WordPress version, database revision, TinyMCE version, required PHP and MySQL versions. There are no direct SQL queries being executed using user input that could potentially be manipulated ",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-alpha-41496';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 61,
+      "filename": "good_3816_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the direct use of user input (`$_GET['session']`) in constructing an SQL query without proper sanitization or parameterized queries. The line:\n\n```php\n$DBRESULT = $pearDBO->query(\"SELECT * FROM session WHERE session_id = '\" . $p",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 62,
+      "filename": "bad_2179_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically due to the way it constructs SQL queries using user input without proper sanitization or prepared statements. Here are the problematic parts step by step:\n\n1. The `insertCommandCategorieInDB` function directly use",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 63,
+      "filename": "good_2179_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks due to the way it constructs and executes database queries without using prepared statements or any form of input validation/sanitization on user-supplied data. Here are some specific issues:\n\n1. The `insertServiceCategorieInDB",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 64,
+      "filename": "bad_2818_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE\n\nExplanation: The provided PHP code snippet is simply a configuration block with hardcoded variables for WordPress version, database revision, TinyMCE version, required PHP and MySQL versions. There are no direct SQL queries being executed using user input that could potentially lead to an SQL ",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.9-alpha-41483';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 65,
+      "filename": "good_4066_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks due to the direct use of user-supplied input (`$codeventil`, `$id`) in constructing an SQL query without proper sanitization or prepared statements. Here's a step-by-step analysis:\n\n1. The script retrieves variables like `actio",
+      "code_preview": "<?php\n/* Copyright (C) 2013-2014 Olivier Geffroy\t\t<jeff@jeffinfo.com>\n * Copyright (C) 2013-2014 Florian Henry\t\t<florian.henry@open-concept.pro>\n * Co",
+      "sliced_preview": ""
+    },
+    {
+      "index": 66,
+      "filename": "good_2179_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the direct use of user input (`$_POST[\"category_name\"]`, `$_POST[\"cmd_alias\"]`, etc.) in constructing SQL queries without proper sanitization or prepared statements. The `testCommandCategorieExistence` and other functions that i",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 67,
+      "filename": "bad_2121_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Step 1: Identify user input handling - The code retrieves a parameter from `$_POST` using `w2PgetParam`. This indicates that the application is expecting and processing data submitted by users, which could be potentially dangerous if not handled correctly.\n\nStep 2: Check for direct use of user input",
+      "code_preview": "<?php\nrequire_once 'base.php';\nrequire_once W2P_BASE_DIR . '/includes/config.php';\nrequire_once W2P_BASE_DIR . '/includes/main_functions.php';\nrequire",
+      "sliced_preview": ""
+    },
+    {
+      "index": 68,
+      "filename": "bad_3705_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code checks if the 'id' parameter is set when handling a request for locations by country ID (`case \"country\"`). It uses `$this->api_service->verify_array_index($this->request, 'id')`. However, this method does not seem to sanitize or validate user input be",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * This class handles locations activities via the API.\n *\n * @version 25- Emmanuel K",
+      "sliced_preview": ""
+    },
+    {
+      "index": 69,
+      "filename": "good_57_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically due to the way it handles user input without proper sanitization before using it in database queries (SQL statements). Here are some of the reasons why this code is susceptible:\n\n1. The `$nat->src` and `$nat->dst`",
+      "code_preview": "<?php\n\n/**\n *\tremove item from nat\n ************************************************/\n\n/* functions */\nrequire_once( dirname(__FILE__) . '/../../../fu",
+      "sliced_preview": ""
+    },
+    {
+      "index": 70,
+      "filename": "good_224_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses `$_GET` variables without proper sanitization, validation, or parameterized queries to interact with the database (e.g., `GETPOST('id', 'int')`). This is a common way for SQL Injection attacks because it allows attackers to manipulate inp",
+      "code_preview": "<?php\n/* Copyright (C) 2006      Andre Cianfarani     <acianfa@free.fr>\n * Copyright (C) 2005-2012 Regis Houssin        <regis.houssin@capnetworks.com",
+      "sliced_preview": ""
+    },
+    {
+      "index": 71,
+      "filename": "good_791_6",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be part of a service container, likely used in the context of Symfony framework for dependency injection and configuration management. However, there are several indicators that suggest potential vulnerability related to SQL Injection (CWE-89):\n\n1. The co",
+      "code_preview": "<?php\n\nuse Symfony\\Component\\DependencyInjection\\Argument\\RewindableGenerator;\nuse Symfony\\Component\\DependencyInjection\\ContainerInterface;\nuse Symfo",
+      "sliced_preview": ""
+    },
+    {
+      "index": 72,
+      "filename": "good_1345_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code does not appear to use prepared statements, which are essential for preventing SQL Injection attacks in PHP when interacting with a database. Instead, it directly uses user input (`$_REQUEST`) within the queries without proper sanitization or parameter",
+      "code_preview": "<?php\n/** \n * TestLink Open Source Project - http://testlink.sourceforge.net/ \n * @version $Id: newest_tcversions.php,v 1.15 2010/05/06 20:30:26 franc",
+      "sliced_preview": ""
+    },
+    {
+      "index": 73,
+      "filename": "bad_3545_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly concatenates user input (`$_POST[\"search_group\"]`, `$sall`) into the SQL query without proper sanitization, which can lead to SQL Injection if these inputs are not properly validated or escaped. For example:\n   ```php\n   $sql .= \" AND (g.nom l",
+      "code_preview": "<?php\n/* Copyright (C) 2002-2003 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2011 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 74,
+      "filename": "good_2791_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically under CWE-89: Improper Input Validation/Sanitization. Here's the step-by-step analysis leading to this conclusion:\n\n1. The script directly uses user input (`GETPOST('id', 'int')`, `GETPOST('ref', 'alpha')`) withou",
+      "code_preview": "<?php\n/* Copyright (C) 2015-2016\tAlexandre Spangaro\t\t<aspangaro@zendsi.com>\n *\n * This program is free software; you can redistribute it and/or modify",
+      "sliced_preview": ""
+    },
+    {
+      "index": 75,
+      "filename": "bad_3816_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the code where user input is being used in a SQL query without proper sanitization/escaping.\n```php\n$DBRESULT = $pearDB->query(\"SELECT user_id FROM session WHERE session_id = '\" . htmlentities($_GET['sid'], ENT_QUOTES, \"UTF-8\") . \"'\");\n```\nStep 2: Recognize that `htmlentities()` doe",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 76,
+      "filename": "good_2979_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to construct a SQL query based on user input directly concatenated into the query string without proper sanitization, which makes it vulnerable to SQL Injection attacks (CWE-89). Here are some specific reasons:\n\n1. The `$sWhere` variable is built by appendin",
+      "code_preview": "<?php\n// +-----------------------------------------------------------------------+\n// | Piwigo - a PHP based photo gallery                            ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 77,
+      "filename": "bad_3707_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically under the CWE-89 category for improper input validation/output encoding (Cross-Site Scripting). Here's why:\n\n1. The `perform_task()` method directly uses user inputs (`$this->request['by']`, `$this->request['id']`",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n * This class handles countries activities via the API.\n *\n * @version 24 - Emmanuel ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 78,
+      "filename": "bad_2791_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, as indicated in the analysis below:\n\n1. The script uses direct user input (`$id`, `$ref`, and `GETPOST('projectid')` values) without proper sanitization or parameterized queries when interacting with the database (using `$db->",
+      "code_preview": "<?php\n/* Copyright (C) 2004      Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2008 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 79,
+      "filename": "good_958_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Verdict: SAFE\n\nStep 1: Analyze the code for prepared statements usage - The PHP code provided uses `$wpdb->prepare` to prepare SQL queries, which is a good practice as it helps prevent SQL Injection by using placeholders (%d) instead of concatenating or interpolating variables directly into the quer",
+      "code_preview": "<?php\n/**\n * EverestForms Entry Functions\n *\n * @package EverestForms\\Functions\n * @since   1.1.0\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Get entry",
+      "sliced_preview": ""
+    },
+    {
+      "index": 80,
+      "filename": "good_3583_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically due to the way user input (`Params::getParam('location')` and `Params::getParam('description')`) appears to be directly used in database operations without proper sanitization or use of prepared statements. Here's",
+      "code_preview": "<?php if ( ! defined('ABS_PATH')) exit('ABS_PATH is not loaded. Direct access is not allowed.');\n\n    /**\n     * OSClass – software for creating and p",
+      "sliced_preview": ""
+    },
+    {
+      "index": 81,
+      "filename": "bad_2178_2",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify that the code is intended to set up paths for a web application, possibly related to authentication systems like TeamPass.\nStep 2: Notice there are no SQL queries being executed in this snippet of PHP code; it only sets file and directory paths.\nStep 3: Since there's no direct inter",
+      "code_preview": "<?php\n\n// Set Teampass path\n$teampass_path = \"E:/xampp/htdocs/Teampass\";\n// Set Teampass config file\n$teampass_config_file = $teampass_path.\"/includes",
+      "sliced_preview": ""
+    },
+    {
+      "index": 82,
+      "filename": "bad_791_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code uses reflection (`\\ReflectionClass`) to generate proxy classes dynamically, which is a common practice in PHP for implementing lazy loading of objects (proxy pattern). However, this alone does not indicate SQL Injection vulnerability as it doesn't dire",
+      "code_preview": "<?php\n\n/*\n * This file is part of the Symfony package.\n *\n * (c) Fabien Potencier <fabien@symfony.com>\n *\n * For the full copyright and license inform",
+      "sliced_preview": ""
+    },
+    {
+      "index": 83,
+      "filename": "good_3545_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly concatenates user input (`$_POST[\"search_group\"]`) into the SQL query without proper sanitization, which can lead to an SQL Injection vulnerability if unsanitized inputs are used in constructing queries (line 43).\n2. There is no usage of prepa",
+      "code_preview": "<?php\n/* Copyright (C) 2002-2003 Rodolphe Quiedeville <rodolphe@quiedeville.org>\n * Copyright (C) 2004-2011 Laurent Destailleur  <eldy@users.sourcefor",
+      "sliced_preview": ""
+    },
+    {
+      "index": 84,
+      "filename": "good_2179_7",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the code where user input is being used in a database query without proper sanitization/escaping.\n```php\n$mnftr_id = $pearDB->escape($_POST[\"mnftr_id\"]);\nif ($_POST[\"mnftr_id\"] != 0) {\n    $DBRESULT = $pearDB->query(\"SELECT traps_id, traps_name FROM traps WHERE manufacturer_id = \" .",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n *\n * This progra",
+      "sliced_preview": ""
+    },
+    {
+      "index": 85,
+      "filename": "bad_4066_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically under CWE-89 (Cross-Site Scripting). Here's the step by step analysis leading to this conclusion:\n\n1. The script directly concatenates user input (`$codeventil`, `$id`) into an SQL query without any form of saniti",
+      "code_preview": "<?php\n/* Copyright (C) 2013-2014 Olivier Geffroy\t\t<jeff@jeffinfo.com>\n * Copyright (C) 2013-2014 Florian Henry\t\t<florian.henry@open-concept.pro>\n * Co",
+      "sliced_preview": ""
+    },
+    {
+      "index": 86,
+      "filename": "good_2990_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify where user input is being used in the code - `$rowid=GETPOST(\"rowid\",'int');` suggests that a value for \"rowid\" may come from an external source, possibly untrusted.\n\nStep 2: Check if this data is directly inserted into SQL queries without proper sanitization or parameterized statem",
+      "code_preview": "<?php\n/* Copyright (C) 2005-2011 Laurent Destailleur  <eldy@users.sourceforge.net>\n * Copyright (C) 2005-2006 Regis Houssin        <regis.houssin@capn",
+      "sliced_preview": ""
+    },
+    {
+      "index": 87,
+      "filename": "bad_4482_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be part of a web application that handles user authentication, including login and password reset functionalities. To determine if the code is vulnerable to SQL Injection (CWE-89), we need to analyze how it interacts with the database:\n\n1. The `check()` m",
+      "code_preview": "<?php\n/**\n * This file is part of the Cockpit project.\n *\n * (c) Artur Heinze - 🅰🅶🅴🅽🆃🅴🅹🅾, http://agentejo.com\n *\n * For the full copyright and license",
+      "sliced_preview": ""
+    },
+    {
+      "index": 88,
+      "filename": "bad_3816_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The PHP code directly incorporates user input (`$_GET['session']`) into an SQL query without proper sanitization, which is a classic sign of potential SQL Injection vulnerability (CWE-89). This can allow attackers to manipulate the SQL statement and potentially",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 89,
+      "filename": "good_4066_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks due to the direct use of user input (`GETPOST`) in constructing an SQL query without proper sanitization or prepared statements. Here's a step-by-step analysis:\n\n1. The `$codeventil` and `$id` variables are obtained from GET/PO",
+      "code_preview": "<?php\n/* Copyright (C) 2004       Rodolphe Quiedeville  <rodolphe@quiedeville.org>\n * Copyright (C) 2005       Simon TOSSER          <simon@kornog-com",
+      "sliced_preview": ""
+    },
+    {
+      "index": 90,
+      "filename": "good_2178_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify that the code is intended to set file paths for a system, possibly related to authentication or session management given the context of \"Teampass.\"\nStep 2: Notice there are no SQL queries being executed in this snippet and user input appears not to be involved.\nStep 3: Determine vul",
+      "code_preview": "<?php\n\n// Set Teampass path\n$teampass_path = \"E:/xampp/htdocs/Teampass\";\n// Set Teampass config file\n$teampass_config_file = $teampass_path.\"/includes",
+      "sliced_preview": ""
+    },
+    {
+      "index": 91,
+      "filename": "bad_5326_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly concatenates user input (`$this->params['vendor']`) into a SQL query without any form of sanitization, validation, or use of prepared statements/parameterized queries. This is evident in the following line where raw data from `$_GET` (or simil",
+      "code_preview": "<?php\n\n##################################################\n#\n# Copyright (c) 2004-2016 OIC Group, Inc.\n#\n# This file is part of Exponent\n#\n# Exponent i",
+      "sliced_preview": ""
+    },
+    {
+      "index": 92,
+      "filename": "good_1347_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided does not appear to use prepared statements, parameterized queries, or any form of input validation when interacting with the database for SQL operations. Specifically, there is a direct concatenation and usage of user-provided inputs (`$args->tplan_id`, `$args->tpro",
+      "code_preview": "<?php\n/**\n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or l",
+      "sliced_preview": ""
+    },
+    {
+      "index": 93,
+      "filename": "good_2318_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses the `$_GET[\"domain\"]` variable in constructing a SQL query without proper sanitization, which makes it susceptible to SQL Injection (SQLi). An attacker could manipulate this input to alter or execute arbitrary SQL statements on the databa",
+      "code_preview": "﻿<?php\n/*Copyright (c) 2013, Stéphane Petitcolas\nThis file is part of CookieViz\n\nCookieViz is free software: you can redistribute it and/or modify\nit ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 94,
+      "filename": "bad_2178_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nThe PHP code provided is vulnerable to SQL Injection due to the following reasons:\n\n1. The code directly uses `$_GET['item_id']` and other GET parameters in raw SQL queries without proper sanitization, which can be exploited by an attacker constructing a malicious input that manipulates ",
+      "code_preview": "<?php\n/**\n * @file          otv.php\n * @author        Nils Laumaill�\n * @version       2.1.20\n * @copyright     (c) 2009-2014 Nils Laumaill�\n * @licen",
+      "sliced_preview": ""
+    },
+    {
+      "index": 95,
+      "filename": "bad_2791_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection attacks, specifically due to the way user input (`GETPOST` function) appears to be directly used in constructing database queries without proper sanitization or use of prepared statements. Here are some reasons for this conclusion:\n\n1.",
+      "code_preview": "<?php\n/* Copyright (C) 2015-2016\tAlexandre Spangaro\t\t<aspangaro@zendsi.com>\n *\n * This program is free software; you can redistribute it and/or modify",
+      "sliced_preview": ""
+    },
+    {
+      "index": 96,
+      "filename": "bad_4066_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses the `$_GET['id']` variable without any sanitization, validation, or prepared statements to fetch data from a database based on user input (`$id`). This is a classic sign of potential SQL Injection vulnerability because it allows an attack",
+      "code_preview": "<?php\n/* Copyright (C) 2009 Laurent Destailleur  <eldy@users.sourceforge.net>\n * Copyright (C) 2010 Regis Houssin        <regis.houssin@inodbox.com>\n ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 97,
+      "filename": "bad_2480_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code snippet provided is part of a PHP script that interacts with the database and processes user input for setting urgencies in test plans (test cases). It uses global variables, direct SQL queries without prepared statements or parameterized queries, whic",
+      "code_preview": "<?php\n/**\n * TestLink Open Source Project - http://testlink.sourceforge.net/\n * This script is distributed under the GNU General Public License 2 or l",
+      "sliced_preview": ""
+    },
+    {
+      "index": 98,
+      "filename": "bad_2990_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Step 1: Identify where user input is being used in the code - `$rowid=isset($_GET[\"rowid\"])?$_GET[\"rowid\"]:$_POST[\"rowid\"];` and `new Subscription($db);` with potentially untrusted data.\n\nStep 2: Check if there's any form of sanitization or parameterized queries being used when handling the `$rowid`",
+      "code_preview": "<?php\n/* Copyright (C) 2005-2011 Laurent Destailleur  <eldy@users.sourceforge.net>\n * Copyright (C) 2005-2006 Regis Houssin        <regis.houssin@capn",
+      "sliced_preview": ""
+    },
+    {
+      "index": 99,
+      "filename": "bad_3816_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to SQL Injection due to the direct inclusion of user-supplied input (`$_GET['session']`) into an SQL query without proper sanitization or use of prepared statements. Here's a step-by-step analysis:\n\n1. The script retrieves session data from `$_GET` and",
+      "code_preview": "<?php\n/*\n * Copyright 2005-2011 MERETHIS\n * Centreon is developped by : Julien Mathis and Romain Le Merlus under\n * GPL Licence 2.0.\n * \n * This progr",
+      "sliced_preview": ""
+    }
+  ]
+}

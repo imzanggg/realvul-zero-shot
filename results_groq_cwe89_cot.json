@@ -1,0 +1,730 @@
+{
+  "config": {
+    "model": "llama-3.1-8b-instant",
+    "cwe": "89",
+    "prompt_mode": "cot",
+    "online": true,
+    "provider": "groq",
+    "num_samples": 100,
+    "elapsed_seconds": 1296.4
+  },
+  "metrics": {
+    "accuracy": 0.64,
+    "f1_score": 0.6667,
+    "precision": 0.6207,
+    "recall": 0.72,
+    "confusion_matrix": [
+      [
+        28,
+        22
+      ],
+      [
+        14,
+        36
+      ]
+    ],
+    "errors": 0
+  },
+  "detailed_results": [
+    {
+      "index": 0,
+      "filename": "bad_684_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET: id, rowid, cancel, action, account_category, cpt_bk, cptid\n   - $_POST: id, rowid, cancel, action, account_category, cpt_bk, cptid, token\n\n2. Data flows through the following paths:\n   - User input is retrieved from $_GET and $_POST variab"
+    },
+    {
+      "index": 1,
+      "filename": "bad_4363_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User input exists in the form of `$_GET['id_products']` which is retrieved using `Tools::getValue('id_products')`.\n\n2. Data flows from `$_GET['id_products']` to the `getCommentsNumberForProducts` and `getAverageGrades` methods of the `ProductCommentRepository` class, which likely interact with a "
+    },
+    {
+      "index": 2,
+      "filename": "bad_3551_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n- `$defaultVal` parameter in the `__construct` method (not directly from user input, but can be manipulated by an attacker)\n- `$value` parameter in the `prepValueForDB` method (can be manipulated by an attacker)\n\n2. Data flows from:\n- `$value` parameter "
+    },
+    {
+      "index": 3,
+      "filename": "bad_2385_2",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- `$itemCount` (not directly from user input, but could be influenced by user input)\n- `$pageSize` (not directly from user input, but could be influenced by user input)\n- `$entries` (not directly from user input, but could be influenced by user input)"
+    },
+    {
+      "index": 4,
+      "filename": "good_2817_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST).\n\n2. Data does not flow directly to SQL in this code snippet, but it's likely used elsewhere in the application. The code only defines global variables.\n\n3. There is no sanitization in the provided PHP code.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 5,
+      "filename": "good_5394_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - `$this->params['editor']` (in the `__construct` method)\n   - `$this->params['id']` (in the `update`, `edit`, `delete`, `activate`, and `preview` methods)\n   - `$this->params['name']` (in the `update` method)\n   - `$this->params['data']` (in the `"
+    },
+    {
+      "index": 6,
+      "filename": "bad_3816_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['session']\n   - $_GET[\"id\"]\n   - $_GET[\"color\"]\n\n2. Data flows to:\n   - SQL query (via $pearDB->query())\n   - XML output (via $buffer->output())\n\n3. Sanitization exists:\n   - Yes, in the form of htmlentities() for $_GET['session'] and $_GET[\"color\"]\n\nVERDICT: \nVUL"
+    },
+    {
+      "index": 7,
+      "filename": "good_2067_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the variable `$f_project_id` which is obtained from `gpc_get_int( 'project_id', helper_get_current_project() )`. This suggests that the input comes from the `$_GET` superglobal.\n\n2. The data flows from the user input to the SQL query. The user input is used to construct t"
+    },
+    {
+      "index": 8,
+      "filename": "bad_2318_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User input exists in `$_GET[\"domain\"]`.\n\n2. Data flows from `$_GET[\"domain\"]` to the SQL query, and then the results are echoed to the user.\n\n3. No, there is no sanitization of the user input.\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 9,
+      "filename": "bad_4024_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n- `$_GET[\"upreq\"]` in the PHP code.\n\n2. Data flows from:\n- `$_GET[\"upreq\"]` to the PHP conditional statement.\n- The conditional statement to the HTML table.\n- The HTML table to the links (`<a href=\"SystemCheck.php\">` and `<a href=\"Step0.1.php?mod=upgrade"
+    },
+    {
+      "index": 10,
+      "filename": "bad_3544_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET[\"sall\"]\n   - $_POST[\"sall\"]\n   - $_GET[\"sortfield\"]\n   - $_GET[\"sortorder\"]\n   - $_GET[\"page\"]\n   - $_POST[\"search_user\"]\n\n2. Data flows from:\n   - User inputs (GET/POST) to variables ($sall, $sortfield, $sortorder, $page, $search_user)\n   - Variables to SQL query"
+    },
+    {
+      "index": 11,
+      "filename": "bad_2990_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET[\"id\"]\n   - $_POST[\"action\"]\n   - $_POST[\"price_level\"]\n\n2. Data flows through:\n   - SQL queries (e.g. $sql = \"SELECT ...\")\n   - PHP variables (e.g. $objsoc->id = $_socid)\n   - HTML output (e.g. print '<div class=\"error\">'.$errmesg.'</div><br>;')\n\n3. Sanitization e"
+    },
+    {
+      "index": 12,
+      "filename": "good_2990_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET: $id, $_socid\n   - $_POST: action, price_level\n\n2. Data flows through:\n   - SQL queries: $sql (e.g. to fetch data, update data)\n   - print/echo statements: to display data to the user\n   - header() function: to redirect the user to another page\n\n3. Sanitization ex"
+    },
+    {
+      "index": 13,
+      "filename": "good_2178_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET['code']\n   - $_GET['item_id']\n   - $_GET['stamp']\n   - $_GET['otv_id']\n\n2. Data flows through the following paths:\n   - SQL queries: $db->queryGetRow(), $db->queryFirst()\n   - Variable assignments: $html, $data, $dataItem, $originalKey, $pw"
+    },
+    {
+      "index": 14,
+      "filename": "bad_3816_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['session']\n   - $_GET[\"host_id\"]\n   - $_GET[\"id\"]\n   - $_GET[\"color\"]\n\n2. Data flows to:\n   - SQL queries (e.g., $pearDB->query, $pearDBO->query)\n   - XML output (e.g., $buffer->writeElement, $buffer->output)\n\n3. Sanitization exists:\n   - Yes, through the use of `"
+    },
+    {
+      "index": 15,
+      "filename": "good_2791_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET: $id, $ref, $action, $confirm, $projectid\n   - $_POST: $id, $ref, $action, $confirm, $projectid, $sortfield, $sortorder, $page\n\n2. Data flows through the following paths:\n   - GETPOST() function is used to retrieve user input from both GET "
+    },
+    {
+      "index": 16,
+      "filename": "bad_2555_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['section']\n   - $_POST['falsify']\n   - $_POST['cat_true']\n   - $_POST['cat_false']\n   - $_POST['trueify']\n\n2. Data flows to:\n   - SQL queries (e.g. $query = 'UPDATE ...')\n   - Template assignments (e.g. $template->assign())\n   - Display functions (e.g. display_sel"
+    },
+    {
+      "index": 17,
+      "filename": "bad_4066_5",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The only user input is from `GETPOST('id')`, which is a function that retrieves the value of a GET or POST variable. However, it does not specify which one, so it could be either.\n\n2. Data flows from the `GETPOST('id')` function to the `$id` variable, then to the `fetch($id)` method of the `Produ"
+    },
+    {
+      "index": 18,
+      "filename": "good_2791_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n- `$_GET['id']`\n- `$_GET['facid']`\n- `$_GET['ref']`\n- `$_GET['action']`\n- `$_GET['projectid']`\n- `$_POST['token']`\n\n2. Data flows from user inputs to the following:\n- `GETPOST` function (which retrieves data from both `$_GET` and `$_POST`)\n- `restrict"
+    },
+    {
+      "index": 19,
+      "filename": "good_1344_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n   - `$_REQUEST` (which includes both `$_GET` and `$_POST`) in the `init_args()` function for the following variables:\n     - `use_html_comp`\n     - `testcase_id`\n     - `compare_selected_versions`\n     - `version_left`\n     - `version_right`\n     - `con"
+    },
+    {
+      "index": 20,
+      "filename": "bad_2979_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_REQUEST (includes $_GET and $_POST)\n   - $_REQUEST['iDisplayStart']\n   - $_REQUEST['iDisplayLength']\n   - $_REQUEST['iSortCol_0']\n   - $_REQUEST['sSortDir_'.$i]\n   - $_REQUEST['sSearch']\n   - $_REQUEST['bSearchable_'.$i]\n   - $_REQUEST['sSearch"
+    },
+    {
+      "index": 21,
+      "filename": "good_5706_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the `$id` parameter of the `popupnewsitem` method, which is passed through the URL (via `url('/')` in the `header` function), and the `$howmany` parameter of the `PopUpNewsList` method, which is also passed through the URL.\n\n2. Data flows from the user input (URL) to the `int"
+    },
+    {
+      "index": 22,
+      "filename": "good_3705_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the `is_valid_location` method, specifically in the `$location_id` parameter.\n\n2. Data flows from the `$location_id` parameter to the `intval` function, then to the `ORM::factory` method, and finally to the database table 'location' via SQL.\n\n3. There is no explicit sanit"
+    },
+    {
+      "index": 23,
+      "filename": "good_2385_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n- `$itemCount` (not directly from user input, but could be influenced by user input in the controller)\n- `$pageSize` (not directly from user input, but could be influenced by user input in the controller)\n- `$entries` (not directly from user input, bu"
+    },
+    {
+      "index": 24,
+      "filename": "bad_3138_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST).\n\n2. Data flow is not explicitly shown in the provided code, but it's likely used in other parts of the application. However, there is no direct flow to SQL or any output functions like echo or print.\n\n3. There is no sanitizat"
+    },
+    {
+      "index": 25,
+      "filename": "bad_2904_3",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST).\n\n2. Data does not flow directly to SQL in this code snippet, but it does contain global variables that could potentially be used in SQL queries elsewhere in the application.\n\n3. There is no sanitization in this code snippet.\n"
+    },
+    {
+      "index": 26,
+      "filename": "good_4363_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. The user input exists in the `Tools::getValue('id_product')` and `Tools::getValue('page')` lines, which are retrieving values from the URL query string.\n\n2. Data flows from the user input, to the `ProductCommentRepository` methods (`paginate` and `getCommentsNumber`), to the database (SQL), and t"
+    },
+    {
+      "index": 27,
+      "filename": "good_957_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $id (evf_get_entry function)\n- $form_id (evf_get_entries_ids function)\n- $args (evf_search_entries function)\n- $args['search'] (evf_search_entries function)\n- $args['form_id'] (evf_search_entries function)\n- $args['status'] (evf_search_entries funct"
+    },
+    {
+      "index": 28,
+      "filename": "good_3138_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST).\n\n2. Data does not flow directly to SQL in this code snippet, but it does contain global variables that could potentially be used in SQL queries elsewhere in the application.\n\n3. There is no sanitization in this code snippet.\n"
+    },
+    {
+      "index": 29,
+      "filename": "good_2179_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in `$_GET['id']` and `$_GET['nbOfInitialRows']`.\n\n2. Data flows from `$_GET` to `htmlentities()` function, then to variables `$nextRowId`, `$nbOfInitialRows`, and `$currentId`. It then flows to the `CentreonXML` class and is used to generate an XML output.\n\n3. Yes, there is sani"
+    },
+    {
+      "index": 30,
+      "filename": "bad_958_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $id (evf_get_entry function)\n- $form_id (evf_get_entries_ids function)\n- $args (evf_search_entries function)\n  - $args['form_id']\n  - $args['search']\n  - $args['status']\n  - $args['after']\n  - $args['before']\n  - $args['modified_after']\n  - $args['m"
+    },
+    {
+      "index": 31,
+      "filename": "bad_3700_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n- `$key` parameter in `get_setting()`, `get()`, `save_setting()`, `get_array()`, `get_settings()`\n- `$value` parameter in `save_setting()`\n- `$settings` object in `save_all()`\n\n2. Data flows from user input to:\n- `get_setting()`, `get()`, `save_setting()"
+    },
+    {
+      "index": 32,
+      "filename": "good_56_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['user_id']\n   - $_GET['PAGE']\n\n2. Data flows to:\n   - SQL queries (e.g., $db->query())\n   - Template variables (e.g., $template->assign_vars())\n   - Output (e.g., $template->display())\n\n3. Sanitization exists in:\n   - intval() function (e.g., $user_id = intval($_G"
+    },
+    {
+      "index": 33,
+      "filename": "good_5326_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- `$this->params['vendor']` (in `manage()`, `getPurchaseOrderByJSON()`)\n- `$this->params['id']` (in `show_vendor()`, `edit_vendor()`, `delete_vendor()`, `update_vendor()`)\n- `$this->params['vendor']` (in `update_vendor()`)\n\n2. Data flows from user inp"
+    },
+    {
+      "index": 34,
+      "filename": "bad_1348_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. The user inputs that exist in this code are:\n- $_REQUEST['build_id']\n- $_REQUEST['confirmed']\n- $_SESSION['userID']\n- $_SESSION['testprojectID']\n- $_SESSION['testprojectName']\n- $_SESSION['setting_refresh_tree_on_action']\n\n2. Data flows from:\n- $_REQUEST to $args->build_id and $args->confirmed in"
+    },
+    {
+      "index": 35,
+      "filename": "good_3706_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (e.g. $post->action, $post->reporter_id, $post->level_id, etc.)\n   - $_GET (e.g. $_GET['s'], $_GET['k'])\n\n2. Data flows to:\n   - SQL queries (e.g. ORM::factory('message')->where('reporter_id', $item)->delete_all();)\n   - Database (e.g. Database::instance()->escap"
+    },
+    {
+      "index": 36,
+      "filename": "bad_2179_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in `$_POST[\"mnftr_id\"]`.\n\n2. Data flows from `$_POST[\"mnftr_id\"]` to a SQL query.\n\n3. No, there is no sanitization.\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 37,
+      "filename": "good_2904_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code. It only contains hardcoded variables.\n\n2. Data does not flow from user inputs to SQL queries. However, the code does not prevent potential SQL injection vulnerabilities if user input is introduced in the future. \n\n3. No, there is no sanitization "
+    },
+    {
+      "index": 38,
+      "filename": "bad_4133_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (itemtype, item, instantiation_type, networkports_id, myname)\n\n2. Data flows through:\n   - SQL queries (via $DB->request())\n   - PHP variables (e.g. $table, $joins, $name_field, $criteria)\n   - HTML output (via echo and Dropdown::showFromArray())\n\n3. Sanitization"
+    },
+    {
+      "index": 39,
+      "filename": "good_56_17",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['PAGE']\n   - $_GET['pa_ord']\n   - $_GET['pa_type']\n   - $_POST['action']\n   - $_POST['O_delete']\n   - $_POST['startnow']\n\n2. Data flows to:\n   - SQL queries (e.g. $db->query())\n   - Template assignments (e.g. $template->assign_block_vars())\n   - Variable assignmen"
+    },
+    {
+      "index": 40,
+      "filename": "bad_3551_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n- $_REQUEST (used in getResults() and getSearchQuery())\n- $_GET (not explicitly used, but $_REQUEST includes GET data)\n- $_POST (not explicitly used, but $_REQUEST includes POST data)\n\n2. Data flows from user input to the following places:\n- $data array "
+    },
+    {
+      "index": 41,
+      "filename": "bad_5326_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['verbose']\n   - $_GET['version']\n   - $_SERVER['argv'] (CLI)\n\n2. Data flows through:\n   - SQL queries (e.g., $db->selectValue, $db->selectObject)\n   - File operations (e.g., file_get_contents)\n   - Printing/echoing user data (e.g., print $page, print $doc)\n\n3. San"
+    },
+    {
+      "index": 42,
+      "filename": "good_3816_6",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['div']\n   - $_GET['uid']\n\n2. Data flows to:\n   - SQL query (via $pearDB->query())\n   - Session variables (via $_SESSION)\n\n3. Sanitization exists:\n   - Yes (via $pearDB->escape() and htmlentities())\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 43,
+      "filename": "good_3707_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $this->request['by']\n- $this->request['id']\n- $this->request['name']\n- $this->request['iso']\n\n2. Data flows from the user inputs to the ORM query builder, specifically in the following methods:\n- _get_country_by_id\n- _get_country_by_name\n- _get_coun"
+    },
+    {
+      "index": 44,
+      "filename": "good_3816_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User input exists in `$_POST[\"index\"]`.\n2. Data flows from `$_POST[\"index\"]` to the SQL query, and then the result is echoed back to the user after being processed by `myDecodeService()`.\n3. Yes, there is sanitization using `$pearDB->escape()`.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 45,
+      "filename": "bad_3544_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in `$_GET[\"id\"]`.\n\n2. Data flows from `$_GET[\"id\"]` to the `fetch` method of the `User` class, which likely executes a SQL query using the provided ID.\n\n3. There is no explicit sanitization of the user input in the provided code.\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 46,
+      "filename": "bad_2179_12",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET[\"o\"]\n   - $_GET[\"session_id\"]\n\n2. Data flows through the following paths:\n   - SQL queries: $pearDB->query()\n   - Smarty template assignments: $tpl->assign()\n   - Variable assignments: $session_data[$cpt] = array()\n\n3. There is no sanitizat"
+    },
+    {
+      "index": 47,
+      "filename": "good_1348_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. The user inputs that exist in this code are:\n- `$_REQUEST['build_id']`\n- `$_REQUEST['confirmed']`\n- `$_SESSION['userID']`\n- `$_SESSION['testprojectID']`\n- `$_SESSION['testprojectName']`\n- `$_SESSION['setting_refresh_tree_on_action']`\n\n2. Data flows from user inputs to the following places:\n- `ini"
+    },
+    {
+      "index": 48,
+      "filename": "good_4066_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $id = GETPOST('id', 'int')\n   - $ref = GETPOST('ref', 'alpha')\n   - $action = GETPOST('action', 'alpha')\n   - $confirm = GETPOST('confirm', 'alpha')\n\n2. Data flows from the user inputs to the following:\n   - The Paiement class object ($object) th"
+    },
+    {
+      "index": 49,
+      "filename": "good_2178_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_SERVER['QUERY_STRING'] (parsed by parse_str)\n   - $_SERVER['PATH_INFO'] (parsed by explode)\n\n2. Data flows to:\n   - echo (in case of API access not allowed)\n   - rest_get(), rest_put(), rest_delete(), rest_head(), rest_error() (in case of valid API request)\n   - SQL ("
+    },
+    {
+      "index": 50,
+      "filename": "bad_3705_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the `$where` array, which can be passed to the `get_locations` method. This array can contain user input from various sources, including `$_GET` and `$_POST`.\n\n2. Data flows from the `$where` array to the SQL query string `$sql`, where it is concatenated without proper saniti"
+    },
+    {
+      "index": 51,
+      "filename": "good_4363_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the variable `$idProducts` which is retrieved from `Tools::getValue('id_products')`. This suggests that the input is coming from a GET request.\n\n2. The data flows from the user input `$idProducts` to the `getCommentsNumberForProducts` and `getAverageGrades` methods of the"
+    },
+    {
+      "index": 52,
+      "filename": "bad_2067_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST). However, the code does use the `db_get_table_list()` function which might return a list of tables from the database, but it's not clear if this is user-controlled.\n\n2. Data flows from the `db_get_table_list()` function to the"
+    },
+    {
+      "index": 53,
+      "filename": "good_3551_5",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following places:\n- `$defaultVal` parameter in the `__construct` method (not directly from user input, but can be manipulated by an attacker)\n- `$value` parameter in the `prepValueForDB` method (can be manipulated by an attacker)\n\n2. Data flows from:\n- `$value` parameter "
+    },
+    {
+      "index": 54,
+      "filename": "bad_1147_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the `$_GET` variable, specifically in the \"id\" parameter.\n\n2. The data flows from the `$_GET` variable to the `$call_broadcast_uuid` variable, then to the `$array` variable, and finally to the `$database->delete($array)` function, which likely executes a SQL query.\n\n3. No"
+    },
+    {
+      "index": 55,
+      "filename": "good_4133_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (e.g. $_POST[\"itemtype\"], $_POST[\"item\"], $_POST['instantiation_type'], $_POST['networkports_id'], $_POST['myname'])\n\n2. Data flows to:\n   - SQL queries through $DB->request() function\n   - HTML output through echo and Dropdown::showFromArray() function\n\n3. Sanit"
+    },
+    {
+      "index": 56,
+      "filename": "bad_56_14",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (username, password, action, rememberme)\n   - $_SESSION (LOGIN_MESSAGE, csrftoken, signup_id, WEBID_LOGGED_IN, WEBID_LOGGED_NUMBER, WEBID_LOGGED_PASS, REDIRECT_AFTER_LOGIN)\n   - $_COOKIE (WEBID_ONLINE, WEBID_RM_ID)\n   - $_SERVER (REMOTE_ADDR)\n\n2. Data flows to:\n "
+    },
+    {
+      "index": 57,
+      "filename": "good_684_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET: id, rowid, cancel, action, account_category, cpt_bk, cptid\n   - $_POST: id, rowid, cancel, action, account_category, cpt_bk, cptid, token\n\n2. Data flows through the following paths:\n   - User input is retrieved from GET/POST variables.\n   "
+    },
+    {
+      "index": 58,
+      "filename": "bad_2067_7",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $f_project_id (from $_GET['project_id'])\n- $t_user_id (from auth_get_current_user_id(), which may use session data)\n\n2. Data flows from:\n- $f_project_id to SQL query (in the WHERE clause)\n- SQL query results to HTML table\n- User input (e.g. $v_title"
+    },
+    {
+      "index": 59,
+      "filename": "bad_2860_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - CHttpRequest::get_Value('client_id') (POST)\n   - CHttpRequest::get_Value('period') (POST)\n\n2. Data flows from:\n   - User input (client_id and period) to PHP variables\n   - PHP variables to SQL queries (via $jobs->run_query($query))\n   - SQL resul"
+    },
+    {
+      "index": 60,
+      "filename": "good_2818_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST).\n\n2. Data flow is primarily through variable assignments and global variable declarations, with no apparent output (e.g. echo, print) or SQL interactions.\n\n3. There is no sanitization in the provided PHP code.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 61,
+      "filename": "good_3816_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['session']\n   - $_GET['id']\n   - $_GET['color']\n\n2. Data flows through:\n   - SQL queries (e.g. $pearDB->query())\n   - XML output (e.g. $buffer->output())\n\n3. Sanitization exists:\n   - Yes, in the form of $pearDB->escape() for the $_GET['session'] input\n\nVERDICT: V"
+    },
+    {
+      "index": 62,
+      "filename": "bad_2179_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (in functions: insertCommandCategorieInDB, updateCommandCategorieInDB, deleteCommandCategorieInDB)\n   - $form->getSubmitValue('cmd_category_id') (in function: testCommandCategorieExistence)\n   - $sc (in function: multipleCommandCategorieInDB)\n   - $nbrDup (in fun"
+    },
+    {
+      "index": 63,
+      "filename": "good_2179_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_POST (e.g. $_POST[\"sc_name\"], $_POST[\"sc_description\"])\n   - $_POST[\"select\"] (in deleteServiceCategorieInDB function)\n   - $_POST[\"sc_svcTpl\"] (in updateServiceCategoriesServices function)\n\n2. Data flows from user inputs to the following:\n   -"
+    },
+    {
+      "index": 64,
+      "filename": "bad_2818_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST).\n\n2. Data does not flow directly to SQL in this code snippet, but it does contain global variables that could potentially be used in SQL queries elsewhere in the application.\n\n3. There is no sanitization in this code snippet.\n"
+    },
+    {
+      "index": 65,
+      "filename": "good_4066_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET: $action, $cancel, $backtopage, $codeventil, $id\n   - $_POST: $action, $cancel, $backtopage, $codeventil, $id, $token\n\n2. Data flows through the following paths:\n   - SQL queries: $sql = \" UPDATE \".MAIN_DB_PREFIX.\"facturedet\";, $sql = \"SELE"
+    },
+    {
+      "index": 66,
+      "filename": "good_2179_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (in functions: insertCommandCategorieInDB, updateCommandCategorieInDB, deleteCommandCategorieInDB)\n   - $form->getSubmitValue('cmd_category_id') (in function: testCommandCategorieExistence)\n   - $sc (in function: multipleCommandCategorieInDB)\n   - $nbrDup (in fun"
+    },
+    {
+      "index": 67,
+      "filename": "bad_2121_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in $_POST, specifically in the 'updatekey' parameter.\n\n2. Data flows from $_POST['updatekey'] to the CContact::getContactByUpdatekey() method, which likely interacts with a database. The result of this method call is then used to bind data to the $contact object, which is then s"
+    },
+    {
+      "index": 68,
+      "filename": "bad_3705_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the `$this->request` array, which is not explicitly shown in the code snippet, but it is mentioned in the `perform_task` method. It is likely that the `$this->request` array is populated from `$_GET` or `$_POST` data.\n\n2. Data flows from the `$this->request` array to the "
+    },
+    {
+      "index": 69,
+      "filename": "good_57_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in $_POST, specifically:\n   - $_POST['id']\n   - $_POST['object_type']\n   - $_POST['object_id']\n   - $_POST['type']\n\n2. Data flows from user input to:\n   - Variable assignments (e.g. $nat = $Admin->fetch_object (\"nat\", \"id\", $_POST['id']))\n   - Function calls (e.g. $Tools->fetch_"
+    },
+    {
+      "index": 70,
+      "filename": "good_224_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET (e.g. $htmlname, $filter, $action, $id, $showtype)\n   - $_POST (e.g. GETPOST function, which retrieves data from both $_GET and $_POST)\n\n2. Data flows through the following paths:\n   - From GETPOST function to variables (e.g. $htmlname, $fi"
+    },
+    {
+      "index": 71,
+      "filename": "good_791_6",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided PHP code (e.g. $_GET, $_POST). However, the code does use variables like $this->services['App\\\\Db'] which could potentially be set by user input in other parts of the application.\n\n2. Data flows through the services and their dependencies. For example, the"
+    },
+    {
+      "index": 72,
+      "filename": "good_1345_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_REQUEST (which includes both GET and POST data)\n   - $_SESSION (user session data)\n\n2. Data flows from:\n   - $_REQUEST to init_args() function\n   - init_args() function to $args object\n   - $args object to various functions (e.g. $tcase_mgr->get_by_id(), $tplan_mgr->g"
+    },
+    {
+      "index": 73,
+      "filename": "bad_3545_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET[\"sall\"]\n   - $_POST[\"search_group\"]\n   - $_POST[\"sall\"]\n   - GETPOST(\"sortfield\",'alpha')\n   - GETPOST(\"sortorder\",'alpha')\n   - GETPOST(\"page\",'int')\n\n2. Data flows from:\n   - User inputs (GET/POST) to variables ($sall, $search_group, $sortfield, $sortorder, $pag"
+    },
+    {
+      "index": 74,
+      "filename": "good_2791_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET['id']\n   - $_GET['ref']\n   - $_GET['action']\n   - $_GET['projectid']\n   - $_POST['token']\n   - $_POST['projectid']\n\n2. Data flows from user inputs to the following places:\n   - The `restrictedArea` function\n   - The `Don` class's `fetch` me"
+    },
+    {
+      "index": 75,
+      "filename": "bad_3816_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in `$_GET['sid']`.\n\n2. Data flows from `$_GET['sid']` to `htmlentities($_GET['sid'], ENT_QUOTES, \"UTF-8\")` and then to the SQL query in `$pearDB->query()`. The result of the SQL query is then written to the XML output.\n\n3. Yes, there is sanitization using `htmlentities()`.\n\nVERD"
+    },
+    {
+      "index": 76,
+      "filename": "good_2979_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $_REQUEST (includes both GET and POST data)\n- $_REQUEST['iDisplayStart']\n- $_REQUEST['iDisplayLength']\n- $_REQUEST['iSortCol_0']\n- $_REQUEST['iSortingCols']\n- $_REQUEST['bSortable_'.$_REQUEST['iSortCol_'.$i]]\n- $_REQUEST['sSortDir_'.$i]\n- $_REQUEST["
+    },
+    {
+      "index": 77,
+      "filename": "bad_3707_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n- $this->request['by']\n- $this->request['id']\n- $this->request['name']\n- $this->request['iso']\n\n2. Data flows from the user inputs to the SQL queries in the following methods:\n- _get_country_by_id\n- _get_country_by_name\n- _get_country_by_iso\n- _get_co"
+    },
+    {
+      "index": 78,
+      "filename": "bad_2791_5",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - `$_GET`: `id`, `facid`, `ref`, `action`, `projectid`\n   - `$_POST`: `action`, `token`\n\n2. Data flows through the following paths:\n   - `GETPOST` function is used to retrieve user input from both `$_GET` and `$_POST` arrays.\n   - The retrieved dat"
+    },
+    {
+      "index": 79,
+      "filename": "good_958_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $id (evf_get_entry function)\n- $form_id (evf_get_entries_ids function)\n- $args (evf_search_entries function)\n- $args['search'] (evf_search_entries function)\n- $args['form_id'] (evf_search_entries function)\n- $args['status'] (evf_search_entries funct"
+    },
+    {
+      "index": 80,
+      "filename": "good_3583_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - `Params::getParam('id')`\n   - `Params::getParam('description')`\n   - `Params::getParam('content')`\n   - `Params::getParam('location')`\n   - `Params::getParam('theme')`\n   - `Params::getParam('package')`\n\n   These inputs are retrieved from the `$_"
+    },
+    {
+      "index": 81,
+      "filename": "bad_2178_2",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided code snippet.\n2. Data flow is not explicitly shown in the provided code snippet, but it's likely to be used in subsequent code that is not shown.\n3. No sanitization is performed on any data.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 82,
+      "filename": "bad_791_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. There are no direct user inputs from $_GET, $_POST, etc. However, the code uses the `ContainerBuilder` class which might be populated with user input through the `Container` class.\n\n2. Data flows from the `Definition` object to the `getProxyFactoryCode` method, where it is used to construct a pro"
+    },
+    {
+      "index": 83,
+      "filename": "good_3545_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET: $sall, $sortfield, $sortorder, $page\n   - $_POST: search_group\n\n2. Data flows from user inputs to the following places:\n   - SQL queries (via $db->escape() and concatenation)\n   - print statements (for displaying data)\n   - SQL queries (fo"
+    },
+    {
+      "index": 84,
+      "filename": "good_2179_7",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in `$_POST[\"mnftr_id\"]`.\n\n2. Data flows from `$_POST[\"mnftr_id\"]` to the SQL query in `$pearDB->query(\"SELECT traps_id, traps_name FROM traps WHERE manufacturer_id = \" . $mnftr_id . \" ORDER BY traps_name\");`.\n\n3. Yes, there is sanitization using `$pearDB->escape($_POST[\"mnftr_id"
+    },
+    {
+      "index": 85,
+      "filename": "bad_4066_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET: $action, $cancel, $backtopage, $codeventil, $id\n   - $_POST: $action, $cancel, $backtopage, $codeventil, $id, $token\n\n2. Data flows through the following paths:\n   - SQL queries: $sql = \" UPDATE \".MAIN_DB_PREFIX.\"facturedet\";, $sql = \"SELE"
+    },
+    {
+      "index": 86,
+      "filename": "good_2990_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the variable `$rowid` which is obtained from `GETPOST(\"rowid\",'int')`. This function retrieves the value of the \"rowid\" parameter from the GET or POST request.\n\n2. The data flows from the user input in `$rowid` to the `fetch` method of the `Subscription` class, which like"
+    },
+    {
+      "index": 87,
+      "filename": "bad_4482_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following places:\n   - `$this->param('auth')` (POST data)\n   - `$this->param('csfr')` (POST data)\n   - `$this->param('user')` (POST data)\n   - `$this->param('to')` (GET data)\n   - `$this->param('subject')` (GET data)\n   - `$this->param('password')` (POST data)\n   - `$this"
+    },
+    {
+      "index": 88,
+      "filename": "bad_3816_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['session']\n   - $_GET[\"id\"]\n   - $_GET[\"color\"]\n\n2. Data flows to:\n   - SQL queries (e.g., $pearDB->query, $pearDBO->query)\n   - XML output (e.g., $buffer->output())\n\n3. Sanitization exists in:\n   - htmlentities($_GET['session'], ENT_QUOTES, \"UTF-8\")\n   - htmlenti"
+    },
+    {
+      "index": 89,
+      "filename": "good_4066_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET: $action, $cancel, $backtopage, $codeventil, $id\n   - $_POST: $action, $cancel, $backtopage, $codeventil, $id, $token\n\n2. Data flows through the following paths:\n   - SQL queries: $sql = \" UPDATE \".MAIN_DB_PREFIX.\"facture_fourn_det\";, $sql "
+    },
+    {
+      "index": 90,
+      "filename": "good_2178_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided code snippet.\n2. Data flow is not explicitly shown in the provided code snippet, but it's likely to be used in subsequent code that's not shown.\n3. No sanitization is performed on any data.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 91,
+      "filename": "bad_5326_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n- `$this->params['vendor']`\n- `$this->params['id']`\n- `$this->params['vendor']` in `update_vendor()` and `delete_vendor()`\n- `$this->params` in `manage()`\n\n2. Data flows from user input to:\n- SQL queries in `find()` methods (e.g. `find('all', 'vendor_"
+    },
+    {
+      "index": 92,
+      "filename": "good_1347_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_REQUEST['tplan_id']\n   - $_REQUEST['tproject_id']\n   - $_REQUEST['tcase_id']\n   - $_REQUEST['tcversion_id']\n\n2. Data flows from user inputs to the following places:\n   - `init_args()` function, which populates the `$args` object\n   - `initializ"
+    },
+    {
+      "index": 93,
+      "filename": "good_2318_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in `$_GET[\"domain\"]`.\n\n2. Data flows from `$_GET[\"domain\"]` to `mysql_real_escape_string()` and then to the SQL query. The results of the SQL query are then echoed to the user.\n\n3. Yes, there is sanitization using `mysql_real_escape_string()`.\n\nHowever, `mysql_real_escape_string"
+    },
+    {
+      "index": 94,
+      "filename": "bad_2178_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET['code']\n   - $_GET['item_id']\n   - $_GET['stamp']\n   - $_GET['otv_id']\n\n2. Data flows through the following paths:\n   - SQL queries (e.g. $db->queryGetRow, $db->queryFirst)\n   - PHP variables (e.g. $data, $dataItem)\n   - HTML output (e.g. e"
+    },
+    {
+      "index": 95,
+      "filename": "bad_2791_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET['id']\n   - $_GET['ref']\n   - $_GET['action']\n   - $_GET['projectid']\n   - $_POST['token']\n   - $_POST['projectid']\n\n2. Data flows from the user inputs to the following places:\n   - The `restrictedArea` function\n   - The `Don` class's `fetch"
+    },
+    {
+      "index": 96,
+      "filename": "bad_4066_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the variable `$id` which is retrieved from `GETPOST('id')`. This suggests that the input is coming from a GET request.\n\n2. The data flows from the user input in `$id` to the `fetch` method of the `Mailing` class, which likely performs a SQL query to retrieve data from the"
+    },
+    {
+      "index": 97,
+      "filename": "bad_2480_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. The user inputs that exist in the code are:\n- $_GET: 'level', 'id', 'tproject_id', 'tplan_id', 'high_urgency', 'medium_urgency', 'low_urgency', 'urgency', 'form_token'\n- $_POST: 'level', 'id', 'tproject_id', 'tplan_id', 'high_urgency', 'medium_urgency', 'low_urgency', 'urgency', 'form_token'\n- $_"
+    },
+    {
+      "index": 98,
+      "filename": "bad_2990_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_GET[\"rowid\"]\n   - $_POST[\"rowid\"]\n\n2. Data flows from:\n   - $_GET/$_POST variables to the $rowid variable\n   - $rowid variable to the Subscription class's fetch method\n   - The fetch method's result to the subscription_prepare_head function\n   "
+    },
+    {
+      "index": 99,
+      "filename": "bad_3816_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['session']\n   - $_GET['id']\n   - $_GET[\"color\"]\n\n2. Data flows to:\n   - SQL queries (e.g. $DBRESULT = $pearDB->query())\n   - XML output (e.g. $buffer->output())\n\n3. Sanitization exists in:\n   - htmlentities($_GET['session'], ENT_QUOTES, \"UTF-8\")\n   - htmlentities("
+    }
+  ]
+}

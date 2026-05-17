@@ -1,0 +1,730 @@
+{
+  "config": {
+    "model": "llama-3.1-8b-instant",
+    "cwe": "79",
+    "prompt_mode": "standard",
+    "online": true,
+    "provider": "groq",
+    "num_samples": 100,
+    "elapsed_seconds": 1019.1
+  },
+  "metrics": {
+    "accuracy": 0.58,
+    "f1_score": 0.6038,
+    "precision": 0.5714,
+    "recall": 0.64,
+    "confusion_matrix": [
+      [
+        26,
+        24
+      ],
+      [
+        18,
+        32
+      ]
+    ],
+    "errors": 0
+  },
+  "detailed_results": [
+    {
+      "index": 0,
+      "filename": "bad_303_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 1,
+      "filename": "good_4206_7",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 2,
+      "filename": "bad_5158_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 3,
+      "filename": "bad_5119_2",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 4,
+      "filename": "good_137_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 5,
+      "filename": "good_3776_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 6,
+      "filename": "good_2088_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 7,
+      "filename": "good_5457_5",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 8,
+      "filename": "bad_307_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 9,
+      "filename": "bad_306_9",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 10,
+      "filename": "bad_2883_4",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 11,
+      "filename": "good_4327_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 12,
+      "filename": "bad_173_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 13,
+      "filename": "good_3776_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 14,
+      "filename": "good_3745_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 15,
+      "filename": "bad_2088_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 16,
+      "filename": "bad_2543_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 17,
+      "filename": "bad_1135_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 18,
+      "filename": "good_1958_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 19,
+      "filename": "good_3941_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 20,
+      "filename": "good_5547_21",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 21,
+      "filename": "good_58_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 22,
+      "filename": "good_2267_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 23,
+      "filename": "good_430_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 24,
+      "filename": "bad_429_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 25,
+      "filename": "bad_4976_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 26,
+      "filename": "bad_3354_4",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 27,
+      "filename": "bad_667_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 28,
+      "filename": "good_5560_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 29,
+      "filename": "good_430_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 30,
+      "filename": "bad_303_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 31,
+      "filename": "bad_305_9",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 32,
+      "filename": "good_1676_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 33,
+      "filename": "good_1462_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 34,
+      "filename": "good_2543_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 35,
+      "filename": "bad_482_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 36,
+      "filename": "bad_306_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 37,
+      "filename": "good_3206_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 38,
+      "filename": "good_5100_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 39,
+      "filename": "good_5457_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 40,
+      "filename": "bad_1292_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 41,
+      "filename": "bad_5560_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 42,
+      "filename": "good_5456_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 43,
+      "filename": "good_3756_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 44,
+      "filename": "good_3353_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 45,
+      "filename": "good_3383_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 46,
+      "filename": "good_703_9",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 47,
+      "filename": "bad_427_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 48,
+      "filename": "bad_305_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 49,
+      "filename": "bad_5547_13",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 50,
+      "filename": "good_425_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 51,
+      "filename": "bad_3777_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 52,
+      "filename": "good_5275_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 53,
+      "filename": "bad_302_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 54,
+      "filename": "good_5456_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 55,
+      "filename": "bad_305_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 56,
+      "filename": "good_5547_14",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 57,
+      "filename": "bad_4845_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 58,
+      "filename": "bad_3742_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 59,
+      "filename": "bad_2361_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 60,
+      "filename": "good_703_4",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 61,
+      "filename": "bad_305_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 62,
+      "filename": "good_306_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 63,
+      "filename": "good_5158_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 64,
+      "filename": "good_1157_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 65,
+      "filename": "bad_423_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 66,
+      "filename": "good_1978_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 67,
+      "filename": "good_5547_23",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 68,
+      "filename": "bad_1741_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 69,
+      "filename": "bad_3340_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 70,
+      "filename": "bad_5452_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 71,
+      "filename": "bad_305_10",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 72,
+      "filename": "bad_3590_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 73,
+      "filename": "bad_3408_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 74,
+      "filename": "good_302_10",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 75,
+      "filename": "bad_2516_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 76,
+      "filename": "bad_5158_6",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 77,
+      "filename": "good_58_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 78,
+      "filename": "good_1142_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 79,
+      "filename": "good_3778_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 80,
+      "filename": "good_980_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 81,
+      "filename": "good_4292_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 82,
+      "filename": "good_2773_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 83,
+      "filename": "bad_3715_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 84,
+      "filename": "good_4929_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 85,
+      "filename": "bad_223_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 86,
+      "filename": "good_4206_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 87,
+      "filename": "bad_5457_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 88,
+      "filename": "good_4136_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 89,
+      "filename": "good_1741_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 90,
+      "filename": "bad_304_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 91,
+      "filename": "bad_428_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 92,
+      "filename": "bad_3300_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 93,
+      "filename": "bad_4305_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 94,
+      "filename": "bad_3306_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 95,
+      "filename": "bad_4198_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 96,
+      "filename": "bad_3777_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 97,
+      "filename": "good_3306_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    },
+    {
+      "index": 98,
+      "filename": "bad_3776_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "SAFE"
+    },
+    {
+      "index": 99,
+      "filename": "good_4976_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE"
+    }
+  ]
+}

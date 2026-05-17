@@ -1,0 +1,34 @@
+# API keys
+.env
+
+# Dataset (quá nặng)
+data/
+
+# Model cache
+models/
+
+# File rác Python
+__pycache__/
+*.pyc
+*.pyo
+
+# File thư mục ẩn
+.DS_Store
+Thumbs.db
+
+# Thư mục không cần thiết
+configs/
+core/
+result/
+rules/
+utils/
+
+# File rác trong thư mục gốc
+results_cwe*.json
+results_qwen*.json
+(realvul)*.txt
+css.php
+program_slicing.php
+normalization.php
+check_models.py
+main.py

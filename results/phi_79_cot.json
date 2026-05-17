@@ -1,0 +1,930 @@
+{
+  "config": {
+    "model": "phi3.5:3.8b",
+    "cwe": "79",
+    "prompt_mode": "cot",
+    "use_slice": false,
+    "num_samples": 100,
+    "elapsed_seconds": 979.8,
+    "avg_compression_ratio": 1.0
+  },
+  "metrics": {
+    "accuracy": 0.52,
+    "f1_score": 0.6471,
+    "precision": 0.5116,
+    "recall": 0.88,
+    "confusion_matrix": [
+      [
+        8,
+        42
+      ],
+      [
+        6,
+        44
+      ]
+    ],
+    "errors": 0
+  },
+  "detailed_results": [
+    {
+      "index": 0,
+      "filename": "bad_303_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nReasoning:\n1. The code directly includes user input (`$_POST['nw_content_html']`) into an SQL query without proper sanitization, which can lead to SQL Injection (CWE-80). This is a separate issue from XSS but still represents a critical security flaw that could be exploited by attackers.",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 1,
+      "filename": "good_4206_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be part of a web application that handles file uploads and edits, specifically within an admin context for themes (possibly in WordPress given the namespace 'baserCMS'). The primary concern here is Cross-Site Scripting (XSS). Here's why:\n\n1. **Unsafe Outp",
+      "code_preview": "<?php\n/**\n * baserCMS :  Based Website Development Project <http://basercms.net>\n * Copyright (c) baserCMS Users Community <http://basercms.net/commun",
+      "sliced_preview": ""
+    },
+    {
+      "index": 2,
+      "filename": "bad_5158_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code uses `mb_substr()` and `mb_strtolower()`, which suggests it might not properly handle multibyte characters, potentially leading to inconsistent behavior when processing non-ASCII input data (e.g., special or internationalized date formats). This could ",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Abstract class for the date format transformations plugins\n *\n * @package    PhpMyAdmin-Transfo",
+      "sliced_preview": ""
+    },
+    {
+      "index": 3,
+      "filename": "bad_5119_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code uses `strip_tags()` on the `$f_return` variable, which is obtained from user input (`gpc_get_string`). This function removes HTML/XML tags but does not escape all potential XSS payloads (e.g., it would remove `<script>` and `</script>`, but attackers c",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 4,
+      "filename": "good_137_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly outputs the `<img>` tag without proper sanitization, using `latinOnlyInput()` function which is not defined in the provided snippet but suggests it might be handling some form of input filtering or encoding (e.g., removing non-Latin characters",
+      "code_preview": "<?php\n/*\n * This file is part of pluck, the easy content management system\n * Copyright (c) pluck team\n * http://www.pluck-cms.org\n\n * Pluck is free s",
+      "sliced_preview": ""
+    },
+    {
+      "index": 5,
+      "filename": "good_3776_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code does not properly escape output when displaying the `$value` to a browser, which is where XSS vulnerabilities typically occur in PHP applications. Specifically, there's no HTML escaping (`htmlspecialchars()`) used before echoing user input into an HTML context within `prepValueForDB()`.\n",
+      "code_preview": "<?php\n/**\n * An abstract base class for the string field types (i.e. Varchar and Text)\n * @package sapphire\n * @subpackage model\n * @author Pete Bacon",
+      "sliced_preview": ""
+    },
+    {
+      "index": 6,
+      "filename": "good_2088_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. The code attempts to sanitize the `_requested_page` variable using `Kohana::sanitize()`. However, without seeing the implementation of this method, we cannot be certain if it properly escapes output for HTML contexts (XSS prevention).\n2. There is no evidence in the provided snippet that user inpu",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n* Error controller\n*\n* @package    OC\n* @category   Controller\n* @author     Chema <c",
+      "sliced_preview": ""
+    },
+    {
+      "index": 7,
+      "filename": "good_5457_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be part of a web application that handles gallery configurations, possibly for an image sharing platform like ownCloud mentioned in the comments at the top of the file. The primary concern here is related to Cross-Site Scripting (XSS), specifically CWE-79",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 8,
+      "filename": "bad_307_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly includes user input (`$_POST['gr_id']`) into an SQL query without proper sanitization, which can lead to SQL Injection (CWE-80). This is a critical vulnerability that could allow attackers to execute arbitrary SQL commands on the database.\n\n2.",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nif ($w == 'u')\n    check_demo();\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'su",
+      "sliced_preview": ""
+    },
+    {
+      "index": 9,
+      "filename": "bad_306_9",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VERDICT: VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 (Cross-site scripting). Here's the analysis step by step:\n\n1. `$_POST` variables (`$mb_id`, `$po_point`, `$po_content`, and `po_expire_term`) are directly used without proper sanitizat",
+      "code_preview": "<?php\n$sub_menu = \"200200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\ncheck_admin_token();\n\n$mb_id = $_POST['mb_id'];\n$po_po",
+      "sliced_preview": ""
+    },
+    {
+      "index": 10,
+      "filename": "bad_2883_4",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the PHP code' extraneous comments and directives that do not interact with user input directly, such as plugin metadata definitions (`// @wordpress-plugin`, `@package`, etc.).\nStep 2: Look for any instances where output is generated without proper sanitization or encoding (e.g., ech",
+      "code_preview": "<?php\n/**\n * The plugin bootstrap file\n *\n * This file is read by WordPress to generate the plugin information in the plugin\n * Dashboard. This file a",
+      "sliced_preview": ""
+    },
+    {
+      "index": 11,
+      "filename": "good_4327_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided does not appear to sanitize user input before outputting it in the `safe_url` custom validation method, which could potentially allow for a reflected XSS attack if this data is used directly within HTML/Blade templates without proper encoding. The use of direct stri",
+      "code_preview": "<?php namespace BookStack\\Providers;\n\nuse Blade;\nuse BookStack\\Entities\\Book;\nuse BookStack\\Entities\\Bookshelf;\nuse BookStack\\Entities\\BreadcrumbsView",
+      "sliced_preview": ""
+    },
+    {
+      "index": 12,
+      "filename": "bad_173_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable - The code snippet provided does not contain any output functions that directly render user input to the browser, such as `echo`, `print_r`, etc., which are typical vectors for XSS attacks when concatenating untrusted data. However, without context on how these constants might be used els",
+      "code_preview": "<?php\ndefine('G_APP_NAME', 'Chevereto Free');\ndefine('G_APP_VERSION', '1.0.12');\ndefine('G_APP_GITHUB_OWNER', 'Chevereto');\ndefine('G_APP_GITHUB_REPO'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 13,
+      "filename": "good_3776_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided defines a class `HTMLText` that extends another class, likely intended to handle HTML content within text fields in an application built with the SilverStripe framework (as indicated by namespace and package references). The primary concern here is Cross-Site Script",
+      "code_preview": "<?php\n/**\n * Represents a large text field that contains HTML content.\n * This behaves similarly to {@link Text}, but the template processor won't esc",
+      "sliced_preview": ""
+    },
+    {
+      "index": 14,
+      "filename": "good_3745_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 - Unrestricted JavaScript Code Injection. Here's the analysis step by step:\n\n1. The script uses `htmlentities()` when outputting `$root` into a `<script>` tag within inline HTML/JavaScript code",
+      "code_preview": "<?php\n\n$l = OC_L10N::get('gallery');\n$root = !empty($_GET['root']) ? $_GET['root'] : '/';\n?>\n<style>\ndiv.gallery_div {position:relative; display: inli",
+      "sliced_preview": ""
+    },
+    {
+      "index": 15,
+      "filename": "bad_2088_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. The code decodes URL parameters using `rawurldecode` without proper sanitization before outputting them into the meta tags and content variable (`$this->template`). This can lead to potential XSS if unsanitized user input is directly used in these places.\n2. There's no indication of any encoding ",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n* Error controller\n*\n* @package    OC\n* @category   Controller\n* @author     Chema <c",
+      "sliced_preview": ""
+    },
+    {
+      "index": 16,
+      "filename": "bad_2543_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Step 1: Identify the code that outputs data to the browser without proper sanitization/encoding.\n- The functions `_htmlsc`, `_htmle`, and `echo trans(_trans(...))` output directly to the browser without using any form of encoding like `htmlspecialchars()` or `htmlentities()`. This can potentially al",
+      "code_preview": "<?php\nif (!defined('BASEPATH')) exit('No direct script access allowed');\n\n/*\n * InvoicePlane\n *\n * @author\t\tInvoicePlane Developers & Contributors\n * ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 17,
+      "filename": "bad_1135_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically due to the way user input from `$_GET` parameters (`search`, `order_by`, and potentially others not shown in full detail here) are being used without proper sanitization or escaping. Here's a step by ",
+      "code_preview": "<?php\n\n//includes\n\trequire_once \"root.php\";\n\trequire_once \"resources/require.php\";\n\n//check permissions\n\trequire_once \"resources/check_auth.php\";\n\tif ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 18,
+      "filename": "good_1958_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 - Unvalidated Output. Here's the analysis step by step:\n\n1. The script directly outputs HTML without proper sanitization or encoding of user input (`$banner['html']`). This means that if an att",
+      "code_preview": "<?php\n\n/*\n+---------------------------------------------------------------------------+\n| Revive Adserver                                             ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 19,
+      "filename": "good_3941_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 (Cross-site scripting). Here's the analysis step by step:\n\n1. The `onRefresh()` method directly uses `$content` from a POST request without proper sanitization or encoding when generating HTML ",
+      "code_preview": "<?php namespace RainLab\\Blog\\FormWidgets;\n\nuse Lang;\nuse Input;\nuse Response;\nuse Validator;\nuse RainLab\\Blog\\Models\\Post as PostModel;\nuse Backend\\Cl",
+      "sliced_preview": ""
+    },
+    {
+      "index": 20,
+      "filename": "good_5547_21",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly echoes user input (`$username`) without proper sanitization into HTML elements, which can lead to XSS if the `twitter_username` contains malicious scripts. For example, `<script>maliciousCode()</script>` could be part of `$username`.\n2. Althou",
+      "code_preview": "<?php\n\n/**\n * Elgg twitter view page\n *\n * @package ElggTwitter\n */\n\n$username = $vars['entity']->twitter_username;\n\nif (empty($username)) {\n\techo \"<p",
+      "sliced_preview": ""
+    },
+    {
+      "index": 21,
+      "filename": "good_58_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 - Unvalidated Output. Here's the step-by-step analysis leading to this conclusion:\n\n1. The script directly outputs user data without proper sanitization or encoding into HTML elements where it ",
+      "code_preview": "<?php if (array_key_exists(\"2fa\", $subpages)) { ?>\n\n<?php\n# verify that user is logged in\n$User->check_user_session();\n\n# init class\nrequire_once (dir",
+      "sliced_preview": ""
+    },
+    {
+      "index": 22,
+      "filename": "good_2267_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify where user input is being output directly to the browser without proper sanitization/encoding.\n- The code uses `echo` and `__()` functions within HTML tags, which could potentially display unsanitized user data if `$file` contains such content (e.g., in 'header.php').\n\nStep 2: Check",
+      "code_preview": "<?php if ( ! defined('OC_ADMIN')) exit('Direct access is not allowed.');\n/*\n * Copyright 2014 Osclass\n *\n * Licensed under the Apache License, Version",
+      "sliced_preview": ""
+    },
+    {
+      "index": 23,
+      "filename": "good_430_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79: Improper Neutralization of Input During Web Applications Construction. Here's the step-by01 analysis leading to this verdict:\n\n1. The `$g5['title']` variable is being assigned direc",
+      "code_preview": "<?php\ninclude_once('./_common.php');\n\n$g5['title'] = '비밀번호 입력';\n\nswitch ($w) {\n    case 'u' :\n        $action = G5_HTTP_BBS_URL.'/write.php';\n        ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 24,
+      "filename": "bad_429_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. Outputs are not properly escaped when inserted into HTML, allowing for potential script injection if user input (`$w`, `$group['gr_admin']`) contains malicious scripts. For example",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'super' && $w == '') alert('최고관리자만 접근",
+      "sliced_preview": ""
+    },
+    {
+      "index": 25,
+      "filename": "bad_4976_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79: Improper Neutralization of Input for a Web Application. Here's the analysis step by step:\n\n1. The script directly outputs HTML content without proper sanitization or encoding when h",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Normalization process (temporarily specific to 1NF)\n *\n * @package PhpMyAdmin\n */\n\n/**\n *\n */\nr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 26,
+      "filename": "bad_3354_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n1. The code snippet is part of a WordPress theme/plugin, where user input might be incorporated into the output without proper sanitization (e.g., in templates). This can potentially allow an attacker to inject malicious scripts if they manage to manipulate these v",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-beta1-40692';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 27,
+      "filename": "bad_667_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nRationale:\n1. The code directly inserts user input (`$attachment_id`) into a database query without proper sanitization, which could allow an attacker to inject malicious scripts if they manage to manipulate the `$attachment_id` value (CWE-79).\n2. It uses `get_the_title()` function with ",
+      "code_preview": "<?php\nif ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly\n\nclass AAL_Hook_Attachment extends AAL_Hook_Base {\n\n\tprotected function _add_lo",
+      "sliced_preview": ""
+    },
+    {
+      "index": 28,
+      "filename": "good_5560_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code includes external JavaScript and CSS files without proper sanitization, which could potentially allow an attacker to inject malicious scripts if these resources are compromised (CWE-79).\n2. It uses `htmlentities()` on the `$element['graph_args']` when ",
+      "code_preview": "<?php\n\ninclude_once(\"./eval_conf.php\");\ninclude_once(\"./functions.php\");\n\nif( ! checkAccess(GangliaAcl::ALL_VIEWS, GangliaAcl::VIEW, $conf) ) {\n  die(",
+      "sliced_preview": ""
+    },
+    {
+      "index": 29,
+      "filename": "good_430_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. Output does not undergo proper sanitization before being displayed in HTML, allowing for potential script injection through unescaped user input (`$w`, `$group['gr_subject']`, and ",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'super' && $w == '') alert('최고관리자만 접근",
+      "sliced_preview": ""
+    },
+    {
+      "index": 30,
+      "filename": "bad_303_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code uses the `include_once` statement to include another PHP file (`_common.php`), which could potentially introduce XSS if it does not properly sanitize user input before outputting or including content from external sources.\n2. There is a direct use of `",
+      "code_preview": "<?php\n$sub_menu = '300700';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($W == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 31,
+      "filename": "bad_305_9",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VERDICT: VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79: Improper Neutralization of Input During Web Page Generation. Here's the analysis step by step:\n\n1. `$sub_menu` variable contains data from user input (`$auth[$sub_menu]`), which is no",
+      "code_preview": "<?php\n$sub_menu = \"200200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\ncheck_admin_token();\n\n$mb_id = $_POST['mb_id'];\n$po_po",
+      "sliced_preview": ""
+    },
+    {
+      "index": 32,
+      "filename": "good_1676_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided for the file browser has several security issues that make it vulnerable to Cross-Site Scripting (XSS) attacks, particularly in how user input is handled and outputted without proper sanitization:\n\n1. The `submitLink` JavaScript function directly uses `$_GET['return",
+      "code_preview": "<?php\n/**\n * Basic File Browser for CKEditor\n *\n * Displays and selects file link to insert into CKEditor\n *\n * @package GetSimple\n * @subpackage File",
+      "sliced_preview": ""
+    },
+    {
+      "index": 33,
+      "filename": "good_1462_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code iterates over a predefined array of GET parameters that are considered potentially unsafe (`$saniGroup1`). These include various keys related to user actions, product information, and other sensitive data.\n2. For each key in the `$saniGroup1` array, it",
+      "code_preview": "<?php\n/**\n * init_sanitize\n *\n * @package initSystem\n * @copyright Copyright 2003-2014 Zen Cart Development Team\n * @license http://www.zen-cart.com/l",
+      "sliced_preview": ""
+    },
+    {
+      "index": 34,
+      "filename": "good_2543_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the functions that output data to the browser without proper encoding/escaping mechanisms. In this code, `_htmlsc`, `_htmle`, and `echo` statements in various functions are potential risks if they directly echo user-supplied input or variables into HTML contexts.\n\nStep 2: Check for ",
+      "code_preview": "<?php\nif (!defined('BASEPATH')) exit('No direct script access allowed');\n\n/*\n * InvoicePlane\n *\n * @author\t\tInvoicePlane Developers & Contributors\n * ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 35,
+      "filename": "bad_482_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable to XSS if the code later concatenates or outputs `$wp_version`, `$tinymce_version`, etc., without proper sanitization/encoding into HTML contexts where user input is involved. The presence of these variables indicates potential points where unsanitized data could be output directly, leadi",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '5.0.1-alpha-43994';\n\n/**\n * Holds the WordPress DB revis",
+      "sliced_preview": ""
+    },
+    {
+      "index": 36,
+      "filename": "bad_306_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided has several issues that could potentially lead to Cross-Site Scripting (XSS) vulnerabilities, as indicated in the following analysis:\n\n1. Data not properly sanitized before outputting into HTML/JavaScript contexts: The `preg_replace` function is used without proper ",
+      "code_preview": "<?php\n$sub_menu = '300600';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 37,
+      "filename": "good_3206_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep 1: Identify the code that interacts with user input and outputs directly to HTML without proper sanitization/encoding - In this case, it's where `$t_filter` is used in `<?php echo string_attribute( $t_filter[FILTER_PROPERTY_SEARCH] ) ?>`.\nStep 2: Check if the code uses output encodi",
+      "code_preview": "<?php\n# MantisBT - A PHP based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 38,
+      "filename": "good_5100_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep 1: Identify the code's purpose and functionality related to HTML processing.\n- The PHP class `Horde_Text_Filter_Xss` is designed as a filter for making HTML safe, with parameters that allow disabling DNS prefetching, returning full documents or just body contents, stripping style ta",
+      "code_preview": "<?php\n/**\n * Copyright 2004-2016 Horde LLC (http://www.horde.org/)\n *\n * See the enclosed file COPYING for license information (LGPL). If you\n * did n",
+      "sliced_preview": ""
+    },
+    {
+      "index": 39,
+      "filename": "good_5457_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify where user input is handled - The `get` method accepts a parameter `$extramediatypes`, which suggests that external data could be passed into the function, potentially as part of URL parameters.\n\nStep 2: Check if there'm any output or display without proper sanitization/encoding - T",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 40,
+      "filename": "bad_1292_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. Outputs are not properly escaped when displayed in HTML, allowing for potential script injection if untrusted data (`$fax_result_text`, `$fax_file`) contains malicious scripts. For",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 41,
+      "filename": "bad_5560_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code includes external JavaScript and CSS files using `print` statements that output the `$base` variable, which is derived from user input (`$_GET['base']`). This could potentially allow an attacker to inject malicious scripts if they control or can manipu",
+      "code_preview": "<?php\n\ninclude_once(\"./eval_conf.php\");\ninclude_once(\"./functions.php\");\n\nif( ! checkAccess(GangliaAcl::ALL_VIEWS, GangliaAcl::VIEW, $conf) ) {\n  die(",
+      "sliced_preview": ""
+    },
+    {
+      "index": 42,
+      "filename": "good_5456_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code does not appear to sanitize user input before using it, which is a common source of XSS vulnerabilities in web applications that handle dynamic content based on external inputs (e.g., file IDs or locations). If these variables are used directly within ",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 43,
+      "filename": "good_3756_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. The code uses `var_dump()` to output variable contents, which can be a potential XSS vector if the variables contain user-supplied data and are not properly sanitized before being echoed out in HTML contexts (e.g., when using `$echo` as true).\n2. There is no visible use of `htmlspecialchars()` or",
+      "code_preview": "<?php\n/**\n * Zend Framework (http://framework.zend.com/)\n *\n * @link      http://github.com/zendframework/zf2 for the canonical source repository\n * @",
+      "sliced_preview": ""
+    },
+    {
+      "index": 44,
+      "filename": "good_3353_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n1. The code snippet is part of a WordPress theme/plugin, where user input might be incorporated into the output without proper sanitization (e.g., in templates). This can potentially allow an attacker to inject malicious scripts through comments or post content fie",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-beta1-40692';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 45,
+      "filename": "good_3383_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided shows an attempt to prevent XSS attacks through a custom filter class `TikiFilter_PreventXss`. However, there are several reasons why this implementation is not fully secure against XSS (Cross-Site Scripting) vulnerabilities:\n\n1. The use of regular expressions (`pre",
+      "code_preview": "<?php\n// (c) Copyright 2002-2016 by authors of the Tiki Wiki CMS Groupware Project\n//\n// All Rights Reserved. See copyright.txt for details and a comp",
+      "sliced_preview": ""
+    },
+    {
+      "index": 46,
+      "filename": "good_703_9",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code defines constants for version numbers and uses them to construct a script prefix (`SCRIPT_PREFIX`) that includes the current versions of `VERSION`, `REVISION`, and an internal database version obtained from 'upgrade_queries.php'. This suggests dynamic ",
+      "code_preview": "<?php\n/* set latest version */\ndefine(\"VERSION\", \"1.4\");\t\t\t\t\t\t\t\t\t//decimal release version e.g 1.32\n/* set latest version */\ndefine(\"VERSION_VISIBLE\",",
+      "sliced_preview": ""
+    },
+    {
+      "index": 47,
+      "filename": "bad_427_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 (Unsafe User Input). Here's the step-by0ne analysis:\n\n1. The `$g5['title']` variable is being assigned directly from user input without proper sanitization or encoding (`$row['wr_sub",
+      "code_preview": "<?php\ninclude_once('./_common.php');\n\n$g5['title'] = '비밀번호 입력';\n\nswitch ($w) {\n    case 'u' :\n        $action = G5_HTTP_BBS_URL.'/write.php';\n        ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 48,
+      "filename": "bad_305_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. Output does not undergo proper escaping before being rendered in HTML, allowing for potential script injection when user input (`$w`, `$group['gr_id']`) are displayed without sanit",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'super' && $w == '') alert('최고관리자만 접근",
+      "sliced_preview": ""
+    },
+    {
+      "index": 49,
+      "filename": "bad_5547_13",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided does not appear to implement any output encoding mechanisms, such as htmlspecialchars() or similar functions that would prevent the direct insertion of user input into HTML markup (XSS). Specifically, there is no evidence in this snippet showing proper escaping when",
+      "code_preview": "<?php\n/**\n * Blogs\n *\n * @package Blog\n *\n * @todo\n * - Either drop support for \"publish date\" or duplicate more entity getter\n * functions to work wi",
+      "sliced_preview": ""
+    },
+    {
+      "index": 50,
+      "filename": "good_425_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided has several issues that could potentially lead to a Cross-Site Scripting (XSS) vulnerability, specifically CWE-79: Improper Neutralization of Input During Web Applications Construction. Here's the step-by-step analysis leading to this verdict:\n\n1. The code uses `pre",
+      "code_preview": "<?php\n$sub_menu = \"100290\";\ninclude_once('./_common.php');\n\ncheck_demo();\n\nif ($is_admin != 'super')\n    alert('최고관리자만 접근 가능합니다.');\n\ncheck_admin_token",
+      "sliced_preview": ""
+    },
+    {
+      "index": 51,
+      "filename": "bad_3777_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify where user input is handled without proper sanitization/encoding.\n- The code retrieves a `$term` parameter from the POST request and uses it directly in constructing URLs for search results (`$url . '?form=search&q=' . $match['term']`). This suggests that unsanitized user input coul",
+      "code_preview": "<?php\n\n/*\n * This file is part of Fork CMS.\n *\n * For the full copyright and license information, please view the license\n * file that was distributed",
+      "sliced_preview": ""
+    },
+    {
+      "index": 52,
+      "filename": "good_5275_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n1. The code directly outputs the `$wp_version` variable without any sanitization, which contains a version string that could potentially be used in an XSS attack if injected into a webpage context where user input is displayed or stored.\n2. There's no evidence of o",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.7-alpha-38538';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 53,
+      "filename": "bad_302_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nReasoning:\n1. The code directly includes user input (`$_POST['nw_content_html']`) into an SQL query without proper sanitization, which can lead to SQL Injection (CWE-80). Although not a direct XSS vulnerability in this snippet, it's related and indicates poor handling of untrusted inputs",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 54,
+      "filename": "good_5456_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically due to the way it handles output without proper sanitization when generating HTML error pages with potentially unsafe user input. Here's a step-by-step analysis:\n\n1. The `testHtmlError` method uses `$",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 55,
+      "filename": "bad_305_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. The `$html_title` variable, which contains user input (`$w`), directly outputs into HTML without proper sanitization or encoding. This can allow an attacker to inject malicious scr",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\ninclude_once(G5_EDITOR_LIB);\n\nauth_check($auth[$sub_menu], \"w\");\n\n$nw_id = preg_replace('/[",
+      "sliced_preview": ""
+    },
+    {
+      "index": 56,
+      "filename": "good_5547_14",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided for the Elgg Bookmarks plugin appears to be vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 (Cross-site scripting). Here's why:\n\n1. The `bookmark_url` function constructs a URL using `$entity->title`, which is directly output without any form o",
+      "code_preview": "<?php\n/**\n * Elgg Bookmarks plugin\n *\n * @package ElggBookmarks\n */\n\nelgg_register_event_handler('init', 'system', 'bookmarks_init');\n\n/**\n * Bookmark",
+      "sliced_preview": ""
+    },
+    {
+      "index": 57,
+      "filename": "bad_4845_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. The code directly incorporates `$_POST` data into HTML without proper sanitization, especially in the hidden input fields where dynamic values are inserted using `<?= ?>`. This can lead to XSS if unsanitized user inputs contain malicious scripts.\n2. There is no usage of functions like `htmlspecia",
+      "code_preview": "<?php\n\t$required = false;\n\t$label = \"\";\n\t$type = trim($_POST[\"type\"]);\n\t$key = str_replace(\"form_builder_element_\", \"\", $_POST[\"name\"]);\n\t\n\t// Clean u",
+      "sliced_preview": ""
+    },
+    {
+      "index": 58,
+      "filename": "bad_3742_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided has potential vulnerabilities to Cross-Site Scripting (XSS) attacks, specifically due to the way user input is handled and output without proper sanitization. Here are some reasons why this script could be considered XSS prone:\n\n1. The `$_POST` data handling lacks e",
+      "code_preview": "<?php\n\n/**\n* ownCloud\n*\n* @author Frank Karlitschek\n* @copyright 2010 Frank Karlitschek karlitschek@kde.org\n*\n* This library is free software; you can",
+      "sliced_preview": ""
+    },
+    {
+      "index": 59,
+      "filename": "bad_2361_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code uses `echo` to output HTML directly, which suggests that it does not properly sanitize user input before rendering it in the browser context (PHP's echo statements are used without any form of escaping). This can potentially lead to XSS if unsanitized ",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 60,
+      "filename": "good_703_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The PHP code executes an external command using `exec()`, which includes a call to another script with user input (`$_POST['subnetId']`) directly injected into the shell without proper sanitization or escaping. This can lead to Command Injection (CI) vulnerabil",
+      "code_preview": "<?php\n\n/*\n * Update alive status of all hosts in subnet\n ***************************/\n\n# Check we have been included and not called directly\nif (!isse",
+      "sliced_preview": ""
+    },
+    {
+      "index": 61,
+      "filename": "bad_305_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nReasoning:\n1. The code directly includes user input (`$_POST['nw_content_html']`) into an SQL query without proper sanitization, which can lead to SQL Injection (CWE-80). This is a separate issue from XSS but still represents a critical security flaw in the application.\n2. The code uses ",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 62,
+      "filename": "good_306_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. The `$html_title` variable, which contains user input (`$w`), is directly embedded into an HTML page without proper sanitization or encoding. This can allow attackers to inject mal",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\ninclude_once(G5_EDITOR_LIB);\n\nauth_check($auth[$sub_menu], \"w\");\n\n$nw_id = preg_replace('/[",
+      "sliced_preview": ""
+    },
+    {
+      "index": 63,
+      "filename": "good_5158_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. The code uses `htmlspecialchars()` to convert special characters into HTML entities before outputting them in the anchor tag (`<a>`), which is a good practice for preventing XSS attacks as it neutralizes potentially harmful scripts embedded within strings that are intended to be displayed on web ",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Abstract class for the link transformations plugins\n *\n * @package    PhpMyAdmin-Transformation",
+      "sliced_preview": ""
+    },
+    {
+      "index": 64,
+      "filename": "good_1157_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code uses `echo \"access denied\";` to output a message directly into the HTML, which can lead to potential XSS if not properly sanitized because it does not distinguish between user input and static content in PHP (e.g., `$_REQUEST[\"c\"]`). This could allow a",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 65,
+      "filename": "bad_423_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided has several issues that could potentially lead to a Cross-Site Scripting (XSS) vulnerability, particularly due to the way user input is handled and outputted without proper sanitization. Here are some specific concerns:\n\n1. The `setupSearchFields` method directly as",
+      "code_preview": "<?php\n/**\n * @license http://www.mailcleaner.net/open/licence_en.html Mailcleaner Public License\n * @package mailcleaner\n * @author Olivier Diserens\n ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 66,
+      "filename": "good_1978_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79: Improper Neutralization of Input for a Web Application. Here's the step-by-step analysis leading to this verdict:\n\n1. The `Security::remove_XSS()` function is used multiple times without seein",
+      "code_preview": "<?php\n\n/* For licensing terms, see /license.txt */\n\nrequire_once __DIR__.'/../inc/global.inc.php';\n\n$action = isset($_GET['action']) ? Security::remov",
+      "sliced_preview": ""
+    },
+    {
+      "index": 67,
+      "filename": "good_5547_23",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the code's purpose and context - The PHP script appears to be part of a version control system for Elgg, checking against database entries to determine if an upgrade is necessary based on date information.\n\nStep 2: Look for user input handling or output rendering without proper sani",
+      "code_preview": "<?php\n/**\n * Elgg version number.\n * This file defines the current version of the core Elgg code being used.\n * This is compared against the values st",
+      "sliced_preview": ""
+    },
+    {
+      "index": 68,
+      "filename": "bad_1741_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses `$_REQUEST` superglobal without proper sanitization, which can lead to uncontrolled output if user input is passed through this variable (e.g., via URL parameters). This means that an attacker could potentially inject malicious scripts in",
+      "code_preview": "<?php ?>\n[<?php\n$pId = \"-1\";\nif(array_key_exists( 'id',$_REQUEST)) {\n\t$pId=$_REQUEST['id'];\n}\n$pCount = \"10\";\nif(array_key_exists( 'count',$_REQUEST))",
+      "sliced_preview": ""
+    },
+    {
+      "index": 69,
+      "filename": "bad_3340_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79 - Unrestricted JavaScript Code Injection. Here's the analysis step by step:\n\n1. The script directly outputs data from `$_GET` without proper sanitization or encoding. For example:\n   ```php\n   ",
+      "code_preview": "<?php\n/*\nAllen Disk 1.6\nCopyright (C) 2012~2016 Allen Chou\nAuthor: Allen Chou ( http://allenchou.cc )\nLicense: MIT License\n*/\ninclude 'config.php';\nif",
+      "sliced_preview": ""
+    },
+    {
+      "index": 70,
+      "filename": "bad_5452_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly processes the photo data from an external source without proper sanitization, which could lead to XSS if unsanitized user input is used in any way within this context (e.g., displaying it on a webpage). Although there's no direct output of raw",
+      "code_preview": "<?php\n/**\n * @copyright Copyright (c) 2016, ownCloud, Inc.\n *\n * @author Georg Ehrke <georg@owncloud.com>\n *\n * @license AGPL-3.0\n *\n * This code is f",
+      "sliced_preview": ""
+    },
+    {
+      "index": 71,
+      "filename": "bad_305_10",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VERDICT: VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. Output does not undergo proper escaping before being outputted into HTML, allowing for potential script injection if user input (`$bk_name`, `$bk_memo`) or other variables",
+      "code_preview": "<?php\n$sub_menu = \"900800\";\ninclude_once(\"./_common.php\");\n\nauth_check($auth[$sub_menu], \"w\");\n\n$g5['title'] = \"휴대폰번호 업데이트\";\n\n$g5['sms5_demo'] = 0;\n\n$",
+      "sliced_preview": ""
+    },
+    {
+      "index": 72,
+      "filename": "bad_3590_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code directly outputs user input (`$OSCOM_Template->getPageTitle()` and `$products['name']`) without proper sanitization, which could lead to XSS if these inputs contain malicious scripts.\n2. There is no use of `htmlspecialchars` or similar functions when o",
+      "code_preview": "<?php\n/**\n * osCommerce Online Merchant\n * \n * @copyright Copyright (c) 2011 osCommerce; http://www.oscommerce.com\n * @license BSD License; http://www",
+      "sliced_preview": ""
+    },
+    {
+      "index": 73,
+      "filename": "bad_3408_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code does not appear to use output buffering (`ob_start()` and `ob_end_clean()` functions) which are essential for preventing XSS attacks, as they can help in capturing the output before it is sent to the browser. Without these buffers, any unescaped user i",
+      "code_preview": "<?php\n/**\n * This file generates the header for the back-end and also for the default\n * template.\n *\n * Other checks for user level are performed lat",
+      "sliced_preview": ""
+    },
+    {
+      "index": 74,
+      "filename": "good_302_10",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VERDICT: VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. The `alert()` function directly includes user input (`$bk_name`) without proper sanitization or encoding, which can lead to XSS if this data contains malicious scripts. Fo",
+      "code_preview": "<?php\n$sub_menu = \"900800\";\ninclude_once(\"./_common.php\");\n\nauth_check($auth[$sub_menu], \"w\");\n\n$g5['title'] = \"휴대폰번호 업데이트\";\n\n$g5['sms5_demo'] = 0;\n\n$",
+      "sliced_preview": ""
+    },
+    {
+      "index": 75,
+      "filename": "bad_2516_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Step 1: Identify the code's purpose and functionality - The PHP script appears to be part of a user search module within an admin tool for managing users on a website, as indicated by comments and variable names.\n\nStep 2: Look for output/display statements without proper encoding or validation - Cro",
+      "code_preview": "<?php\n\n// $Id: info.php 591 2009-03-01 19:42:05Z BerndJM $\n\n/*\n\n Website Baker Project <http://www.websitebaker.org/>\n Copyright (C) 2004-2008, Ryan D",
+      "sliced_preview": ""
+    },
+    {
+      "index": 76,
+      "filename": "bad_5158_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `mb_substr()` for string manipulation, which is a safe function in PHP when used with multibyte strings (`mbstring` extension enabled). It does not directly execute user input as code but rather processes it according to the provided options and parameters.\n2. However, there are no ",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Abstract class for the substring transformations plugins\n *\n * @package    PhpMyAdmin-Transform",
+      "sliced_preview": ""
+    },
+    {
+      "index": 77,
+      "filename": "good_58_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nReasoning:\n1. The code directly prints user input (\"$_GET['subnetId']\") without proper sanitization, which could lead to Reflected Cross-Site Scripting (XSS) if the 'subnetId' contains malicious scripts.\n2. There is no evidence of output encoding or use of `htmlspecialchars()` when displ",
+      "code_preview": "<?php\n\n/**\n * Usermenu - user can change password and email\n */\n\n# verify that user is logged in\n$User->check_user_session();\n\n# create csrf token\n$cs",
+      "sliced_preview": ""
+    },
+    {
+      "index": 78,
+      "filename": "good_1142_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79: Improper Neutralization of Input for a Client-Side Request. Here's the analysis step by step:\n\n1. The script directly outputs `$contact_note` without proper sanitization or encoding when displ",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 79,
+      "filename": "good_3778_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided for the `FrontendSearchAjaxAutosuggest` class is vulnerable to Cross-Site Scripting (XSS) attacks due to insufficient output encoding and lack of proper sanitization. Here are the reasons:\n\n1. The `$term` variable, which holds user input from a search term field, is",
+      "code_preview": "<?php\n\n/*\n * This file is part of Fork CMS.\n *\n * For the full copyright and license information, please view the license\n * file that was distributed",
+      "sliced_preview": ""
+    },
+    {
+      "index": 80,
+      "filename": "good_980_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable to XSS attack due to the following reasons:\n\n1. The code directly echoes `$title` and other variables without proper sanitization, which could allow an attacker to inject malicious scripts if these inputs contain HTML tags or JavaScript code.\n2. `strip_tags()` is used but not combined wit",
+      "code_preview": "<div class=\"<?php echo $sizeClass; ?> ls-flex-column ls-panelboxes-panelbox text-primary\" >\n    <div class=\"panel panel-primary panel-clickable ls-pan",
+      "sliced_preview": ""
+    },
+    {
+      "index": 81,
+      "filename": "good_4292_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The script tag for CKEditor is dynamically generated without proper encoding, which could potentially allow an attacker to inject malicious JavaScript if they can control the output of `base_url()` function or manipulate its input (`<?= base_url('assets/ckedito",
+      "code_preview": "<script src=\"<?= base_url('assets/ckeditor/ckeditor.js') ?>\"></script>\n<h1><img src=\"<?= base_url('assets/imgs/blogger.png') ?>\" class=\"header-img\" st",
+      "sliced_preview": ""
+    },
+    {
+      "index": 82,
+      "filename": "good_2773_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code retrieves input from the `$_GET` superglobal array, which is commonly used for query parameters in a URL (e.g., `index.php?name=John`).\n2. It uses regular expressions to define patterns that should not be allowed if they are part of an identifier or va",
+      "code_preview": "<?php\n\nCONST SECRET_PATTERN = '/[^a-z0-9]/';\nCONST ENTRY_ID_PATTERN = '/[^a-z0-9_]/';\nCONST INTEGER_ONLY_PATTERN = '/[^0-9]/';\nCONST HTML_VERSION_PATT",
+      "sliced_preview": ""
+    },
+    {
+      "index": 83,
+      "filename": "bad_3715_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The PHP code dynamically generates the `<title>` element without proper encoding, which means if `$page_title` contains user input that includes HTML tags (e.g., `<script>`) or JavaScript code, it will be output directly into the page title. This can lead to XS",
+      "code_preview": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.o",
+      "sliced_preview": ""
+    },
+    {
+      "index": 84,
+      "filename": "good_4929_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code snippet provided is part of PhpMyAdmin, which handles database management through PHP scripts. It appears to deal with session handling and upload progress data for file imports within the application.\n\n2. There's a commented out section that indicates",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Import progress bar backend\n *\n * @package PhpMyAdmin\n */\n\n/* PHP 5.4 stores upload progress da",
+      "sliced_preview": ""
+    },
+    {
+      "index": 85,
+      "filename": "bad_223_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly outputs the `$tag->name` without any form of HTML encoding, which means if an attacker can inject content into this variable (e.g., via a manipulated POST request), it could be executed in the user's browser as malicious JavaScript due to lack",
+      "code_preview": "<div id=\"tag-form\" class=\"field\">\n    <?php\n        $tags = $item->getTags();\n    ?>\n    <input type=\"hidden\" name=\"tags-to-add\" id=\"tags-to-add\" valu",
+      "sliced_preview": ""
+    },
+    {
+      "index": 86,
+      "filename": "good_4206_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VERDICT: VULN\n\nThe PHP code provided appears to be part of a web application that allows users with administrative privileges to manage theme files within the baserCMS system (as indicated by comments and function calls). The analysis for Cross-Site Scripting (XSS) vulnerabilities involves looking a",
+      "code_preview": "<?php\n/**\n * baserCMS :  Based Website Development Project <https://basercms.net>\n * Copyright (c) baserCMS Users Community <https://basercms.net/comm",
+      "sliced_preview": ""
+    },
+    {
+      "index": 87,
+      "filename": "bad_5457_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the code's purpose and components - The PHP class `ConfigApiController` seems to be part of an application that handles configuration settings, possibly for a web service using ownCloud software (as indicated by namespaces). It extends from another controller (`ApiController`) and u",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 88,
+      "filename": "good_4136_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Step 1: Identify the code that outputs user input directly to HTML without proper sanitization - `sigRenderTag` function uses `$username`, which is taken from URL parameters and used in an `<a>` tag. This could potentially lead to XSS if not properly escaped.\n\nStep 2: Check for any use of functions ",
+      "code_preview": "<?php\n/*\n * ScratchSig extension for MediaWiki\n * Renders <scratchsig> tag with profile image from scratch.mit.edu\n *\n * Copyright 2013, Tim Radvan\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 89,
+      "filename": "good_1741_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code directly uses `$_REQUEST` superglobal without proper sanitization, which can lead to uncontrolled data being injected into the output (CWE-79). This is a potential XSS vulnerability because if an attacker manipulates the input for 'id' or 'count', it c",
+      "code_preview": "<?php ?>\n[<?php\n$pId = \"-1\";\nif(array_key_exists( 'id',$_REQUEST)) {\n\t$pId=$_REQUEST['id'];\n}\n$pCount = \"10\";\nif(array_key_exists( 'count',$_REQUEST))",
+      "sliced_preview": ""
+    },
+    {
+      "index": 90,
+      "filename": "bad_304_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VERDICT: VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. The `$html_title` variable, which contains user input (`$w`), directly outputs into HTML without proper sanitization or encoding. This can allow an attacker to inject mali",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\ninclude_once(G5_EDITOR_LIB);\n\nauth_check($auth[$sub_menu], \"w\");\n\n$nw_id = preg_replace('/[",
+      "sliced_preview": ""
+    },
+    {
+      "index": 91,
+      "filename": "bad_428_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VERDICT: VULNERABLE\n\nThe PHP code provided is vulnerable to Cross-Site Scripting (XSS) attacks due to the following reasons:\n\n1. The `stripslashes()` function is used without proper output encoding, which can strip out any HTML or JavaScript tags that may be present in user input before displaying t",
+      "code_preview": "<?php\nif (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가\n\n// 게시판 관리의 하단 파일 경로\nif (G5_IS_MOBILE) {\n    echo stripslashes($board['bo_mobile_content_tail'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 92,
+      "filename": "bad_3300_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The `verify()` function directly outputs the `$_GET['challenge']` variable without any sanitization, encoding, or validation. This is a classic example of an XSS vulnerability because it allows potentially malicious input to be executed as part of the output (e",
+      "code_preview": "<?php \nuse \\Dropbox as dbx;\n\nfunction verify(){\n\techo $_GET['challenge'];\n}\n\nfunction webhook(){\n\t#'''Receive a list of changed user IDs from Dropbox ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 93,
+      "filename": "bad_4305_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code uses `echo` to output HTML content directly, without proper escaping of user input (`$questionlisting['title']`). This can lead to XSS if the question titles contain malicious scripts.\n2. There's a form submission that does not appear to use HTTPS (no ",
+      "code_preview": "<?php\n/* @var $this AdminController */\n/* @var Quota $oQuota */\n?>\n\n<div class='side-body <?php echo getSideBodyClass(false); ?>'>\n    <div class=\"row",
+      "sliced_preview": ""
+    },
+    {
+      "index": 94,
+      "filename": "bad_3306_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79: Improper Neutralization of Input for Client-Side Used. Here's the analysis step by step:\n\n1. The script directly outputs `$t_url_page` and `http_build_query( $t_url_params )`, which",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 95,
+      "filename": "bad_4198_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided does not appear to include any direct output of user input without proper sanitization, which is a common way for XSS attacks to occur (CWE-79). The `getResource` method returns resources directly from the `$resources` property without escaping or validating them. I",
+      "code_preview": "<?php\n\ndeclare(strict_types=1);\n\nnamespace Orchid\\Platform;\n\nuse Illuminate\\Support\\Arr;\nuse Illuminate\\Support\\Collection;\nuse Illuminate\\Support\\Str",
+      "sliced_preview": ""
+    },
+    {
+      "index": 96,
+      "filename": "bad_3777_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Vulnerable\n\nStep-by-step analysis:\n\n1. The code retrieves the 'term' parameter from a POST request without proper sanitization/validation beyond checking if it is not empty (`$this->output(self::BAD_REQUEST, null, 'term-parameter is missing.');`). This can potentially allow an attacker to inject mal",
+      "code_preview": "<?php\n\n/*\n * This file is part of Fork CMS.\n *\n * For the full copyright and license information, please view the license\n * file that was distributed",
+      "sliced_preview": ""
+    },
+    {
+      "index": 97,
+      "filename": "good_3306_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nStep-by-step analysis:\n\n1. The code is part of a PHP application that interacts with user input (`$_GET` parameters) and uses these inputs to construct URLs for navigation within the timeline feature (e.g., `$t_href`). This implies potential XSS vulnerabilities if proper output encoding/",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 98,
+      "filename": "bad_3776_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. The code does not properly sanitize user input before outputting it to the browser, which is a common way for XSS attacks to occur in PHP applications using frameworks like CodeIgniter (noted by `parent::prepValueForDB($value)`). If `$this->value` comes from untrusted sources and gets directly us",
+      "code_preview": "<?php\n/**\n * An abstract base class for the string field types (i.e. Varchar and Text)\n * @package sapphire\n * @subpackage model\n * @author Pete Bacon",
+      "sliced_preview": ""
+    },
+    {
+      "index": 99,
+      "filename": "good_4976_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "VULNERABLE\n\nThe PHP code provided appears to be vulnerable to Cross-Site Scripting (XSS) attacks, specifically CWE-79: Improper Neutralization of Input During Web Page Generation. Here's the analysis step by step:\n\n1. The script directly echoes user input without proper sanitization or encoding when",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Normalization process (temporarily specific to 1NF)\n *\n * @package PhpMyAdmin\n */\n\n/**\n *\n */\nr",
+      "sliced_preview": ""
+    }
+  ]
+}

@@ -1,0 +1,730 @@
+{
+  "config": {
+    "model": "llama-3.1-8b-instant",
+    "cwe": "79",
+    "prompt_mode": "sliced_cot",
+    "online": true,
+    "provider": "groq",
+    "num_samples": 100,
+    "elapsed_seconds": 915.3
+  },
+  "metrics": {
+    "accuracy": 0.62,
+    "f1_score": 0.6415,
+    "precision": 0.6071,
+    "recall": 0.68,
+    "confusion_matrix": [
+      [
+        28,
+        22
+      ],
+      [
+        16,
+        34
+      ]
+    ],
+    "errors": 0
+  },
+  "detailed_results": [
+    {
+      "index": 0,
+      "filename": "bad_303_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in: \n   - $_POST (nw_device, nw_begin_time, nw_end_time, nw_disable_hours, nw_left, nw_top, nw_height, nw_width, nw_subject, nw_content, nw_content_html)\n\n2. Data flows to:\n   - SQL query (via $sql_common)\n\n3. Is there sanitization? \n   - No\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 1,
+      "filename": "good_4206_7",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - `$_POST` (e.g., `ThemeFile.name`, `ThemeFile.contents`)\n   - `$_GET` (e.g., `$theme`, `$plugin`, `$type`, `$path`)\n\n2. Data flows through:\n   - `echo` statements (e.g., `echo h($currentPath)`, `echo $this->BcForm->input()`)\n   - `print` statements (none)\n   - SQL (none,"
+    },
+    {
+      "index": 2,
+      "filename": "bad_5158_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $buffer (text to be transformed, possibly user input)\n   - $options (transformation options, possibly user input)\n   - $meta (meta information, possibly user input)\n\n2. Data flows through the following paths:\n   - $buffer is used in several regul"
+    },
+    {
+      "index": 3,
+      "filename": "bad_5119_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User input exists in the variable `$f_return`, which is passed to the `print_bracket_link` function.\n\n2. Data flows from the `lang_get` function (which likely retrieves text from a database or translation file) to the `echo` statement, and then to the HTML output. The `$f_return` variable is also"
+    },
+    {
+      "index": 4,
+      "filename": "good_137_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (e.g., 'submit', 'imagefile')\n   - $_FILES (e.g., 'imagefile')\n\n2. Data flows through:\n   - echo and print statements (e.g., $lang['images']['message'], $lang['general']['upload'])\n   - HTML tags (e.g., <img src=\"data/image/image.png\" alt=\"\" />)\n   - File system "
+    },
+    {
+      "index": 5,
+      "filename": "good_3776_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the form of the `$name` parameter in the `__construct` method and the `$value` parameter in the `prepValueForDB` method, which can potentially contain user input from `$_GET` or `$_POST`.\n\n2. Data flows from the `$value` property in the `prepValueForDB` method to the `Convert"
+    },
+    {
+      "index": 6,
+      "filename": "good_2088_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User input exists in `$_SERVER['REQUEST_URI']`.\n\n2. Data flows from `$_SERVER['REQUEST_URI']` to `$this->_requested_page` and then to `Kohana::sanitize($this->_requested_page)`.\n\n3. Yes, there is sanitization using `Kohana::sanitize()`.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 7,
+      "filename": "good_5457_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. There are no user inputs in the provided code slice (e.g. $_GET, $_POST). However, the `get` method of the `ConfigController` class is called with a parameter `$slideshow` which could potentially be a user input.\n\n2. Data flows from the `ConfigController` class to the `JSONResponse` object, which"
+    },
+    {
+      "index": 8,
+      "filename": "bad_307_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_POST['gr_id']\n   - $_POST['gr_subject']\n   - $_POST['gr_device']\n   - $_POST['gr_admin']\n   - $_POST['gr_1_subj'] to $_POST['gr_10_subj']\n   - $_POST['gr_1'] to $_POST['gr_10']\n   - $_POST['gr_use_access']\n\n2. Data flows to:\n   - alert() function (client-side)\n   - SQ"
+    },
+    {
+      "index": 9,
+      "filename": "bad_306_9",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in: \n   - $_POST (mb_id, po_point, po_content, po_expire_term)\n\n2. Data flow:\n   - $_POST['mb_id'] to $mb_id\n   - $_POST['po_point'] to $po_point\n   - $_POST['po_content'] to $po_content\n   - $_POST['po_expire_term'] to $expire (after sanitization)\n   - $mb_id to get_member() fu"
+    },
+    {
+      "index": 10,
+      "filename": "bad_2883_4",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided code slice (e.g. $_GET, $_POST). However, the plugin is likely to interact with user data through other files (e.g. user-login-history-config.php, class-user-login-history-activator.php, etc.).\n\n2. Data flow is primarily through file inclusions and object "
+    },
+    {
+      "index": 11,
+      "filename": "good_4327_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the `$expression` variable passed to the `Blade::directive('exposeTranslations', ...)` function.\n\n2. Data flows from the `$expression` variable to the `trans($key)` function, which is likely vulnerable to XSS due to the use of `echo e($key)` and `echo e(trans($key))` without "
+    },
+    {
+      "index": 12,
+      "filename": "bad_173_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in this code slice (e.g. $_GET, $_POST).\n\n2. Data flows through string concatenation (e.g. `G_APP_GITHUB_REPO_URL`) and a constant definition.\n\n3. No sanitization is performed.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 13,
+      "filename": "good_3776_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following places:\n- `$this->value` in the `LimitCharacters`, `Summary`, `FirstSentence`, and `forTemplate` methods, which can be set through the `scaffoldFormField` and `scaffoldSearchField` methods.\n\n2. Data flows through the following places:\n- `$this->value` is passed "
+    },
+    {
+      "index": 14,
+      "filename": "good_3745_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - `$_GET['root']`\n\n2. Data flows through:\n   - `echo` (in JavaScript and PHP)\n   - `print` (not present in this code slice)\n   - SQL (not present in this code slice, but `include` is used which might include SQL queries)\n\n3. Sanitization exists:\n   - `htmlentities` is use"
+    },
+    {
+      "index": 15,
+      "filename": "bad_2088_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User input exists in `$_SERVER['REQUEST_URI']`.\n\n2. Data flows from `$_SERVER['REQUEST_URI']` to `$this->_requested_page` and then potentially to the response.\n\n3. No sanitization is performed on the user input.\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 16,
+      "filename": "bad_2543_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs do not explicitly exist in the provided code slice, but it's likely that user inputs are passed to the functions through function parameters.\n\n2. Data flows from function parameters to echo statements, which output the data to the user.\n\n3. Yes, there is sanitization using `htmlspecia"
+    },
+    {
+      "index": 17,
+      "filename": "bad_1135_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET[\"order_by\"]\n   - $_GET[\"order\"]\n   - $_GET[\"search\"]\n   - $_GET['page']\n   - $_GET['id']\n\n2. Data flows to:\n   - SQL queries (e.g., $sql_search, $sql)\n   - echo statements (e.g., displaying user input, table data)\n   - SQL results are stored in $result\n\n3. Sanitiz"
+    },
+    {
+      "index": 18,
+      "filename": "good_1958_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $banner['alt']\n   - $refresh\n   - $loc\n   - $_SERVER['QUERY_STRING']\n\n2. Data flows to:\n   - $outputHtml (string concatenation)\n   - echo (output to browser)\n\n3. Sanitization exists in:\n   - addcslashes (escapes special characters in $dest for JavaScript)\n   - urlencode"
+    },
+    {
+      "index": 19,
+      "filename": "good_3941_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - `post($this->formField->getName())` ( $_POST )\n   - `Input::file('file')` ( $_FILES )\n   - `Input::file('file')->getClientOriginalName()` ( $_FILES )\n\n2. Data flows to:\n   - `PostModel::formatHtml($content, true)` ( potentially to SQL )\n   - `Validator::make()` ( potent"
+    },
+    {
+      "index": 20,
+      "filename": "good_5547_21",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - `$vars['entity']->twitter_username` (POST or GET, depending on the context)\n   - `$vars['entity']->twitter_num` (POST or GET, depending on the context)\n   - `$script_url` (POST or GET, depending on the context)\n\n2. Data flows through:\n   - `echo` statements\n   - `elgg_v"
+    },
+    {
+      "index": 21,
+      "filename": "good_58_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n- `$User->user->username` (from database or session)\n- `$User->settings->{'2fa_name'}` (from database or session)\n- `$User->user->{'2fa'}` (from database or session)\n- `$User->user->{'2fa_secret'}` (from database or session)\n- `$_POST` (from form submiss"
+    },
+    {
+      "index": 22,
+      "filename": "good_2267_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User input exists in the variable `$file` which is retrieved using `__get('file')`. This suggests that the input comes from a GET request.\n\n2. Data flows from the variable `$file` to the `__get` function, then to the `osc_add_hook` function, and finally to the `customPageHeader` function where it"
+    },
+    {
+      "index": 23,
+      "filename": "good_430_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $write['wr_num'] ( likely from $_GET or $_POST)\n   - $board['bo_include_head'] and $board['bo_content_head'] ( likely from database, but can be user-controlled)\n   - $board['bo_content_tail'] ( likely from database, but can be user-controlled)\n\n2. Data flows to:\n   - SQ"
+    },
+    {
+      "index": 24,
+      "filename": "bad_429_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n- $w\n- $sfl\n- $stx\n- $sst\n- $sod\n- $page\n- $group['gr_id']\n- $group['gr_subject']\n- $gr['gr_device']\n- $gr['gr_admin']\n- $gr['gr_use_access']\n- $gr['gr_'.$i.'_subj'] and $gr['gr_'.$i] in the for loop\n\nThese inputs are mostly coming from the database, "
+    },
+    {
+      "index": 25,
+      "filename": "bad_4976_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_REQUEST (GET and POST)\n   - $_POST (specifically for 'repeatingColumns')\n\n2. Data flows through:\n   - echo statements\n   - JSON encoding\n   - SQL (via PMA_createNewTablesFor2NF and PMA_createNewTablesFor3NF)\n\n3. Sanitization exists in:\n   - json_decode() for JSON data"
+    },
+    {
+      "index": 26,
+      "filename": "bad_3354_4",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided code slice (e.g. $_GET, $_POST).\n\n2. Data does not flow to any external sources like echo, print, or SQL. The data is only being assigned to global variables.\n\n3. No, there is no sanitization in the provided code slice.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 27,
+      "filename": "bad_667_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the form of `$attachment_id` which is passed to the class methods `hooks_delete_attachment`, `hooks_edit_attachment`, and `hooks_add_attachment`. \n\n2. Data flows from the class methods to the `aal_insert_log` function, which is not shown in this code slice. However, it is lik"
+    },
+    {
+      "index": 28,
+      "filename": "good_5560_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['base']\n   - $_GET['vn']\n   - $_GET['r']\n   - $_GET['cs']\n   - $_GET['ce']\n\n2. Data flows through:\n   - `rawurlencode` (encoding)\n   - `htmlentities` (encoding)\n   - `print` and `echo` (output)\n   - `retrieve_metrics_cache` (function call)\n   - `get_available_view"
+    },
+    {
+      "index": 29,
+      "filename": "good_430_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n- $_POST (e.g. $w, $sfl, $stx, $sst, $sod, $page, $gr_id, $gr_subject, $gr_device, $gr_admin, $gr_use_access)\n- $group['gr_id'] (from database)\n- $group['gr_subject'] (from database)\n- $gr['gr_device'] (from database)\n- $gr['gr_admin'] (from database)"
+    },
+    {
+      "index": 30,
+      "filename": "bad_303_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_FILES (file uploads)\n   - $fm_id (variable, possibly from user input)\n\n2. Data flows to:\n   - File system (via move_uploaded_file)\n   - URL (via goto_url function)\n\n3. Sanitization: no\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 31,
+      "filename": "bad_305_9",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in: \n   - $_POST (mb_id, po_point, po_content, po_expire_term)\n\n2. Data flow:\n   - $_POST['mb_id'] to $mb_id\n   - $_POST['po_point'] to $po_point\n   - $_POST['po_content'] to $po_content\n   - $_POST['po_expire_term'] to $expire (after sanitization)\n   - $mb_id to get_member() fu"
+    },
+    {
+      "index": 32,
+      "filename": "good_1676_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET (e.g., path, returnid, func, CKEditorFuncNum, type)\n\n2. Data flows through:\n   - echo and print statements to display user input and data\n   - SQL is not directly used in this code slice, but it's possible that the included files (e.g., inc/common.php) might use S"
+    },
+    {
+      "index": 33,
+      "filename": "good_1462_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in: $_GET\n2. Data flows to: $_GET (and then to preg_replace function)\n3. Is there sanitization: yes\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 34,
+      "filename": "good_2543_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $output (passed to _htmlsc, _htmle, and _auto_link functions)\n- $line (passed to _trans function)\n- $str (passed to _auto_link function)\n- $id (passed to _trans function)\n- $default (passed to _trans function)\n\n2. Data flows through the following pa"
+    },
+    {
+      "index": 35,
+      "filename": "bad_482_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided code slice (e.g. $_GET, $_POST).\n\n2. Data does not flow directly to user-facing outputs (e.g. echo, print) or to SQL queries. However, it is stored in global variables.\n\n3. No, there is no sanitization in the provided code slice.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 36,
+      "filename": "bad_306_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_FILES (file uploads)\n   - $w (GET parameter)\n   - $co_id (GET parameter)\n\n2. Data flows to:\n   - File system (via move_uploaded_file)\n   - chmod (file permission change)\n   - alert (JavaScript function, potentially vulnerable to XSS)\n\n3. Sanitization: no\n\nVERDICT: VUL"
+    },
+    {
+      "index": 37,
+      "filename": "good_3206_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET (filter_id)\n   - $_POST (filter, type, view_type, print, offset)\n\n2. Data flows through:\n   - echo (for $t_action, $t_filter['_view_type'], $t_url)\n   - print (for hidden input fields)\n   - lang_get (for translations, e.g. 'filters', 'search', 'use_query')\n   - st"
+    },
+    {
+      "index": 38,
+      "filename": "good_5100_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User input exists in the form of the 'attributename' attribute of the $node object, which is likely user-provided data.\n\n2. Data flows from the $node object's 'attributename' attribute to a comparison with 'innerHTML', and then to a removal operation on the $node object's parent node.\n\n3. Yes, th"
+    },
+    {
+      "index": 39,
+      "filename": "good_5457_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User input exists in the `$extramediatypes` parameter, which is a boolean value passed to the `get` method.\n\n2. Data flows from the `$extramediatypes` parameter to the `getConfig` method, which is not shown in this code slice. However, it's likely that this method interacts with the `ConfigServic"
+    },
+    {
+      "index": 40,
+      "filename": "bad_1292_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The user inputs that exist are:\n- `$_REQUEST[\"id\"]` (also accessible through `$_GET` and `$_POST`)\n- `$_REQUEST[\"fax_uuid\"]` (also accessible through `$_GET` and `$_POST`)\n\n2. Data flows through:\n- `echo` statements (printing user data directly to the screen)\n- SQL queries (using user input in th"
+    },
+    {
+      "index": 41,
+      "filename": "bad_5560_8",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['base']\n   - $_GET['vn']\n   - $_GET['r']\n   - $_GET['cs']\n   - $_GET['ce']\n\n2. Data flows through:\n   - echo/print statements in HTML and PHP\n   - The `htmlentities()` function is used to sanitize some user input data\n\n3. Sanitization exists (yes)\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 42,
+      "filename": "good_5456_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $location\n   - $features\n   - $etag\n   - $mediatypes\n   - $fileId\n   - $filename\n\n2. Data flows through the following methods:\n   - $this->getFilesAndAlbums()\n   - $this->getDownload()\n   - $this->jsonError()\n   - $this->getHttpStatusCode()\n   - "
+    },
+    {
+      "index": 43,
+      "filename": "good_3756_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User input exists in the `$var` parameter, which can be any type of variable (e.g., $_GET, $_POST).\n\n2. Data flows from the `$var` parameter to the `var_dump` function, then to the `$output` variable, and finally to the `echo` statement if `$echo` is true.\n\n3. Yes, there is sanitization in the fo"
+    },
+    {
+      "index": 44,
+      "filename": "good_3353_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in this code slice (e.g. $_GET, $_POST).\n\n2. Data does not flow to any external sources like echo, print, or SQL. It's just variable assignments.\n\n3. No, there is no sanitization in this code slice.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 45,
+      "filename": "good_3383_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User input: `$patterns` (not explicitly stated, but likely from user input or another variable)\n2. Data flow: None explicitly shown, but likely used in a regular expression or string manipulation function\n3. Sanitization: Yes (removing non-printable characters)\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 46,
+      "filename": "good_703_9",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided code slice (e.g. $_GET, $_POST).\n\n2. Data flows from the `get_dbversion()` function to the `DBVERSION` constant, which is then used in the `SCRIPT_PREFIX` constant.\n\n3. No sanitization is performed on the data.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 47,
+      "filename": "bad_427_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $write['wr_num'] ( likely from $_GET or $_POST)\n   - $board['bo_include_head'] ( likely from $_GET or $_POST)\n   - $board['bo_content_head'] ( likely from $_GET or $_POST)\n   - $board['bo_content_tail'] ( likely from $_GET or $_POST)\n   - $board['bo_include_tail'] ( lik"
+    },
+    {
+      "index": 48,
+      "filename": "bad_305_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $_POST (e.g. $w, $sfl, $stx, $sst, $sod, $page, $gr_id, $gr_subject, $gr_device, $gr_admin, $gr_use_access)\n   - $group (database query result)\n\n2. Data flows through the following paths:\n   - User input is echoed directly in the HTML (e.g. $g5['"
+    },
+    {
+      "index": 49,
+      "filename": "bad_5547_13",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n- $params['entity']->username (from $_GET or $_POST)\n- $params['entity']->guid (from $_GET or $_POST)\n- $params['entity']->blog_enable (from $_GET or $_POST)\n- $params['entity']->status (from $_GET or $_POST)\n- $params['entity']->excerpt (from $_GET o"
+    },
+    {
+      "index": 50,
+      "filename": "good_425_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in: \n   - $_POST (code, me_name, me_link, me_target, me_order, me_use, me_mobile_use)\n\n2. Data flows to:\n   - SQL queries (insert into {$g5['menu_table']})\n\n3. Sanitization exists in:\n   - array_map_deep('trim', $_POST) (removes whitespace)\n   - preg_match('/^javascript/', $_POS"
+    },
+    {
+      "index": 51,
+      "filename": "bad_3777_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User input exists in `$_POST` (specifically, the 'term' parameter).\n2. Data flows from `$_POST` to `SpoonFilter::getPostValue('term', null, '')` and then to `FrontendSearchModel::getStartsWith($term, FRONTEND_LANGUAGE, $limit)`. The result is then echoed back to the user through `$this->output(se"
+    },
+    {
+      "index": 52,
+      "filename": "good_5275_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in this code slice (e.g. $_GET, $_POST).\n\n2. Data does not flow to any external sources like echo, print, or SQL. It's just variable assignments.\n\n3. No, there is no sanitization.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 53,
+      "filename": "bad_302_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in: \n   - $_POST (nw_device, nw_begin_time, nw_end_time, nw_disable_hours, nw_left, nw_top, nw_height, nw_width, nw_subject, nw_content, nw_content_html)\n\n2. Data flows to:\n   - SQL query (via $sql_common)\n\n3. Is there sanitization? \n   - No\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 54,
+      "filename": "good_5456_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in the provided code slice (e.g. $_GET, $_POST). However, the code does interact with user input indirectly through the $request object, which is a mock object in this case.\n\n2. Data flows through the $request object, which is used to retrieve the request ID, and through "
+    },
+    {
+      "index": 55,
+      "filename": "bad_305_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $nw['nw_device']\n   - $nw['nw_disable_hours']\n   - $nw['nw_begin_time']\n   - $nw['nw_end_time']\n   - $nw['nw_left']\n   - $nw['nw_top']\n   - $nw['nw_width']\n   - $nw['nw_height']\n   - $nw['nw_subject']\n   - $nw['nw_content']\n   - $nw_id\n   - $w\n\n2"
+    },
+    {
+      "index": 56,
+      "filename": "good_5547_14",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n- `$_GET` variables in the `bookmarks/bookmarklet/{$page[0]}` URL.\n- `$_GET` variables in the \"bookmarks/add/$user_guid?address=$address\" URL.\n- `$_POST` variables are not directly used, but `elgg_view_icon('push-pin-alt')` might be vulnerable to XSS if "
+    },
+    {
+      "index": 57,
+      "filename": "bad_4845_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in: \n   - $_POST (multiple times)\n\n2. Data flows to:\n   - echo/echo-like statements (input fields)\n   - include (PHP file inclusion)\n\n3. Sanitization exists: \n   - Yes (e.g., trim, str_replace, floatval, htmlspecialchars)\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 58,
+      "filename": "bad_3742_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_GET\n   - $_POST\n   - $_SERVER\n   - $_COOKIE\n   - $_SESSION\n\n2. Data flows through:\n   - include() function (loading autoconfig.php)\n   - array_merge() function (merging POST and AUTOCONFIG arrays)\n   - OC_Template::printGuestPage() function (printing guest page)\n   - "
+    },
+    {
+      "index": 59,
+      "filename": "bad_2361_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $p_entrypoint (GET)\n   - $p_field_name (GET)\n   - $p_attributes_array (POST, possibly other sources)\n\n2. Data flows through:\n   - echo (HTML output)\n   - $g_projax->text_field_with_auto_complete (object method call)\n   - SQL (config_get function, but not directly in thi"
+    },
+    {
+      "index": 60,
+      "filename": "good_703_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in $_POST['subnetId'] and potentially in the $script_result->values->alive array, which is not explicitly shown in the code snippet but is mentioned in the comments.\n\n2. Data flows from user input in $_POST['subnetId'] to the $cmd variable, which is then executed using the exec "
+    },
+    {
+      "index": 61,
+      "filename": "bad_305_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in: \n   - $_POST (nw_device, nw_begin_time, nw_end_time, nw_disable_hours, nw_left, nw_top, nw_height, nw_width, nw_subject, nw_content, nw_content_html)\n\n2. Data flows to:\n   - SQL query (via $sql_common)\n\n3. Is there sanitization? \n   - No\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 62,
+      "filename": "good_306_7",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $w\n   - $nw_id\n   - $nw_device\n   - $nw_disable_hours\n   - $nw_begin_time\n   - $nw_end_time\n   - $nw_left\n   - $nw_top\n   - $nw_width\n   - $nw_height\n   - $nw_subject\n   - $nw_content\n\n   These inputs are coming from the form submission.\n\n2. Data"
+    },
+    {
+      "index": 63,
+      "filename": "good_5158_8",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the `$options` array, which is passed to the `applyTransformation` method. The specific options are `$options[0]`, `$options[1]`, and `$options[2]`.\n\n2. Data flows from the `$options` array to the `applyTransformation` method, where it is used to construct an HTML link. The d"
+    },
+    {
+      "index": 64,
+      "filename": "good_1157_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_REQUEST (specifically, $_REQUEST[\"c\"])\n\n2. Data flows through:\n   - echo statements (displaying user input and text data)\n   - SQL is not directly used, but XML data is retrieved from a PHP script\n   - JavaScript code updates the HTML content of elements with IDs 'aja"
+    },
+    {
+      "index": 65,
+      "filename": "bad_423_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (e.g., $this->getRequest()->getPost('redirect'))\n   - $_SERVER (e.g., $request->getServer('REQUEST_URI'))\n   - $_GET (not explicitly used, but $this->getRequest() can retrieve GET data)\n\n2. Data flows to:\n   - SQL queries (e.g., Zend_Auth_Adapter_DbTable)\n   - Vi"
+    },
+    {
+      "index": 66,
+      "filename": "good_1978_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['action']\n   - $_GET['id']\n   - $_GET['visibility']\n   - $_REQUEST['type']\n\n2. Data flows to:\n   - Security::remove_XSS() function (sanitization)\n   - api_get_path() function\n   - api_get_self() function\n   - header() function (HTTP redirect)\n   - $interbreadcrumb"
+    },
+    {
+      "index": 67,
+      "filename": "good_5547_23",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in this code slice (e.g. $_GET, $_POST).\n2. Data does not flow to any external sources like SQL or output functions (echo, print).\n3. No, there is no sanitization.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 68,
+      "filename": "bad_1741_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in: \n   - $_REQUEST (which includes both GET and POST requests)\n\n2. Data flows to:\n   - Variable assignments ($pId, $pCount)\n   - String manipulation (str_replace)\n   - Output (echo)\n\n3. Sanitization exists: \n   - Yes (str_replace is used to replace '<%' with '&lt;')\n\nVERDICT: V"
+    },
+    {
+      "index": 69,
+      "filename": "bad_3340_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - `$_GET['id']`\n   - `$_GET['download']`\n   - `$_GET['password']`\n   - `$_GET['id']` (again, in the download link)\n\n2. Data flows through:\n   - `$_GET['id']` to `check_dir` function and `select` query\n   - `$_GET['download']` to conditional statement\n   - `$_GET['password"
+    },
+    {
+      "index": 70,
+      "filename": "bad_5452_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following places:\n- `$request->getQueryParameters()` (GET parameters)\n- `$request->getPath()` (path of the request)\n- `$val` in the `getPhoto` function (URI value)\n\n2. Data flows through the following places:\n- `$request->getQueryParameters()` to `$queryParams`\n- `$reques"
+    },
+    {
+      "index": 71,
+      "filename": "bad_305_10",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET (e.g. $bk_no, $w, $page)\n   - $_POST (none explicitly mentioned, but $bk_name, $bk_hp, $bk_receipt, $bk_memo are user inputs)\n\n2. Data flows to:\n   - SQL queries (e.g. sql_query, sql_fetch)\n   - Alerts (e.g. alert)\n   - goto_url (e.g. goto_url)\n   - Variables (e.g"
+    },
+    {
+      "index": 72,
+      "filename": "bad_3590_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $products['item_id'] (from $_POST)\n   - $products['quantity'] (from $_POST)\n   - $products['price'] (from database)\n   - $products['tax_class_id'] (from database)\n   - $products['date_added'] (from database)\n   - $products['name'] (from database)"
+    },
+    {
+      "index": 73,
+      "filename": "bad_3408_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $_COOKIE['menu_contracted']\n- CURRENT_USER_LEVEL\n- CURRENT_USER_ID\n- $global_name\n\n2. Data flows through the following:\n- echo and print statements for HTML output\n- SQL queries are not directly visible, but the `in_session_or_cookies` function sugg"
+    },
+    {
+      "index": 74,
+      "filename": "good_302_10",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n- $bk_no (GET)\n- $bk_name (POST)\n- $bk_hp (POST)\n- $bk_receipt (POST)\n- $bk_memo (POST)\n- $bg_no (GET)\n- $w (GET)\n- $page (GET)\n- $ap (GET)\n\n2. Data flows through the following paths:\n- SQL queries (e.g. sql_query, sql_fetch)\n- Variable assignments (e"
+    },
+    {
+      "index": 75,
+      "filename": "bad_2516_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in $_POST (IDKEY).\n2. Data flows from $_POST to backend code (IDKEY), and possibly to SQL (not shown in this code slice).\n3. No sanitization (IDKEY is introduced without any sanitization mentioned).\n\nVERDICT: VULNERABLE"
+    },
+    {
+      "index": 76,
+      "filename": "bad_5158_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the `$options` array, which is passed to the `applyTransformation` method. The `$options` array can contain user input from various sources, including `$_GET` and `$_POST`.\n\n2. Data flows from the `$buffer` variable (which is not explicitly defined as user input) to the `mb_s"
+    },
+    {
+      "index": 77,
+      "filename": "good_58_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['subnetId']\n\n2. Data flows through:\n   - `$_GET['subnetId']` to `include ($_GET['subnetId'].\".php\");`\n   - `$_GET['subnetId']` to `if(!array_key_exists($_GET['subnetId'], $subpages))`\n\n3. Sanitization exists in:\n   - `$csrf = $User->Crypto->csrf_cookie (\"create\", "
+    },
+    {
+      "index": 78,
+      "filename": "good_1142_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_GET['id'] (line 9)\n\n2. Data flows through:\n   - SQL query (lines 25-27)\n   - echo statements (multiple lines)\n   - escape function (lines 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105,"
+    },
+    {
+      "index": 79,
+      "filename": "good_3778_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - $_POST (in the validateForm() method, specifically in the lines where it retrieves the 'term' and 'length' values)\n\n2. Data flows through:\n   - The validateForm() method, where it retrieves the 'term' value from $_POST and sanitizes it using SpoonFilter::htmlspecialchar"
+    },
+    {
+      "index": 80,
+      "filename": "good_980_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - `$title` (from `eT($title)`)\n   - `$ico` (from `CHtml::encode($ico)`)\n   - `$description` (from `eT($description)`)\n\n2. Data flows through:\n   - `echo` (in `echo $sizeClass;`, `echo CHtml::encode(str_replace(' ', '_', strtolower(strip_tags($title))))`, `echo CHtml::enco"
+    },
+    {
+      "index": 81,
+      "filename": "good_4292_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in: $_POST\n2. Data flows into: HTML output (echo/<?=), file input\n3. Sanitization exists: yes (htmlspecialchars)\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 82,
+      "filename": "good_2773_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User input exists in $_GET.\n2. Data flows from $_GET to a regular expression check and then potentially to a return statement.\n3. Yes, there is sanitization (via regular expression).\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 83,
+      "filename": "bad_3715_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - `$page_title` (potentially from $_GET or $_POST)\n   - `$site_name` (potentially from $_GET or $_POST)\n   - `$header_block` (potentially from $_GET or $_POST)\n   - `$header_nav` (potentially from $_GET or $_POST)\n   - `$languages` (potentially from $_GET or $_POST)\n   - "
+    },
+    {
+      "index": 84,
+      "filename": "good_4929_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET[\"message\"]\n   - $_COOKIE['phpMyAdmin']\n   - $_SESSION['Import_message']['message']\n   - $_SESSION['Import_message']['go_back_url']\n   - $_GET[\"id\"]\n\n2. Data flows to:\n   - echo statements\n   - header() function\n   - PMA_importAjaxStatus() function\n\n3. Sanitization"
+    },
+    {
+      "index": 85,
+      "filename": "bad_223_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in the form of:\n   - $_POST (in the input fields \"tags\" and submit button \"add-tags-button\")\n   - $_POST (in the hidden fields \"tags-to-add\" and \"tags-to-delete\")\n\n2. Data flows through:\n   - echo (in the form of HTML output)\n   - option('tag_delimiter') (which is likely a confi"
+    },
+    {
+      "index": 86,
+      "filename": "good_4206_2",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in:\n   - `$this->request->data['ThemeFile']['type']` (POST)\n   - `$this->request->data['ThemeFile']['name']` (POST)\n   - `$this->request->data['ThemeFile']['contents']` (POST)\n   - `$this->request->data['ThemeFile']['ext']` (POST)\n   - `$this->request->data['ThemeFile']['parent'"
+    },
+    {
+      "index": 87,
+      "filename": "bad_5457_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The user input exists in the `$extramediatypes` parameter of the `get` method, which is a boolean value.\n\n2. Data flows from the `$extramediatypes` parameter to the `getConfig` method, which is not shown in this code slice. However, it's likely that the data is used to retrieve configuration sett"
+    },
+    {
+      "index": 88,
+      "filename": "good_4136_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. There are no user inputs in this code slice.\n2. There is no data flow to echo, print, or SQL in this code slice.\n3. No, there is no sanitization.\n\nVERDICT: SAFE"
+    },
+    {
+      "index": 89,
+      "filename": "good_1741_3",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in `$_REQUEST` (which includes both `$_GET` and `$_POST`).\n\n2. Data flows from `$_REQUEST` to variables `$pId` and `$pCount`, then to `htmlspecialchars()` for sanitization, and finally to `echo` for output.\n\n3. Yes, there is sanitization using `htmlspecialchars()`.\n\nVERDICT: SAF"
+    },
+    {
+      "index": 90,
+      "filename": "bad_304_7",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following variables:\n   - $w\n   - $nw_id\n   - $nw_device\n   - $nw_disable_hours\n   - $nw_begin_time\n   - $nw_end_time\n   - $nw_left\n   - $nw_top\n   - $nw_width\n   - $nw_height\n   - $nw_subject\n   - $nw_content\n\n   These inputs are coming from the form submission.\n\n2. Data"
+    },
+    {
+      "index": 91,
+      "filename": "bad_428_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $board['bo_mobile_content_tail']\n   - $board['bo_content_tail']\n   - $board['bo_include_tail']\n\n2. Data flows through:\n   - echo\n   - stripslashes (removes slashes, but does not sanitize)\n   - include_once (includes a file)\n\n3. Sanitization exists in:\n   - stripslashes "
+    },
+    {
+      "index": 92,
+      "filename": "bad_3300_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - `$_GET['challenge']`\n   - `$_GET` (in the `verify()` function)\n   - `php://input` (in the `webhook()` function, which is a POST request body)\n   - `getallheaders()['X-Dropbox-Signature']` (in the main script)\n\n2. Data flows through:\n   - `echo` statements (e.g., `echo $"
+    },
+    {
+      "index": 93,
+      "filename": "bad_4305_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - `$oQuota->name` (from database, but can be manipulated by user)\n   - `$oQuota->sid` (from database, but can be manipulated by user)\n   - `$oQuota->id` (from database, but can be manipulated by user)\n   - `$_POST` (from form submission, e.g. `quota_qid`)\n\n2. Data flows t"
+    },
+    {
+      "index": 94,
+      "filename": "bad_3306_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET (e.g., 'all', 'days')\n\n2. Data flows through:\n   - echo and print statements\n   - lang_get() function (which might use user input)\n   - http_build_query() function (which might use user input)\n   - SQL (in the timeline_print_events() function, which is not shown h"
+    },
+    {
+      "index": 95,
+      "filename": "bad_4198_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. User inputs exist in the following methods:\n- `registerPermissions(ItemPermission $permission)`: The `group` and `items` properties of the `ItemPermission` object are user inputs.\n- `registerSearch(array $model)`: The `$model` array is a user input.\n- `registerResource(string $key, $value)`: The "
+    },
+    {
+      "index": 96,
+      "filename": "bad_3777_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. User input exists in the form of `$term` which is not explicitly shown in the provided code slice, but it is assumed to be passed from somewhere (e.g., $_GET, $_POST).\n\n2. Data flows from `$term` to `$this->statistics['term']`, then to `FrontendSearchModel::save($this->statistics)`, and potential"
+    },
+    {
+      "index": 97,
+      "filename": "good_3306_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_GET (e.g., $t_url_params, $t_url_params['all'])\n\n2. Data flows through:\n   - echo (e.g., lang_get, date, http_build_query)\n   - print (e.g., timeline_print_events)\n   - SQL (not directly shown, but implied through config_get and lang_get functions)\n\n3. Sanitization ex"
+    },
+    {
+      "index": 98,
+      "filename": "bad_3776_1",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "1. The user input exists in the `$value` parameter of the `prepValueForDB` method, which is not explicitly stated as being sanitized.\n\n2. Data flows from the `$value` parameter of the `prepValueForDB` method to the `Convert::raw2sql` function, and then to the SQL database.\n\n3. Yes, there is sanitiza"
+    },
+    {
+      "index": 99,
+      "filename": "good_4976_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. User inputs exist in:\n   - $_REQUEST (GET and POST)\n   - $_POST (specifically for 'repeatingColumns')\n\n2. Data flows through:\n   - echo statements\n   - JSON encoding\n   - SQL (via PMA_createNewTablesFor2NF and PMA_createNewTablesFor3NF functions)\n\n3. Sanitization exists in:\n   - PMA_isValid funct"
+    }
+  ]
+}

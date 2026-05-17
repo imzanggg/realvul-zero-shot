@@ -1,0 +1,930 @@
+{
+  "config": {
+    "model": "llama3.2:3b",
+    "cwe": "79",
+    "prompt_mode": "cot",
+    "use_slice": false,
+    "num_samples": 100,
+    "elapsed_seconds": 615.7,
+    "avg_compression_ratio": 1.0
+  },
+  "metrics": {
+    "accuracy": 0.53,
+    "f1_score": 0.6466,
+    "precision": 0.5181,
+    "recall": 0.86,
+    "confusion_matrix": [
+      [
+        10,
+        40
+      ],
+      [
+        7,
+        43
+      ]
+    ],
+    "errors": 0
+  },
+  "detailed_results": [
+    {
+      "index": 0,
+      "filename": "bad_303_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) (CWE-79):\n\n1. The code uses user input directly in SQL queries without proper sanitization or escaping, which makes it vulnerable to XSS attacks.\n2. Specifically, the use of `$_POST['nw_device']`, `$_POST['nw_begin_time']`, etc. in t",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 1,
+      "filename": "good_4206_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Identify user input**: The code processes several user inputs, including `$theme`, `$plugin`, `$type`, and `$path`. These variables are not validated or sanitized before being used in the t",
+      "code_preview": "<?php\n/**\n * baserCMS :  Based Website Development Project <http://basercms.net>\n * Copyright (c) baserCMS Users Community <http://basercms.net/commun",
+      "sliced_preview": ""
+    },
+    {
+      "index": 2,
+      "filename": "bad_5158_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Here's a step-by-step analysis of the code:\n\n1. The code uses `mb_strtolower()` to convert the `$options[2]` value to lowercase, which is a good practice to prevent potential issues with case sensitivity.\n\n2. However, in the line where it checks if `$options[2] == 'local'`, it does not perform any v",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Abstract class for the date format transformations plugins\n *\n * @package    PhpMyAdmin-Transfo",
+      "sliced_preview": ""
+    },
+    {
+      "index": 3,
+      "filename": "bad_5119_2",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation**: The code uses `gpc_get_int` and `gpc_get_string` to retrieve input values from the request. However, it does not validate these inputs against a whitelist of allowed char",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 4,
+      "filename": "good_137_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation**: The code checks if the uploaded file type is one of JPG, PNG, or GIF using `in_array($_FILES['imagefile']['type'], array('image/pjpeg', 'image/jpeg','image/png', 'image/",
+      "code_preview": "<?php\n/*\n * This file is part of pluck, the easy content management system\n * Copyright (c) pluck team\n * http://www.pluck-cms.org\n\n * Pluck is free s",
+      "sliced_preview": ""
+    },
+    {
+      "index": 5,
+      "filename": "good_3776_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `Convert::raw2sql()` to convert the value to a SQL string, which could potentially lead to XSS if the input is not properly sanitized.\n\n2. The `prepValueForDB` method checks if the value is an empty string and converts it to a SQL string using `Convert::raw2sql()`. However, this che",
+      "code_preview": "<?php\n/**\n * An abstract base class for the string field types (i.e. Varchar and Text)\n * @package sapphire\n * @subpackage model\n * @author Pete Bacon",
+      "sliced_preview": ""
+    },
+    {
+      "index": 6,
+      "filename": "good_2088_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Identify user input**: The code uses `rawurldecode` to decode URL parameters (`message` and `origuri`) from the request.\n2. **Check for sanitization**: The code sanitizes the decoded URL using `Ko",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n* Error controller\n*\n* @package    OC\n* @category   Controller\n* @author     Chema <c",
+      "sliced_preview": ""
+    },
+    {
+      "index": 7,
+      "filename": "good_5457_5",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), we need to check if there are any user-inputted data being used in the generation of HTML responses without proper sanitization.\n\n1. The `mockConfigRetrievalError` function returns an error message with a `<br>` tag, which could poten",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 8,
+      "filename": "bad_307_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `$_POST['gr_subject']` and other variables directly without proper sanitization, which makes it vulnerable to XSS attacks.\n\n2. The use of `preg_match(\"/^([A-Za-z0-9_]{1,10})$/\", $_POST['gr_id'])` is not sufficient to prevent XSS as it only checks for alphanumeric characters and unde",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nif ($w == 'u')\n    check_demo();\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'su",
+      "sliced_preview": ""
+    },
+    {
+      "index": 9,
+      "filename": "bad_306_9",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `preg_replace` to remove non-numeric characters from the `po_expire_term` input. However, this does not prevent XSS attacks, as an attacker",
+      "code_preview": "<?php\n$sub_menu = \"200200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\ncheck_admin_token();\n\n$mb_id = $_POST['mb_id'];\n$po_po",
+      "sliced_preview": ""
+    },
+    {
+      "index": 10,
+      "filename": "bad_2883_4",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Check for user input validation**: The code does not appear to validate any user input, which is a common vulnerability vector for XSS attacks.\n2. **Inspect the use of output buffering and escapin",
+      "code_preview": "<?php\n/**\n * The plugin bootstrap file\n *\n * This file is read by WordPress to generate the plugin information in the plugin\n * Dashboard. This file a",
+      "sliced_preview": ""
+    },
+    {
+      "index": 11,
+      "filename": "good_4327_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. The code uses `URL::forceRootUrl` and `URL::forceScheme` to set the root URL of the application, which could potentially allow an attacker to manipulate the URL scheme if they can inject malicious content into the `$appUrl` variable.\n2. The custom validation methods (`image_extension`, `no_double",
+      "code_preview": "<?php namespace BookStack\\Providers;\n\nuse Blade;\nuse BookStack\\Entities\\Book;\nuse BookStack\\Entities\\Bookshelf;\nuse BookStack\\Entities\\BreadcrumbsView",
+      "sliced_preview": ""
+    },
+    {
+      "index": 12,
+      "filename": "bad_173_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "This PHP code does not appear to be vulnerable to Cross-Site Scripting (XSS) as it only defines constants and does not include any user-inputted data. The values of the defined constants are hardcoded and do not contain any executable code.\n\nVERDICT: SAFE",
+      "code_preview": "<?php\ndefine('G_APP_NAME', 'Chevereto Free');\ndefine('G_APP_VERSION', '1.0.12');\ndefine('G_APP_GITHUB_OWNER', 'Chevereto');\ndefine('G_APP_GITHUB_REPO'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 13,
+      "filename": "good_3776_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into smaller steps:\n\n1. **Check for user input**: The `LimitCharacters` method takes two parameters: `$limit` and `$add`. These are not directly related to user input, but the `$value` parameter is set using",
+      "code_preview": "<?php\n/**\n * Represents a large text field that contains HTML content.\n * This behaves similarly to {@link Text}, but the template processor won't esc",
+      "sliced_preview": ""
+    },
+    {
+      "index": 14,
+      "filename": "good_3745_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, we'll follow these steps:\n\n1. **Check user input**: Look for any user-input data that is not properly sanitized or validated.\n\n2. **Inspect JavaScript code**: Review the JavaScript code for potential XSS vulnerabilities, especi",
+      "code_preview": "<?php\n\n$l = OC_L10N::get('gallery');\n$root = !empty($_GET['root']) ? $_GET['root'] : '/';\n?>\n<style>\ndiv.gallery_div {position:relative; display: inli",
+      "sliced_preview": ""
+    },
+    {
+      "index": 15,
+      "filename": "bad_2088_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Check user input**: The code uses `rawurldecode` to decode URL parameters (`message` and `origuri`) before assigning them to instance variables. This is a good practice to prevent XSS attac",
+      "code_preview": "<?php defined('SYSPATH') or die('No direct script access.');\n/**\n* Error controller\n*\n* @package    OC\n* @category   Controller\n* @author     Chema <c",
+      "sliced_preview": ""
+    },
+    {
+      "index": 16,
+      "filename": "bad_2543_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Check for user input**: The functions `_htmlsc`, `_htmle`, and `_trans` take user-provided input as arguments without proper validation or sanitization.\n2. **Inspect escape mechanisms**: The",
+      "code_preview": "<?php\nif (!defined('BASEPATH')) exit('No direct script access allowed');\n\n/*\n * InvoicePlane\n *\n * @author\t\tInvoicePlane Developers & Contributors\n * ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 17,
+      "filename": "bad_1135_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `$_GET` variables directly without proper sanitization, which makes it vulnerable to XSS attacks.\n\n2. The code does not validate the input from `$_GET[\"order_by\"]`, `$_GET[\"order\"]`, and `$_GET[\"search\"]`. This could lead to a situation where an attacker injects malicious SQL or PHP",
+      "code_preview": "<?php\n\n//includes\n\trequire_once \"root.php\";\n\trequire_once \"resources/require.php\";\n\n//check permissions\n\trequire_once \"resources/check_auth.php\";\n\tif ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 18,
+      "filename": "good_1958_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "1. The code uses `MAX_cookieAdd` and `MAX_cookieUnset` functions to manage cookies, but it does not validate the input data before adding or removing cookies. This could lead to a potential XSS vulnerability if an attacker can manipulate the `$n` variable.\n\n2. The code uses `MAX_commonRegisterGlobal",
+      "code_preview": "<?php\n\n/*\n+---------------------------------------------------------------------------+\n| Revive Adserver                                             ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 19,
+      "filename": "good_3941_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Here's the analysis of the code:\n\n1. The `checkUploadPostback` method checks if a POST request with the key 'X_BLOG_IMAGE_UPLOAD' is present, which suggests that this is an anti-CSRF measure to prevent cross-site request forgery (CSRF) attacks.\n\n2. However, there is no validation or sanitization of ",
+      "code_preview": "<?php namespace RainLab\\Blog\\FormWidgets;\n\nuse Lang;\nuse Input;\nuse Response;\nuse Validator;\nuse RainLab\\Blog\\Models\\Post as PostModel;\nuse Backend\\Cl",
+      "sliced_preview": ""
+    },
+    {
+      "index": 20,
+      "filename": "good_5547_21",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) (CWE-79):\n\n1. The code uses `htmlspecialchars()` to escape special characters in the `$script_url` variable, which is a good practice to prevent XSS attacks.\n\n2. However, the `twitterCallback2` function is not defined anywhere in the",
+      "code_preview": "<?php\n\n/**\n * Elgg twitter view page\n *\n * @package ElggTwitter\n */\n\n$username = $vars['entity']->twitter_username;\n\nif (empty($username)) {\n\techo \"<p",
+      "sliced_preview": ""
+    },
+    {
+      "index": 21,
+      "filename": "good_58_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into smaller steps:\n\n1. **Input Validation and Sanitization**: The code does not perform any input validation or sanitization on user inputs. Specifically, the `username` variable is constructed by concatena",
+      "code_preview": "<?php if (array_key_exists(\"2fa\", $subpages)) { ?>\n\n<?php\n# verify that user is logged in\n$User->check_user_session();\n\n# init class\nrequire_once (dir",
+      "sliced_preview": ""
+    },
+    {
+      "index": 22,
+      "filename": "good_2267_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Check for user input**: The code uses the `__get` magic method to retrieve a value from an unknown source, which could potentially be user-input data.\n2. **Evaluate the use of `file_exists` and `r",
+      "code_preview": "<?php if ( ! defined('OC_ADMIN')) exit('Direct access is not allowed.');\n/*\n * Copyright 2014 Osclass\n *\n * Licensed under the Apache License, Version",
+      "sliced_preview": ""
+    },
+    {
+      "index": 23,
+      "filename": "good_430_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Identify user input**: The code uses the `$w` variable to determine the action to take. This variable is not validated or sanitized, which means it could potentially contain malicious input",
+      "code_preview": "<?php\ninclude_once('./_common.php');\n\n$g5['title'] = '비밀번호 입력';\n\nswitch ($w) {\n    case 'u' :\n        $action = G5_HTTP_BBS_URL.'/write.php';\n        ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 24,
+      "filename": "bad_429_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code does not properly validate user input. For example, in the line `echo '<a href=\"'.G5_BBS_URL.'/group.php?gr_id='.$group['gr_id'].'\" class=\"btn_",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'super' && $w == '') alert('최고관리자만 접근",
+      "sliced_preview": ""
+    },
+    {
+      "index": 25,
+      "filename": "bad_4976_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into smaller steps:\n\n1. **Input Validation and Sanitization**: The code does not perform any input validation or sanitization on user-provided data. This makes it vulnerable to XSS attacks.\n\n2. **User-Contro",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Normalization process (temporarily specific to 1NF)\n *\n * @package PhpMyAdmin\n */\n\n/**\n *\n */\nr",
+      "sliced_preview": ""
+    },
+    {
+      "index": 26,
+      "filename": "bad_3354_4",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Check for user input**: There are no user-input fields in the provided code snippet. User input is a common source of XSS vulnerabilities.\n2. **Inspect global variables**: The code uses glo",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-beta1-40692';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 27,
+      "filename": "bad_667_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `get_the_title($post->ID)` to construct the object name, which is a safe function call as it escapes any special characters in the post title.\n\n2. However, if an attacker could manipulate the `$attachment_id` parameter passed to these functions, they might be able to inject maliciou",
+      "code_preview": "<?php\nif ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly\n\nclass AAL_Hook_Attachment extends AAL_Hook_Base {\n\n\tprotected function _add_lo",
+      "sliced_preview": ""
+    },
+    {
+      "index": 28,
+      "filename": "good_5560_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `rawurlencode()` to sanitize user input, which is a good practice. However, it does not validate or sanitize user input properly.\n\n2. **Use",
+      "code_preview": "<?php\n\ninclude_once(\"./eval_conf.php\");\ninclude_once(\"./functions.php\");\n\nif( ! checkAccess(GangliaAcl::ALL_VIEWS, GangliaAcl::VIEW, $conf) ) {\n  die(",
+      "sliced_preview": ""
+    },
+    {
+      "index": 29,
+      "filename": "good_430_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, we'll follow these steps:\n\n1. **Check user input**: Look for any user-input fields that are not properly sanitized or validated.\n\n2. **Inspect form submission**: Check if the form is submitting sensitive data to a vulnerable en",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'super' && $w == '') alert('최고관리자만 접근",
+      "sliced_preview": ""
+    },
+    {
+      "index": 30,
+      "filename": "bad_303_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation**: The code does not validate user input properly. It directly uses user-provided data in SQL queries without proper sanitization or escaping.\n\n2. **SQL Injection**: The us",
+      "code_preview": "<?php\n$sub_menu = '300700';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($W == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 31,
+      "filename": "bad_305_9",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `preg_replace('/[^0-9]/', '', $_POST['po_expire_term'])` to remove non-numeric characters from the 'po_expire_term' input. This is a good ",
+      "code_preview": "<?php\n$sub_menu = \"200200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\ncheck_admin_token();\n\n$mb_id = $_POST['mb_id'];\n$po_po",
+      "sliced_preview": ""
+    },
+    {
+      "index": 32,
+      "filename": "good_1676_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) vulnerabilities:\n\n1. **User Input Validation**: The code does not validate user input properly, which can lead to XSS attacks. For example, in the `submitLink` function, the `$url` parameter is not sanitized or escaped, allowing an a",
+      "code_preview": "<?php\n/**\n * Basic File Browser for CKEditor\n *\n * Displays and selects file link to insert into CKEditor\n *\n * @package GetSimple\n * @subpackage File",
+      "sliced_preview": ""
+    },
+    {
+      "index": 33,
+      "filename": "good_1462_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. The code iterates over an array of keys (`$saniGroup1`) and checks if each key is present in the `$_GET` superglobal array.\n2. If a key is found, it uses `preg_replace` to sanitize the value by remo",
+      "code_preview": "<?php\n/**\n * init_sanitize\n *\n * @package initSystem\n * @copyright Copyright 2003-2014 Zen Cart Development Team\n * @license http://www.zen-cart.com/l",
+      "sliced_preview": ""
+    },
+    {
+      "index": 34,
+      "filename": "good_2543_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities:\n\n1. The `htmlsc` function uses `htmlspecialchars` to escape HTML special characters, which is a good practice to prevent XSS attacks.\n2. However, the `_auto_link` function calls `htmlsc($str)` before passing it to `auto_link`, ",
+      "code_preview": "<?php\nif (!defined('BASEPATH')) exit('No direct script access allowed');\n\n/*\n * InvoicePlane\n *\n * @author\t\tInvoicePlane Developers & Contributors\n * ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 35,
+      "filename": "bad_482_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's follow these steps:\n\n1. Check if user input is being used to construct the WordPress version string. In this case, no user input is being used.\n2. Verify that sensitive data such as database version numbers and required s",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '5.0.1-alpha-43994';\n\n/**\n * Holds the WordPress DB revis",
+      "sliced_preview": ""
+    },
+    {
+      "index": 36,
+      "filename": "bad_306_4",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `sql_query` and `sql_fetch` functions to execute SQL queries, which can lead to SQL injection vulnerabilities if user input is not properly sanitized.\n\n2. The code uses `alert` function to display error messages, but it does not validate the input of this function, making it vulnera",
+      "code_preview": "<?php\n$sub_menu = '300600';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 37,
+      "filename": "good_3206_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `gpc_get` to retrieve input values, which is a potential vulnerability if the input is not properly sanitized.\n\n2. The code does not validate user input thoroughly, especially when it comes to filter IDs and view types. This could lead to XSS attacks if an attacker can manipulate th",
+      "code_preview": "<?php\n# MantisBT - A PHP based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 38,
+      "filename": "good_5100_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) (CWE-79):\n\n1. The code uses `Horde_String::lower()` to convert the node name to lowercase, which is a good practice to prevent case-based attacks.\n2. However, the code does not properly sanitize user input or validate the data before",
+      "code_preview": "<?php\n/**\n * Copyright 2004-2016 Horde LLC (http://www.horde.org/)\n *\n * See the enclosed file COPYING for license information (LGPL). If you\n * did n",
+      "sliced_preview": ""
+    },
+    {
+      "index": 39,
+      "filename": "good_5457_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code is using the `jsonError` method to return an error response with a JSON payload. However, this method does not validate the input data before passing it to the `json()` function.\n\n2. If the `$extramediatypes` parameter is set to `true`, the `getConfig` method is called without any valida",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 40,
+      "filename": "bad_1292_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code is vulnerable to Cross-Site Scripting (XSS) attacks because it does not properly sanitize user input. Specifically, the `$fax_log_uuid` and `$fax_uuid` variables are directly used in SQL queries without any validation or sanitization.\n2. The `is_uuid()` function is called on these variab",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 41,
+      "filename": "bad_5560_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, we'll follow these steps:\n\n1. **Check user input**: The code uses `$_GET` variables to retrieve parameters from the URL. We need to ensure that these inputs are properly sanitized and validated.\n2. **Look for output encoding**: ",
+      "code_preview": "<?php\n\ninclude_once(\"./eval_conf.php\");\ninclude_once(\"./functions.php\");\n\nif( ! checkAccess(GangliaAcl::ALL_VIEWS, GangliaAcl::VIEW, $conf) ) {\n  die(",
+      "sliced_preview": ""
+    },
+    {
+      "index": 42,
+      "filename": "good_5456_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Check user input**: The `download` method takes two parameters, `$fileId` and `$filename`. However, there is no validation or sanitization of these inputs.\n\n2. **Potential XSS vulnerability**: If ",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 43,
+      "filename": "good_3756_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `Escaper` instance to escape HTML output, which is a good practice to prevent XSS attacks.\n\n2. However, the `dump()` function does not properly sanitize user input before passing it to `var_dump()`, which could potentially lead to XSS vulnerabilities if the input contains malicious ",
+      "code_preview": "<?php\n/**\n * Zend Framework (http://framework.zend.com/)\n *\n * @link      http://github.com/zendframework/zf2 for the canonical source repository\n * @",
+      "sliced_preview": ""
+    },
+    {
+      "index": 44,
+      "filename": "good_3353_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down:\n\n1. The code is a collection of constants defining various WordPress and TinyMCE versions, as well as required PHP and MySQL versions.\n2. There are no user-inputted data or dynamic content generation in this code ",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.8-beta1-40692';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 45,
+      "filename": "good_3383_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Here's a step-by-step analysis of the code:\n\n1. The `RemoveXSS` function is used to filter out malicious JavaScript and HTML code from user input. It uses regular expressions to match and replace suspicious patterns in the input string.\n\n2. The `RemoveXSSchars` function is used to remove non-printab",
+      "code_preview": "<?php\n// (c) Copyright 2002-2016 by authors of the Tiki Wiki CMS Groupware Project\n//\n// All Rights Reserved. See copyright.txt for details and a comp",
+      "sliced_preview": ""
+    },
+    {
+      "index": 46,
+      "filename": "good_703_9",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. The code uses `require` to include another file named 'upgrade_queries.php'. This is a common practice in PHP, but it doesn't inherently introduce XSS vulnerabilities.\n2. The `get_dbversion()` funct",
+      "code_preview": "<?php\n/* set latest version */\ndefine(\"VERSION\", \"1.4\");\t\t\t\t\t\t\t\t\t//decimal release version e.g 1.32\n/* set latest version */\ndefine(\"VERSION_VISIBLE\",",
+      "sliced_preview": ""
+    },
+    {
+      "index": 47,
+      "filename": "bad_427_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Identify user input**: The code uses several variables like `$w`, `$bo_table`, `$wr_id`, `$comment_id`, and `$token` which are set based on user input.\n2. **Check for sanitization**: The cod",
+      "code_preview": "<?php\ninclude_once('./_common.php');\n\n$g5['title'] = '비밀번호 입력';\n\nswitch ($w) {\n    case 'u' :\n        $action = G5_HTTP_BBS_URL.'/write.php';\n        ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 48,
+      "filename": "bad_305_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code does not properly validate and sanitize user input. Specifically, the `gr_id` field is not validated to prevent SQL injection attacks.\n\n2. **Us",
+      "code_preview": "<?php\n$sub_menu = \"300200\";\ninclude_once('./_common.php');\n\nauth_check($auth[$sub_menu], 'w');\n\nif ($is_admin != 'super' && $w == '') alert('최고관리자만 접근",
+      "sliced_preview": ""
+    },
+    {
+      "index": 49,
+      "filename": "bad_5547_13",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into smaller steps:\n\n1. **Check for user input validation**: The code does not validate any user input, which is a common vulnerability for XSS attacks.\n\n2. **Look for output encoding**: The code uses `elgg_echo` t",
+      "code_preview": "<?php\n/**\n * Blogs\n *\n * @package Blog\n *\n * @todo\n * - Either drop support for \"publish date\" or duplicate more entity getter\n * functions to work wi",
+      "sliced_preview": ""
+    },
+    {
+      "index": 50,
+      "filename": "good_425_5",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `preg_match` to check if the 'me_link' value contains a JavaScript keyword, and if so, it replaces it with the URL using `G5_URL`. This is a common practice to prevent XSS attacks.\n\n2. However, the `base_convert` function is used to convert numbers between different bases (36 and 10",
+      "code_preview": "<?php\n$sub_menu = \"100290\";\ninclude_once('./_common.php');\n\ncheck_demo();\n\nif ($is_admin != 'super')\n    alert('최고관리자만 접근 가능합니다.');\n\ncheck_admin_token",
+      "sliced_preview": ""
+    },
+    {
+      "index": 51,
+      "filename": "bad_3777_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) (CWE-79):\n\n1. The code uses `SpoonFilter::getPostValue('term', null, '')` to get a parameter from the request. This function is likely sanitizing and validating the input, which helps prevent XSS attacks.\n\n2. However, the code does n",
+      "code_preview": "<?php\n\n/*\n * This file is part of Fork CMS.\n *\n * For the full copyright and license information, please view the license\n * file that was distributed",
+      "sliced_preview": ""
+    },
+    {
+      "index": 52,
+      "filename": "good_5275_1",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "This PHP code does not appear to have any Cross-Site Scripting (XSS) vulnerabilities.\n\nThe code is simply setting and declaring global variables, which are not user-inputted or processed in a way that could lead to XSS attacks. \n\nTherefore, the verdict is: SAFE.",
+      "code_preview": "<?php\n/**\n * The WordPress version string\n *\n * @global string $wp_version\n */\n$wp_version = '4.7-alpha-38538';\n\n/**\n * Holds the WordPress DB revisio",
+      "sliced_preview": ""
+    },
+    {
+      "index": 53,
+      "filename": "bad_302_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code is vulnerable to XSS because it directly injects user input into the SQL query without proper sanitization or escaping.\n\n2. The use of `$_POST` variables in the SQL query without any validation or sanitization makes it susceptible to XSS attacks, as an attacker could potentially inject m",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 54,
+      "filename": "good_5456_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code is using the `HttpError` trait, which is responsible for handling HTTP errors in the application. This trait is not shown in the provided code snippet.\n\n2. The `jsonError` method of the `HttpError` trait takes an exception object as a parameter and returns a JSON response with the error ",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 55,
+      "filename": "bad_305_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, we can follow these steps:\n\n1. **Check user input**: The code uses `help()` and `get_selected()` functions to display help text and select options from the database. These functions are not shown in the provided code snippet, b",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\ninclude_once(G5_EDITOR_LIB);\n\nauth_check($auth[$sub_menu], \"w\");\n\n$nw_id = preg_replace('/[",
+      "sliced_preview": ""
+    },
+    {
+      "index": 56,
+      "filename": "good_5547_14",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze the provided PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into smaller steps:\n\n1. **Check for user input validation**: The code does not validate user input properly in several places. For example, in `bookmarks_page_handler`, the `$page[0]` variable is use",
+      "code_preview": "<?php\n/**\n * Elgg Bookmarks plugin\n *\n * @package ElggBookmarks\n */\n\nelgg_register_event_handler('init', 'system', 'bookmarks_init');\n\n/**\n * Bookmark",
+      "sliced_preview": ""
+    },
+    {
+      "index": 57,
+      "filename": "bad_4845_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `htmlspecialchars` to sanitize user input in the \"data\" hidden field. This is a good practice to prevent XSS attacks.\n\n2. **Data Processin",
+      "code_preview": "<?php\n\t$required = false;\n\t$label = \"\";\n\t$type = trim($_POST[\"type\"]);\n\t$key = str_replace(\"form_builder_element_\", \"\", $_POST[\"name\"]);\n\t\n\t// Clean u",
+      "sliced_preview": ""
+    },
+    {
+      "index": 58,
+      "filename": "bad_3742_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) vulnerabilities:\n\n1. The code uses `md5()` to generate a token, which is insecure and vulnerable to collisions. It should use a secure hash function like `sha256()` instead.\n\n2. The code stores user input in variables without proper ",
+      "code_preview": "<?php\n\n/**\n* ownCloud\n*\n* @author Frank Karlitschek\n* @copyright 2010 Frank Karlitschek karlitschek@kde.org\n*\n* This library is free software; you can",
+      "sliced_preview": ""
+    },
+    {
+      "index": 59,
+      "filename": "bad_2361_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Check user input**: The `projax_autocomplete` function takes three parameters: `$p_entrypoint`, `$p_field_name`, and `$p_attributes_array`. It does not validate or sanitize any of these inpu",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 60,
+      "filename": "good_703_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Input Validation**: The code checks if `subnetId` is numeric, but it does not validate the input against a whitelist of allowed characters or formats. This could potentially allow an attacker to i",
+      "code_preview": "<?php\n\n/*\n * Update alive status of all hosts in subnet\n ***************************/\n\n# Check we have been included and not called directly\nif (!isse",
+      "sliced_preview": ""
+    },
+    {
+      "index": 61,
+      "filename": "bad_305_8",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses user input directly in SQL queries without proper sanitization or escaping, making it vulnerable to SQL injection attacks.\n\n2. The use of `$_POST` variables without validation or sanitization can lead to XSS attacks if the input is not properly sanitized.\n\n3. The code does not valid",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\n\nif ($w == \"u\" || $w == \"d\")\n    check_demo();\n\nif ($w == 'd')\n    auth_check($auth[$sub_me",
+      "sliced_preview": ""
+    },
+    {
+      "index": 62,
+      "filename": "good_306_7",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `get_sanitize_input()` to sanitize the input of `$nw['nw_subject']`. This is a good practice to prevent XSS attacks.\n\n2. **User Input Hand",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\ninclude_once(G5_EDITOR_LIB);\n\nauth_check($auth[$sub_menu], \"w\");\n\n$nw_id = preg_replace('/[",
+      "sliced_preview": ""
+    },
+    {
+      "index": 63,
+      "filename": "good_5158_8",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Here's a step-by-step analysis of the code:\n\n1. The `applyTransformation` method uses `htmlspecialchars` to escape user-input data, which is a good practice to prevent XSS attacks.\n\n2. However, the method also uses string concatenation with user-input data (`$options[0]`, `$options[1]`, and `$append",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Abstract class for the link transformations plugins\n *\n * @package    PhpMyAdmin-Transformation",
+      "sliced_preview": ""
+    },
+    {
+      "index": 64,
+      "filename": "good_1157_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `trim()` and `escape()` to sanitize user input. However, the `escape()` function is not a standard PHP function; it's likely a custom impl",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 65,
+      "filename": "bad_423_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into smaller steps:\n\n1. **Check for user input validation**: The code uses Zend Framework's built-in form validation and error handling mechanisms. However, it does not explicitly validate user input for pot",
+      "code_preview": "<?php\n/**\n * @license http://www.mailcleaner.net/open/licence_en.html Mailcleaner Public License\n * @package mailcleaner\n * @author Olivier Diserens\n ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 66,
+      "filename": "good_1978_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze the provided PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `Security::remove_XSS($_GET['action'])` to sanitize user input. This is a good practice as it removes any potential XSS attacks by",
+      "code_preview": "<?php\n\n/* For licensing terms, see /license.txt */\n\nrequire_once __DIR__.'/../inc/global.inc.php';\n\n$action = isset($_GET['action']) ? Security::remov",
+      "sliced_preview": ""
+    },
+    {
+      "index": 67,
+      "filename": "good_5547_23",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "This PHP code does not appear to be vulnerable to Cross-Site Scripting (XSS) as it only contains static data and no user input is being processed. \n\nVERDICT: SAFE",
+      "code_preview": "<?php\n/**\n * Elgg version number.\n * This file defines the current version of the core Elgg code being used.\n * This is compared against the values st",
+      "sliced_preview": ""
+    },
+    {
+      "index": 68,
+      "filename": "bad_1741_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `str_replace()` to sanitize user input, but it only replaces specific characters (`%<%` and `%>%`) which may not cover all possible XSS vulnerabilities.\n\n2. The code does not validate the input data type, allowing an attacker to inject malicious JavaScript code by sending a speciall",
+      "code_preview": "<?php ?>\n[<?php\n$pId = \"-1\";\nif(array_key_exists( 'id',$_REQUEST)) {\n\t$pId=$_REQUEST['id'];\n}\n$pCount = \"10\";\nif(array_key_exists( 'count',$_REQUEST))",
+      "sliced_preview": ""
+    },
+    {
+      "index": 69,
+      "filename": "bad_3340_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, we can follow these steps:\n\n1. **Check user input**: The code uses `$_GET['id']` and `$_GET['password']` directly in the URL without proper sanitization or escaping.\n2. **Look for unsanitized output**: The code uses `echo` stat",
+      "code_preview": "<?php\n/*\nAllen Disk 1.6\nCopyright (C) 2012~2016 Allen Chou\nAuthor: Allen Chou ( http://allenchou.cc )\nLicense: MIT License\n*/\ninclude 'config.php';\nif",
+      "sliced_preview": ""
+    },
+    {
+      "index": 70,
+      "filename": "bad_5452_0",
+      "true_label": 1,
+      "pred_label": 0,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) (CWE-79):\n\n1. The `httpGet` method checks if the query parameter 'photo' exists in the request. If it doesn't, the method returns true without any further processing.\n\n2. However, the method does not validate or sanitize the value of",
+      "code_preview": "<?php\n/**\n * @copyright Copyright (c) 2016, ownCloud, Inc.\n *\n * @author Georg Ehrke <georg@owncloud.com>\n *\n * @license AGPL-3.0\n *\n * This code is f",
+      "sliced_preview": ""
+    },
+    {
+      "index": 71,
+      "filename": "bad_305_10",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `sql_fetch` and `sql_query` functions to interact with the database, which is a potential vulnerability if not properly sanitized.\n\n2. The code does not validate user input thoroughly, allowing for potential SQL injection attacks.\n\n3. The use of `addslashes` function to prevent XSS ",
+      "code_preview": "<?php\n$sub_menu = \"900800\";\ninclude_once(\"./_common.php\");\n\nauth_check($auth[$sub_menu], \"w\");\n\n$g5['title'] = \"휴대폰번호 업데이트\";\n\n$g5['sms5_demo'] = 0;\n\n$",
+      "sliced_preview": ""
+    },
+    {
+      "index": 72,
+      "filename": "bad_3590_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze the provided PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Identify user input**: The code uses various functions like `OSCOM::getDef()`, `HTML::button()`, and `HTML::inputField()` to generate HTML content. These functions likely take user ",
+      "code_preview": "<?php\n/**\n * osCommerce Online Merchant\n * \n * @copyright Copyright (c) 2011 osCommerce; http://www.oscommerce.com\n * @license BSD License; http://www",
+      "sliced_preview": ""
+    },
+    {
+      "index": 73,
+      "filename": "bad_3408_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Check for user input validation**: The code uses `check_for_session()` and `can_see_content($allowed_levels)` to validate user input, which is a good practice.\n2. **Look for unsanitized user input",
+      "code_preview": "<?php\n/**\n * This file generates the header for the back-end and also for the default\n * template.\n *\n * Other checks for user level are performed lat",
+      "sliced_preview": ""
+    },
+    {
+      "index": 74,
+      "filename": "good_302_10",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code is vulnerable to XSS attacks because it uses `addslashes()` function, which only escapes a limited set of characters and does not prevent HTML injection.\n\n2. The code also uses `alert()` function without proper sanitization, making it vulnerable to XSS attacks.\n\n3. There are no other obv",
+      "code_preview": "<?php\n$sub_menu = \"900800\";\ninclude_once(\"./_common.php\");\n\nauth_check($auth[$sub_menu], \"w\");\n\n$g5['title'] = \"휴대폰번호 업데이트\";\n\n$g5['sms5_demo'] = 0;\n\n$",
+      "sliced_preview": ""
+    },
+    {
+      "index": 75,
+      "filename": "bad_2516_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Check for user input**: The provided code snippet does not contain any user-input fields that could potentially be used to inject malicious scripts.\n\n2. **Inspect the output**: There is no indicat",
+      "code_preview": "<?php\n\n// $Id: info.php 591 2009-03-01 19:42:05Z BerndJM $\n\n/*\n\n Website Baker Project <http://www.websitebaker.org/>\n Copyright (C) 2004-2008, Ryan D",
+      "sliced_preview": ""
+    },
+    {
+      "index": 76,
+      "filename": "bad_5158_6",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code is using `mb_substr` to extract a substring from the input string `$buffer`, which is a safe function in PHP.\n\n2. However, the code does not validate or sanitize user input before passing it to `mb_substr`. This could potentially lead to XSS attacks if malicious input is passed as an opt",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Abstract class for the substring transformations plugins\n *\n * @package    PhpMyAdmin-Transform",
+      "sliced_preview": ""
+    },
+    {
+      "index": 77,
+      "filename": "good_58_4",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze the PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation**: The code does not validate user input properly. Specifically, it uses `$_GET['subnetId']` without checking if it is safe to use as a variable. This could lead to XSS atta",
+      "code_preview": "<?php\n\n/**\n * Usermenu - user can change password and email\n */\n\n# verify that user is logged in\n$User->check_user_session();\n\n# create csrf token\n$cs",
+      "sliced_preview": ""
+    },
+    {
+      "index": 78,
+      "filename": "good_1142_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, I'll follow these steps:\n\n1. **Check user input**: The code uses `$_GET['id']` and `escape($contact_note)` to sanitize user input. However, the `escape()` function is not defined in the provided code snippet.\n2. **Assume escape",
+      "code_preview": "<?php\n/*\n\tFusionPBX\n\tVersion: MPL 1.1\n\n\tThe contents of this file are subject to the Mozilla Public License Version\n\t1.1 (the \"License\"); you may not ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 79,
+      "filename": "good_3778_1",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Here's the analysis:\n\n1. The code uses `SpoonFilter::getPostValue` to retrieve form values, which is a good practice for sanitizing user input.\n\n2. However, in the `validateForm` method, it directly assigns the retrieved value to `$this->term`. This could potentially lead to XSS if the input is not ",
+      "code_preview": "<?php\n\n/*\n * This file is part of Fork CMS.\n *\n * For the full copyright and license information, please view the license\n * file that was distributed",
+      "sliced_preview": ""
+    },
+    {
+      "index": 80,
+      "filename": "good_980_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation and Sanitization**: The code uses `strip_tags()` to remove HTML tags from the `$title` variable before replacing spaces with underscores and converting to lowercase. This i",
+      "code_preview": "<div class=\"<?php echo $sizeClass; ?> ls-flex-column ls-panelboxes-panelbox text-primary\" >\n    <div class=\"panel panel-primary panel-clickable ls-pan",
+      "sliced_preview": ""
+    },
+    {
+      "index": 81,
+      "filename": "good_4292_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Identify user input**: The code uses `$_POST['image']` and `$_POST['userfile']` to retrieve user input from the form.\n2. **Check for sanitization**: The code uses `htmlspecialchars()` to sanitize ",
+      "code_preview": "<script src=\"<?= base_url('assets/ckeditor/ckeditor.js') ?>\"></script>\n<h1><img src=\"<?= base_url('assets/imgs/blogger.png') ?>\" class=\"header-img\" st",
+      "sliced_preview": ""
+    },
+    {
+      "index": 82,
+      "filename": "good_2773_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "1. The code uses regular expressions to validate user input, which is a good practice for preventing XSS attacks.\n\n2. However, the `safeGetInput` function does not properly sanitize the input value before returning it. It only checks if the input matches a specific pattern, but does not remove any m",
+      "code_preview": "<?php\n\nCONST SECRET_PATTERN = '/[^a-z0-9]/';\nCONST ENTRY_ID_PATTERN = '/[^a-z0-9_]/';\nCONST INTEGER_ONLY_PATTERN = '/[^0-9]/';\nCONST HTML_VERSION_PATT",
+      "sliced_preview": ""
+    },
+    {
+      "index": 83,
+      "filename": "bad_3715_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Identify user input**: The code uses various variables like `$page_title`, `$site_name`, `$header_block`, `$languages`, `$search`, `$banner`, and `$submit_btn` which are likely populated by",
+      "code_preview": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.o",
+      "sliced_preview": ""
+    },
+    {
+      "index": 84,
+      "filename": "good_4929_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Identify user input**: The code checks if `$_GET[\"message\"]` is set and not empty. This suggests that the input comes from a user request.\n\n2. **Check for XSS vulnerability**: The code uses `PMA_M",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Import progress bar backend\n *\n * @package PhpMyAdmin\n */\n\n/* PHP 5.4 stores upload progress da",
+      "sliced_preview": ""
+    },
+    {
+      "index": 85,
+      "filename": "bad_223_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Identify user input**: The code contains an `<input>` field named \"tags\" where users can enter tags to add.\n2. **Check for sanitization or encoding**: The code does not appear to sanitize o",
+      "code_preview": "<div id=\"tag-form\" class=\"field\">\n    <?php\n        $tags = $item->getTags();\n    ?>\n    <input type=\"hidden\" name=\"tags-to-add\" id=\"tags-to-add\" valu",
+      "sliced_preview": ""
+    },
+    {
+      "index": 86,
+      "filename": "good_4206_2",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze the provided PHP code for Cross-Site Scripting (XSS) vulnerabilities, we'll follow a step-by-step approach:\n\n1. **Check User Input**: The code uses `h($currentPath)` and `h($this->BcForm->value('ThemeFile.ext'))` to sanitize user input. This is good practice as it prevents XSS attacks by ",
+      "code_preview": "<?php\n/**\n * baserCMS :  Based Website Development Project <https://basercms.net>\n * Copyright (c) baserCMS Users Community <https://basercms.net/comm",
+      "sliced_preview": ""
+    },
+    {
+      "index": 87,
+      "filename": "bad_5457_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses the `jsonError` method to return an error response, which is a good practice for handling exceptions and providing useful error information.\n\n2. However, there is no input validation or sanitization in the `getConfig` method, which could potentially allow an attacker to inject malic",
+      "code_preview": "<?php\n/**\n * ownCloud - gallery\n *\n * This file is licensed under the Affero General Public License version 3 or\n * later. See the COPYING file.\n *\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 88,
+      "filename": "good_4136_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "Here's the analysis of the PHP code for Cross-Site Scripting (XSS) (CWE-79):\n\n1. The `sigRenderTag` function uses `htmlspecialchars($input)` to sanitize user input, which is a good practice to prevent XSS attacks.\n2. However, the `sigGetAvatarUrl` function does not validate or sanitize the `$usernam",
+      "code_preview": "<?php\n/*\n * ScratchSig extension for MediaWiki\n * Renders <scratchsig> tag with profile image from scratch.mit.edu\n *\n * Copyright 2013, Tim Radvan\n *",
+      "sliced_preview": ""
+    },
+    {
+      "index": 89,
+      "filename": "good_1741_3",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. The code uses `htmlspecialchars()` to escape the `$pId` variable before using it in a string concatenation.\n2. However, the code does not validate or sanitize user input beyond checking if th",
+      "code_preview": "<?php ?>\n[<?php\n$pId = \"-1\";\nif(array_key_exists( 'id',$_REQUEST)) {\n\t$pId=$_REQUEST['id'];\n}\n$pCount = \"10\";\nif(array_key_exists( 'count',$_REQUEST))",
+      "sliced_preview": ""
+    },
+    {
+      "index": 90,
+      "filename": "bad_304_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, we can follow these steps:\n\n1. **Check user input**: The code uses `help()` and `get_selected()` functions to display text and select options based on the `$nw` array values. These functions do not appear to be vulnerable to XS",
+      "code_preview": "<?php\n$sub_menu = '100310';\ninclude_once('./_common.php');\ninclude_once(G5_EDITOR_LIB);\n\nauth_check($auth[$sub_menu], \"w\");\n\n$nw_id = preg_replace('/[",
+      "sliced_preview": ""
+    },
+    {
+      "index": 91,
+      "filename": "bad_428_7",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation**: The code checks if the `$board['bo_include_tail']` variable is a valid file path using `is_include_path_check()`. However, this function is not shown in the provided cod",
+      "code_preview": "<?php\nif (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가\n\n// 게시판 관리의 하단 파일 경로\nif (G5_IS_MOBILE) {\n    echo stripslashes($board['bo_mobile_content_tail'",
+      "sliced_preview": ""
+    },
+    {
+      "index": 92,
+      "filename": "bad_3300_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) (CWE-79), let's break it down into steps:\n\n1. **Check user input**: The `verify()` function echoes the value of `$_GET['challenge']` without any sanitization or validation. This is a potential vulnerability, as an attacker could inject maliciou",
+      "code_preview": "<?php \nuse \\Dropbox as dbx;\n\nfunction verify(){\n\techo $_GET['challenge'];\n}\n\nfunction webhook(){\n\t#'''Receive a list of changed user IDs from Dropbox ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 93,
+      "filename": "bad_4305_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Identify user input**: The form contains several hidden inputs and a select dropdown with the name \"quota_qid\". This suggests that user input is being used to populate the select options.\n\n",
+      "code_preview": "<?php\n/* @var $this AdminController */\n/* @var Quota $oQuota */\n?>\n\n<div class='side-body <?php echo getSideBodyClass(false); ?>'>\n    <div class=\"row",
+      "sliced_preview": ""
+    },
+    {
+      "index": 94,
+      "filename": "bad_3306_0",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `gpc_get_int` to retrieve the values of 'days' and 'all' from the GET request, which is a safe way to handle user input in PHP.\n\n2. However, the code does not validate the input values for 'days' and 'all'. If an attacker can manipulate these values, they could potentially inject ma",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 95,
+      "filename": "bad_4198_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code is using `config('platform.prefix')` to get the prefix, which could potentially be user-inputted and therefore vulnerable to XSS attacks if not sanitized.\n\n2. The `registerPermissions`, `registerSearch`, `registerResource`, and `removePermission` methods are accepting user-input data wit",
+      "code_preview": "<?php\n\ndeclare(strict_types=1);\n\nnamespace Orchid\\Platform;\n\nuse Illuminate\\Support\\Arr;\nuse Illuminate\\Support\\Collection;\nuse Illuminate\\Support\\Str",
+      "sliced_preview": ""
+    },
+    {
+      "index": 96,
+      "filename": "bad_3777_3",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses `SpoonSession::exists('searchTerm')` to check if a session variable exists, which is a good practice to prevent XSS attacks.\n\n2. However, the code does not validate user input for potential XSS vulnerabilities. It directly assigns the user-inputted term to variables without any sani",
+      "code_preview": "<?php\n\n/*\n * This file is part of Fork CMS.\n *\n * For the full copyright and license information, please view the license\n * file that was distributed",
+      "sliced_preview": ""
+    },
+    {
+      "index": 97,
+      "filename": "good_3306_0",
+      "true_label": 0,
+      "pred_label": 1,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into steps:\n\n1. **Input Validation**: The code uses `gpc_get_int` to retrieve input values from the URL parameters. This function is not secure as it does not validate or sanitize user input.\n\n2. **User Inpu",
+      "code_preview": "<?php\n# MantisBT - a php based bugtracking system\n\n# MantisBT is free software: you can redistribute it and/or modify\n# it under the terms of the GNU ",
+      "sliced_preview": ""
+    },
+    {
+      "index": 98,
+      "filename": "bad_3776_1",
+      "true_label": 1,
+      "pred_label": 1,
+      "raw_output": "1. The code uses the `Convert::raw2sql()` function to convert a string value to a SQL-escaped string, which is a good practice to prevent XSS attacks.\n\n2. However, the `prepValueForDB()` method does not check if the input `$value` is user-controlled or not. If an attacker can manipulate the `$value`",
+      "code_preview": "<?php\n/**\n * An abstract base class for the string field types (i.e. Varchar and Text)\n * @package sapphire\n * @subpackage model\n * @author Pete Bacon",
+      "sliced_preview": ""
+    },
+    {
+      "index": 99,
+      "filename": "good_4976_0",
+      "true_label": 0,
+      "pred_label": 0,
+      "raw_output": "To analyze this PHP code for Cross-Site Scripting (XSS) vulnerabilities, let's break it down into smaller steps:\n\n1. **Input Validation**: The code checks if certain variables are set before processing them. However, it does not validate the input data thoroughly. For example, in the `PMA_getHtmlFor",
+      "code_preview": "<?php\n/* vim: set expandtab sw=4 ts=4 sts=4: */\n/**\n * Normalization process (temporarily specific to 1NF)\n *\n * @package PhpMyAdmin\n */\n\n/**\n *\n */\nr",
+      "sliced_preview": ""
+    }
+  ]
+}
