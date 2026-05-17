@@ -34,6 +34,7 @@ pip install -r requirements.txt
 ```
 
 Cài Ollama: https://ollama.com
+
 Pull model:
 ```bash
 ollama pull codellama:7b
@@ -53,6 +54,7 @@ run_all.bat
 
 Tạo file `.env`:
 GROQ_API_KEY=your_api_key_here
+
 Lấy API key tại: https://console.groq.com
 
 ```bash
