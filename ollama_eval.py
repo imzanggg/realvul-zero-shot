@@ -3,7 +3,7 @@ ollama_eval.py - Tích hợp Ollama (offline LLM) vào pipeline RealVul
 Đặt file này vào thư mục gốc: D:\RealVul-emnlp24\
 
 Cách chạy:
-    python ollama_eval.py --cwe 79 --model qwen2.5-coder:7b --dataset data/dataset_unique_79.json
+    python ollama_eval.py --cwe 79 --model qwen2.5-coder:7b
 
 Yêu cầu:
     - Ollama đã cài và đang chạy (ollama serve)
@@ -130,6 +130,7 @@ def simple_slice(code: str, cwe: str) -> str:
 
     for i, line in enumerate(lines):
         if any(s in line for s in sources + sinks):
+            # Lấy ±5 dòng xung quanh mỗi dòng có source/sink
             for j in range(max(0, i - 5), min(len(lines), i + 6)):
                 selected.add(j)
 
@@ -142,6 +143,114 @@ def simple_slice(code: str, cwe: str) -> str:
         return code  # slice quá ngắn → trả về nguyên bản
 
     return '\n'.join(sliced)
+
+# ============================================================
+# NORMALIZATION
+# ============================================================
+
+import re
+
+def normalize_code(code: str) -> str:
+    """
+    Chuẩn hóa tên biến/hàm về dạng trừu tượng.
+    Tái hiện kỹ thuật Normalization trong bài báo RealVul.
+    - Biến người dùng định nghĩa → $var1, $var2, ...
+    - Hàm người dùng định nghĩa → func1(), func2(), ...
+    - Giữ nguyên: $_GET, $_POST, $_COOKIE, $_REQUEST, $_SERVER,
+                  các hàm built-in PHP (echo, print, htmlspecialchars,
+                  mysql_query, mysqli_query, ...)
+    """
+
+    # Danh sách từ khóa PHP giữ nguyên (không normalize)
+    PHP_BUILTINS = {
+        # Superglobals (sources)
+        '$_GET', '$_POST', '$_REQUEST', '$_COOKIE',
+        '$_SERVER', '$_FILES', '$_SESSION', '$_ENV',
+        # Hàm sanitization
+        'htmlspecialchars', 'htmlentities', 'strip_tags',
+        'addslashes', 'mysql_real_escape_string',
+        'mysqli_real_escape_string', 'intval', 'floatval',
+        'filter_input', 'filter_var', 'preg_replace',
+        # Hàm sink XSS
+        'echo', 'print', 'printf', 'die', 'exit', 'header',
+        # Hàm sink SQLi
+        'mysql_query', 'mysqli_query', 'pg_query',
+        'sqlite_query', 'query', 'execute', 'prepare',
+        # Hàm kết nối DB
+        'mysqli_connect', 'mysql_connect', 'PDO',
+        # Từ khóa PHP
+        'if', 'else', 'elseif', 'while', 'for', 'foreach',
+        'return', 'function', 'class', 'new', 'true', 'false',
+        'null', 'isset', 'empty', 'array', 'list', 'count',
+        'strlen', 'substr', 'str_replace', 'trim', 'explode',
+        'implode', 'in_array', 'include', 'require',
+        'include_once', 'require_once',
+    }
+
+    var_map  = {}   # $userName → $var1
+    func_map = {}   # myFunc   → func1
+    var_counter  = [1]
+    func_counter = [1]
+
+    def replace_variable(match):
+        var_name = match.group(0)
+        # Giữ nguyên superglobals và biến đặc biệt
+        if var_name in PHP_BUILTINS:
+            return var_name
+        if var_name.startswith('$_'):
+            return var_name
+        if var_name not in var_map:
+            var_map[var_name] = f'$var{var_counter[0]}'
+            var_counter[0] += 1
+        return var_map[var_name]
+
+    def replace_function(match):
+        func_name = match.group(1)
+        # Giữ nguyên built-in functions
+        if func_name.lower() in {b.lower() for b in PHP_BUILTINS}:
+            return match.group(0)
+        if func_name not in func_map:
+            func_map[func_name] = f'func{func_counter[0]}'
+            func_counter[0] += 1
+        return match.group(0).replace(func_name, func_map[func_name])
+
+    # Xử lý từng dòng
+    lines = code.split('\n')
+    normalized_lines = []
+
+    for line in lines:
+        # Bỏ qua comment
+        stripped = line.strip()
+        if stripped.startswith('//') or stripped.startswith('#'):
+            normalized_lines.append(line)
+            continue
+        if stripped.startswith('*') or stripped.startswith('/*'):
+            normalized_lines.append(line)
+            continue
+
+        # Normalize tên hàm (function myFunc → function func1)
+        line = re.sub(
+            r'\bfunction\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(',
+            replace_function,
+            line
+        )
+
+        # Normalize biến ($userName → $var1)
+        line = re.sub(r'\$[a-zA-Z_][a-zA-Z0-9_]*', replace_variable, line)
+
+        normalized_lines.append(line)
+
+    return '\n'.join(normalized_lines)
+
+
+def normalize_stats(original: str, normalized: str) -> dict:
+    """Thống kê số biến/hàm đã được normalize"""
+    orig_vars  = set(re.findall(r'\$[a-zA-Z_][a-zA-Z0-9_]*', original))
+    norm_vars  = set(re.findall(r'\$var\d+', normalized))
+    return {
+        "original_var_count"   : len(orig_vars),
+        "normalized_var_count" : len(norm_vars),
+    }
 
 
 def slice_stats(original: str, sliced: str) -> dict:
@@ -240,17 +349,17 @@ def load_dataset_from_dir(dataset_dir: str, cwe: str,
         filepath = os.path.join(dataset_dir, filename)
 
         if filename.startswith("bad_"):
-            label = LABEL_VULNERABLE
+            label = LABEL_VULNERABLE   # bad_*.php = có lỗ hổng
         elif filename.startswith(("good_", "fix_", "safe_")):
-            label = LABEL_SAFE
+            label = LABEL_SAFE         # good_*.php = an toàn
         else:
             continue
 
         size = os.path.getsize(filepath)
-        if size <= 14:
+        if size <= 14:                # Bỏ file quá nhỏ
             continue
         if size > max_file_kb * 1024:
-            continue
+            continue                  # Bỏ file > 8KB
 
         try:
             with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
@@ -306,6 +415,7 @@ def evaluate(samples: list, model: str, cwe: str,
     print(f"  CWE      : {cwe_label}")
     print(f"  Prompt   : {prompt_mode.upper()}")
     print(f"  Slicing  : {'ON' if use_slice else 'OFF'}")
+    print(f"  Normalization: INTEGRATED (ALWAYS ON)")
     print(f"  Samples  : {len(samples)}")
     print(f"  Timeout  : {call_timeout}s/call")
     print(f"{'='*60}\n")
@@ -328,6 +438,8 @@ def evaluate(samples: list, model: str, cwe: str,
             compression_ratios.append(stats["compression_ratio"])
         else:
             code_input = code
+
+        code_input = normalize_code(code_input)
 
         # Chọn prompt
         if use_slice:
@@ -422,6 +534,7 @@ def evaluate(samples: list, model: str, cwe: str,
             "cwe"                   : cwe,
             "prompt_mode"           : prompt_mode,
             "use_slice"             : use_slice,
+            "use_normalization"     : True,
             "num_samples"           : len(samples),
             "elapsed_seconds"       : round(elapsed, 1),
             "avg_compression_ratio" : avg_compression,
