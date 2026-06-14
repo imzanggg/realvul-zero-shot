@@ -1,6 +1,6 @@
 """
 ollama_eval.py - Tích hợp Ollama (offline LLM) vào pipeline RealVul
-Đặt file này vào thư mục gốc: D:\RealVul-emnlp24\
+Đặt file này vào thư mục gốc: D:\\RealVul-emnlp24\\
 
 Cách chạy:
     python ollama_eval.py --cwe 79 --model qwen2.5-coder:7b
@@ -59,34 +59,84 @@ Answer:"""
 
 
 def build_prompt_cot(code_snippet: str, cwe: str) -> str:
-    """Chain-of-Thought prompt — ngắn gọn để tránh timeout"""
-    vuln_type = "Cross-Site Scripting (XSS)" if cwe == "79" else "SQL Injection"
-    cwe_label = f"CWE-{cwe}"
+    """
+    Chain-of-Thought prompt nâng cấp — Ép mô hình phân tích theo dạng Cổng Kiểm Tra nghiêm ngặt.
+    Giúp cải thiện độ chính xác cho các dòng model nhỏ (7B) bằng cách hạn chế bỏ bước.
+    """
+    if cwe == "79":
+        vuln_type = "Cross-Site Scripting (XSS)"
+        cwe_label = "CWE-79"
+        sources  = "$_GET, $_POST, $_REQUEST, $_COOKIE, $_SERVER"
+        sinks    = "echo, print, printf, header(), die(), exit()"
+        sanitize = "htmlspecialchars(), htmlentities(), strip_tags(), intval(), floatval()"
+    else:
+        vuln_type = "SQL Injection"
+        cwe_label = "CWE-89"
+        sources  = "$_GET, $_POST, $_REQUEST, $_COOKIE"
+        sinks    = "mysql_query(), mysqli_query(), query(), execute(), prepare()"
+        sanitize = "mysqli_real_escape_string(), intval(), floatval(), prepared statements with bound params"
 
-    return f"""Analyze this PHP code for {vuln_type} ({cwe_label}).
+    return f"""You are a static code analysis tool. Analyze the following PHP code strictly for {vuln_type} ({cwe_label}) vulnerabilities.
 
+PHP Code:
 ```php
 {code_snippet}
 ```
 
-Think step by step (max 3 lines), then give verdict.
-VERDICT: VULNERABLE or SAFE"""
+Perform the security analysis by executing the following 4 verification gates in order. You must write down your analysis for each gate.
+GATE 1 - SOURCE SEARCH:
+Scan the code for any user input sources ({sources}).
+List the exact variable names that receive these inputs.
+If no source variables are found, stop here, write "GATE 1: FAILED" and output the final verdict: SAFE.
+GATE 2 - DATA FLOW TRACING:
+Trace the data flow of each identified source variable line-by-line.
+Write down every assignment or concatenation involving these variables (e.g., $var_a = $source -> $var_b = $var_a . "text").
+If the flow is broken or does not reach any output/sink, write "GATE 2: FAILED" and output the final verdict: SAFE.
+GATE 3 - SANITIZATION VERIFICATION:
+Check if any secure sanitization, validation, or type-casting functions ({sanitize}) are applied to the tracked variables BEFORE they reach any sink.
+Note down: "SANITIZED" (and specify the function used) or "UNSANITIZED" for each flow.
+GATE 4 - SINK MATCHING:
+Identify all execution or output sinks ({sinks}) in the code.
+Check if an UNSANITIZED variable from GATE 3 is passed directly into any of these sinks.
+If an unsanitized flow enters a sink, write "GATE 4: COMPROMISED".
+VERDICT RULE:
+If and only if GATE 4 is "COMPROMISED", the verdict is VULNERABLE.
+Otherwise, the verdict is SAFE.
+Provide your step-by-step analysis for each GATE, then output the final line exactly in this format:
+VERDICT: [VULNERABLE or SAFE]"""
 
 
 def build_prompt_sliced(code_snippet: str, cwe: str, use_cot: bool = False) -> str:
     """Prompt cho code đã được slice"""
-    vuln_type = "Cross-Site Scripting (XSS)" if cwe == "79" else "SQL Injection"
-    cwe_label = f"CWE-{cwe}"
+    if cwe == "79":
+        vuln_type = "Cross-Site Scripting (XSS)"
+        cwe_label = "CWE-79"
+        sources  = "$_GET, $_POST, $_REQUEST, $_COOKIE"
+        sinks    = "echo, print, printf, header()"
+        sanitize = "htmlspecialchars(), htmlentities(), strip_tags()"
+    else:
+        vuln_type = "SQL Injection"
+        cwe_label = "CWE-89"
+        sources  = "$_GET, $_POST, $_REQUEST, $_COOKIE"
+        sinks    = "mysql_query(), mysqli_query(), query(), execute()"
+        sanitize = "mysqli_real_escape_string(), intval(), prepared statements"
 
     if use_cot:
-        return f"""Analyze this PHP code slice (relevant lines only) for {vuln_type} ({cwe_label}).
+        return f"""You are a PHP security analyst. This is a program SLICE — only source/sink-relevant lines are shown.
+Analyze for {vuln_type} ({cwe_label}).
 
+PHP slice:
 ```php
 {code_snippet}
 ```
 
-Think step by step (max 3 lines), then give verdict.
-VERDICT: VULNERABLE or SAFE"""
+STEP 1 - SOURCE: Which variables carry user input ({sources})?
+STEP 2 - FLOW: How does each source variable reach the output? (trace assignments)
+STEP 3 - SANITIZATION: Is {sanitize} applied before the sink?
+STEP 4 - SINK: Does {sinks} receive unsanitized user data?
+STEP 5 - VERDICT: Source → no sanitization → sink = VULNERABLE, else SAFE.
+
+VERDICT: [VULNERABLE or SAFE]"""
     else:
         return f"""Analyze this PHP code slice for {vuln_type} ({cwe_label}) vulnerabilities.
 This is a program slice containing only the relevant source/sink lines.
@@ -277,7 +327,7 @@ def call_ollama(prompt: str, model: str, timeout: int = 120) -> str:
         "options": {
             "temperature": 0.1,
             "top_p": 0.9,
-            "num_predict": 150,
+            "num_predict": 600 if "STEP 1" in prompt else 150,
         }
     }
 
@@ -298,8 +348,7 @@ def call_ollama(prompt: str, model: str, timeout: int = 120) -> str:
 
 
 def parse_prediction(raw_output: str) -> int:
-    """Parse output của model thành nhãn 0/1"""
-    # Ưu tiên dòng VERDICT:
+    # Ưu tiên dòng VERDICT: (giữ nguyên, đây là đúng)
     for line in raw_output.upper().splitlines():
         line = line.strip()
         if line.startswith("VERDICT:"):
@@ -309,16 +358,17 @@ def parse_prediction(raw_output: str) -> int:
             if "SAFE" in verdict:
                 return LABEL_SAFE
 
-    # Fallback: tìm từ khóa chính trong toàn text
-    text = raw_output.upper()
-    if "VULNERABLE" in text:
+    # Fallback: chỉ tìm ở 3 dòng CUỐI (phần kết luận)
+    last_lines = "\n".join(raw_output.upper().splitlines()[-3:])
+    if "VULNERABLE" in last_lines:
         return LABEL_VULNERABLE
-    if "SAFE" in text:
+    if "SAFE" in last_lines:
         return LABEL_SAFE
 
-    # Fallback cuối: từ khóa mở rộng
+    # Fallback cuối: toàn text — BỎ "SANITIZED" khỏi safe_keywords
+    text = raw_output.upper()
     vuln_keywords = ["YES", "VULN", "INSECURE", "DANGER"]
-    safe_keywords = ["NO", "CLEAN", "SECURE", "PROTECTED", "SANITIZED"]
+    safe_keywords = ["NO", "CLEAN", "SECURE", "PROTECTED"]  # bỏ SANITIZED
     for kw in vuln_keywords:
         if kw in text:
             return LABEL_VULNERABLE
@@ -326,7 +376,7 @@ def parse_prediction(raw_output: str) -> int:
         if kw in text:
             return LABEL_SAFE
 
-    return LABEL_SAFE  # default
+    return LABEL_SAFE
 
 
 # ============================================================
@@ -415,7 +465,7 @@ def evaluate(samples: list, model: str, cwe: str,
     print(f"  CWE      : {cwe_label}")
     print(f"  Prompt   : {prompt_mode.upper()}")
     print(f"  Slicing  : {'ON' if use_slice else 'OFF'}")
-    print(f"  Normalization: INTEGRATED (ALWAYS ON)")
+    print(f" Normalization: {'OFF' if prompt_mode == 'raw_baseline' else 'ON'}")
     print(f"  Samples  : {len(samples)}")
     print(f"  Timeout  : {call_timeout}s/call")
     print(f"{'='*60}\n")
@@ -431,18 +481,25 @@ def evaluate(samples: list, model: str, cwe: str,
         code       = sample["code"]
         true_label = sample["label"]
 
-        # Áp dụng slicing nếu cần
-        if use_slice:
-            code_input = simple_slice(code, cwe)
-            stats = slice_stats(code, code_input)
-            compression_ratios.append(stats["compression_ratio"])
-        else:
+        if prompt_mode == "raw_baseline":
+            # Baseline: không slicing, không normalization
             code_input = code
+        else:
+            # Áp dụng slicing nếu cần
+            if use_slice:
+                code_input = simple_slice(code, cwe)
+                stats = slice_stats(code, code_input)
+                compression_ratios.append(stats["compression_ratio"])
+            else:
+                code_input = code
 
-        code_input = normalize_code(code_input)
+            # Chỉ áp dụng chuẩn hóa nếu KHÔNG phải raw_baseline
+            code_input = normalize_code(code_input)
 
         # Chọn prompt
-        if use_slice:
+        if prompt_mode == "raw_baseline":
+            prompt = f"Analyze this PHP code for CWE-{cwe} vulnerabilities. Answer VULNERABLE or SAFE only. Code: \n{code_input}"
+        elif use_slice:
             prompt = build_prompt_sliced(code_input, cwe, use_cot=use_cot)
         elif use_cot:
             prompt = build_prompt_cot(code_input, cwe)
@@ -451,16 +508,21 @@ def evaluate(samples: list, model: str, cwe: str,
 
         # Gọi model
         raw_output = call_ollama(prompt, model, timeout=call_timeout)
-
+        
         # Xử lý kết quả
         if raw_output == "TIMEOUT":
-            # Retry 1 lần với prompt tối giản và code ngắn hơn
-            fallback_prompt = (
-                f"Is this PHP code vulnerable to {cwe_label}? "
-                f"Answer VULNERABLE or SAFE only.\n"
-                f"```php\n{code_input[:500]}\n```"
-            )
-            raw_output = call_ollama(fallback_prompt, model, timeout=60)
+            if prompt_mode == "raw_baseline":
+                # Baseline gốc không được phép áp dụng kỹ thuật cắt ngắn code khi chạy lại
+                errors += 1
+                pred_label = LABEL_SAFE  # Hoặc lấy ngẫu nhiên random.choice([0, 1])
+            else:
+                # Chỉ các chế độ tối ưu mới được dùng tính năng fallback slice 500 ký tự
+                fallback_prompt = (
+                    f"Is this PHP code vulnerable to {cwe_label}? "
+                    f"Answer VULNERABLE or SAFE only.\n"
+                    f"```php\n{code_input[:500]}\n```"
+                )
+                raw_output = call_ollama(fallback_prompt, model, timeout=60)
             if raw_output in ("TIMEOUT", "ERROR"):
                 errors += 1
                 pred_label = LABEL_SAFE
@@ -480,7 +542,7 @@ def evaluate(samples: list, model: str, cwe: str,
             "filename"       : sample.get("filename", ""),
             "true_label"     : true_label,
             "pred_label"     : pred_label,
-            "raw_output"     : raw_output[:300],
+            "raw_output"     : raw_output[:800],
             "code_preview"   : code[:150],
             "sliced_preview" : code_input[:150] if use_slice else "",
         })
@@ -518,8 +580,8 @@ def evaluate(samples: list, model: str, cwe: str,
     print(f"\n{classification_report(y_true, y_pred, target_names=['SAFE', 'VULNERABLE'], zero_division=0)}")
 
     paper_results = {
-        "79": {"f1": 0.7368, "accuracy": 0.7500},
-        "89": {"f1": 0.8000, "accuracy": 0.8125},
+        "79": {"f1": 0.8368, "accuracy": 0.9147},  # Tương ứng F1 = 83.68%, Acc = 91.47% trong Table 1
+        "89": {"f1": 0.7874, "accuracy": 0.9235},  # Tương ứng F1 = 78.74%, Acc = 92.35% trong Table 1
     }
     if cwe in paper_results:
         paper = paper_results[cwe]
@@ -534,7 +596,7 @@ def evaluate(samples: list, model: str, cwe: str,
             "cwe"                   : cwe,
             "prompt_mode"           : prompt_mode,
             "use_slice"             : use_slice,
-            "use_normalization"     : True,
+            "use_normalization" : False if prompt_mode == "raw_baseline" else True,
             "num_samples"           : len(samples),
             "elapsed_seconds"       : round(elapsed, 1),
             "avg_compression_ratio" : avg_compression,
@@ -610,15 +672,18 @@ def compare_prompts(samples: list, model: str, cwe: str):
 
 def main():
     parser = argparse.ArgumentParser(description="RealVul - Ollama Offline Evaluation")
+    parser.add_argument("--mode", type=str, default="standard",
+                        choices=["standard", "cot", "sliced_standard",
+                                 "sliced_cot", "compare", "raw_baseline"])
     parser.add_argument("--cwe", type=str, default="79", choices=["79", "89"])
     parser.add_argument("--model", type=str, default=DEFAULT_MODEL)
     parser.add_argument("--dataset_dir", type=str,
                         default=r"data\dataset\dataset_final_sorted\CWE-{cwe}\php")
     parser.add_argument("--max_samples", type=int, default=None)
     parser.add_argument("--max_file_kb", type=int, default=8)
-    parser.add_argument("--mode", type=str, default="standard",
-                        choices=["standard", "cot", "sliced_standard",
-                                 "sliced_cot", "compare"])
+    # parser.add_argument("--mode", type=str, default="standard",
+    #                     choices=["standard", "cot", "sliced_standard",
+    #                              "sliced_cot", "compare"])
     parser.add_argument("--output", type=str, default=None)
 
     args = parser.parse_args()
